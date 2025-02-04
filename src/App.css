@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@font-face {
+  font-family: 'Minecraft';
+  src: url('./assets/font/minecraft-title.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.minecraft-font {
+  font-family: 'Minecraft', system-ui, -apple-system, sans-serif;
+}

@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color:rgb(255, 255, 255);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+}
+
+
+@font-face {
+	font-family: 'Minecraft';
+	src: url('./assets/font/minecraft-title.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+  }
+
+@font-face {
+	font-family: 'Minecraft-light';
+	src: url('./assets/font/MinecraftRegular-Bmg3.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+  }
+
+@font-face {
+	font-family: 'Minecraft-bold';
+	src: url('./assets/font/MinecraftBold-nMK1.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+  }

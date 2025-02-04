@@ -1,8 +1,77 @@
-# React + Vite
+# 🎮 MEGALEIO 2025
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A National Level Technical Event hosted by St. John College of Engineering & Management, Palghar.
 
-Currently, two official plugins are available:
+## 🚀 About The Event
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+MEGALEIO 2025 is a premier technical festival that brings together innovative minds from across the country. With a prize pool of ₹3 LAKH, this event combines technology, creativity, and competitive spirit in a unique Minecraft-themed experience.
+
+### 📅 Event Details
+- **Date**: 7th & 8th March 2025
+- **Venue**: St. John College of Engineering & Management, Palghar
+- **Prize Pool**: ₹3 LAKH
+
+### 🎯 Featured Competitions
+- Drone Dexterity
+- MegaHack 5.0
+- Robo Soccer
+- Business Plan Competition
+- And more!
+
+## 🛠 Technical Stack
+
+- React.js
+- Tailwind CSS
+- AOS (Animate On Scroll)
+- Custom Minecraft-themed UI
+
+## 🎨 Key Features
+
+- Responsive Design
+- Interactive Gallery
+- Live Countdown Timer
+- Minecraft-inspired Typography
+- Smooth Animations
+- Mobile-friendly Navigation
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/megaleio-2025.git
+```
+
+2. Install dependencies:
+```bash
+cd megaleio-2025
+npm install
+```
+
+3. Run the development server:
+```bash
+npm run dev
+```
+
+## 🎯 Project Structure
+
+```
+megaleio-2025/
+├── public/
+│   ├── megaleio-logo.webp
+│   ├── About.jpg
+│   └── video.mp4
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── About.jsx
+│   │   ├── Countdown.jsx
+│   │   ├── Banner.jsx
+│   │   └── Gallery.jsx
+│   ├── App.jsx
+│   └── index.css
+└── README.md
+```
+
+
+Visit our website: [www.megaleio.com](https://www.megaleio.com)

@@ -17,7 +17,7 @@ const Banner = () => {
           <div className="flex max-md:flex-col md:items-center md:flex-row-reverse w-full bg-black">
             {/* Image Section */}
             <div className="relative md:w-1/2" data-aos="fade-up" data-aos-duration="1000">
-              <div className="absolute w-full bottom-0 h-24 bg-gradient-to-t md:top-0 md:bottom-auto md:w-36 md:h-full from-black to-transparent left-0 md:bg-gradient-to-r" />
+              <div className="absolute w-full bottom-0 h-18 bg-gradient-to-t md:top-0 md:bottom-auto md:w-36 md:h-full from-black to-transparent left-0 md:bg-gradient-to-r" />
               <img 
                 src="/megaleio-banner.png"
                 className="block w-full h-full object-cover"
@@ -28,11 +28,11 @@ const Banner = () => {
             </div>
 
             {/* Content Section */}
-            <div className="md:w-1/2 md:max-w-prose p-8 max-md:pt-0 md:mr-10 text-white" 
+            <div className="md:w-1/2 md:max-w-prose flex flex-col items-center justify-center p-8 max-md:pt-0 md:mr-10 text-white" 
                  data-aos="fade-up" 
                  data-aos-duration="1200">
               <h2 className="font-[Minecraft] text-3xl md:text-4xl leading-none text-center md:text-left">
-                <span className="block text-4xl md:text-6xl pt-1 text-[#5FFF00]">MEGALEIO 2025</span>
+                <span className="block text-5xl md:text-6xl pt-1 text-[#5FFF00]">MEGALEIO 2025</span>
                 National Level Intercollegiate Technical Event
               </h2>
               
@@ -47,7 +47,7 @@ const Banner = () => {
               
               <a 
                 href="/register" 
-                className="inline-block mt-6 px-8 py-3 bg-[#5FFF00] text-black font-[Minecraft] hover:bg-[#4CD900] transition-colors"
+                className="inline-block mt-6 px-8 py-3 bg-green-600 text-black font-[Minecraft-light] hover:bg-green-800 transition-color"
               >
                 REGISTER NOW
               </a>

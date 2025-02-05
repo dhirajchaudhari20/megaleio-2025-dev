@@ -4,17 +4,18 @@ import About from './components/About.jsx';
 import Countdown from './components/Countdown.jsx';
 import Banner from './components/Banner.jsx';
 import Gallery from './components/Gallery.jsx';
+import './App.css';
 
 function App() {
   return (
-    <div className="App bg-[#1D1C1B]">
+    <>
       <Navbar />
         <Hero />
         <About />
         <Countdown />
         <Banner />
 		<Gallery />
-    </div>
+    </>
   );
 }
 

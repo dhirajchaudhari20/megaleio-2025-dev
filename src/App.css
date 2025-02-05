@@ -5,6 +5,14 @@
   font-weight: normal;
   font-style: normal;
 }
+body{
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #000000;
+}	
 
 .minecraft-font {
   font-family: 'Minecraft', system-ui, -apple-system, sans-serif;

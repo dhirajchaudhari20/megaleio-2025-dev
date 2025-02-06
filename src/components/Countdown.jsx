@@ -38,7 +38,7 @@ const Countdown = () => {
 
   return (
     <div className="bg-[#111] py-8 px-4 text-center font-[Minecraft]" data-aos="fade-up" data-aos-duration="1000">
-      <h2 className="text-2xl md:text-4xl font-bold text-[#00ff00] drop-shadow-[0_0_2px_#00ff00]">
+      <h2 className="text-2xl md:text-4xl font-bold text-[#00ff00] drop-shadow-[0_0_2px_#00ff00] tracking-wider">
         Countdown to Megaleio 2025!
       </h2>
       <p className="text-sm md:text-lg mt-2 text-[#ddd]">
@@ -56,7 +56,7 @@ const Countdown = () => {
             bg-black
             flex flex-col items-center
           ">
-            <span className="text-2xl md:text-4xl font-bold text-[#00ff00] drop-shadow-[0_0_2px_#00ff00]">
+            <span className="text-2xl md:text-4xl font-bold text-[#00ff00] drop-shadow-[0_0_1px_#00ff00]">
               {value}
             </span>
             <div className="text-xs md:text-sm text-[#ddd] mt-1 uppercase">

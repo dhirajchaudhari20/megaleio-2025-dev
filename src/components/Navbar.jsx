@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,41 +9,54 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { name: 'About Us', href: '#about' },
-    { name: 'Events', href: '#events' },
-    { name: 'Schedule', href: '#schedule' },
-    { name: 'Megahack', href: '#megahack' },
-    { name: 'Contact Us', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Events', href: '/events' },  // Updated to route path
+    { name: 'Schedule', href: '/#schedule' },
+    { name: 'Megahack', href: '/#megahack' },
+    { name: 'Contact Us', href: '/#contact' },
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-black/40 backdrop-blur-sm z-50">
+    <nav className="fixed top-0 w-full bg-black/40 backdrop-blur-sm z-100">
       <div className="container mx-auto px-4 py-3">
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center">
+          {/* Logo with Link */}
+          <Link to="/" className="flex items-center">
             <img src="/megaleio-logo.webp" alt="Megaleio" className="h-14 w-auto" />
-          </div>
+          </Link>
 
           {/* Navigation Links */}
           <div className="flex items-center space-x-12">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={handleNavClick}
-                className="text-white hover:text-[#5FFF00] font-[Minecraft] text-base uppercase tracking-wider transition-colors"
-              >
-                {item.name}
-              </a>
+              item.href.startsWith('/') ? (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  onClick={handleNavClick}
+                  className="text-white hover:text-[#5FFF00] font-[Minecraft] text-base uppercase tracking-wider transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={handleNavClick}
+                  className="text-white hover:text-[#5FFF00] font-[Minecraft] text-base uppercase tracking-wider transition-colors"
+                >
+                  {item.name}
+                </a>
+              )
             ))}
           </div>
         </div>
 
         {/* Mobile Navigation */}
         <div className="md:hidden flex items-center justify-between">
-          <img src="/megaleio-logo.webp" alt="Megaleio" className="h-12 w-auto" />
+          <Link to="/" className="flex items-center">
+            <img src="/megaleio-logo.webp" alt="Megaleio" className="h-12 w-auto" />
+          </Link>
           <button 
             onClick={() => setIsOpen(!isOpen)}
             className="text-white p-2"
@@ -66,14 +80,25 @@ const Navbar = () => {
         >
           <div className="flex flex-col space-y-4 items-center">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={handleNavClick}
-                className="text-white hover:text-[#5FFF00] font-[Minecraft] text-base uppercase tracking-wider transition-colors"
-              >
-                {item.name}
-              </a>
+              item.href.startsWith('/') ? (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  onClick={handleNavClick}
+                  className="text-white hover:text-[#5FFF00] font-[Minecraft] text-base uppercase tracking-wider transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={handleNavClick}
+                  className="text-white hover:text-[#5FFF00] font-[Minecraft] text-base uppercase tracking-wider transition-colors"
+                >
+                  {item.name}
+                </a>
+              )
             ))}
           </div>
         </div>

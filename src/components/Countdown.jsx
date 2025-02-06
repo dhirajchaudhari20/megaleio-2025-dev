@@ -45,12 +45,12 @@ const Countdown = () => {
         Get ready for the ultimate Minecraft-themed tech fest!
       </p>
 
-      <div className="flex justify-center flex-wrap gap-4 mt-6">
+      <div className="flex justify-center flex-wrap gap-3 mt-6">
         {Object.entries(timeLeft).map(([unit, value]) => (
           <div key={unit} className="
-            min-w-[80px] md:min-w-[100px]
+            min-w-[75px] md:min-w-[100px]
             border-3 border-[#00ff00]
-            p-3 md:p-4
+            p-2.5 md:p-4
             text-center
             shadow-[0_0_4px_#00ff00]
             bg-black

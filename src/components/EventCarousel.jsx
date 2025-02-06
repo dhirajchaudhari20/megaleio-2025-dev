@@ -84,7 +84,7 @@ export default function EventCarousel() {
         <div className="relative h-[600px] flex lg:flex-row flex-col items-center justify-center px-4 md:px-12 lg:px-24">
           
           {/* Left Thumbnails (Desktop) */}
-          <div className="hidden lg:flex flex-col items-center justify-center absolute left-0 top-1/2 -translate-y-1/2 w-[120px] h-full">
+          <div className="hidden lg:flex flex-col items-center justify-center absolute left-0 top-1/2 -translate-y-1/2 w-[120px] h-full rotate-90">
             {events.map((event, index) => {
               if (!isVisible(index)) return null;
               const position = getPosition(index);

@@ -10,12 +10,18 @@ import Footer from './components/Footer.jsx';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Events from './pages/Events';
+import EventsPage from './pages/EventsPage';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/events" element={<Events />} />
+        <Route path="/events" element={
+          <>
+            <Navbar />
+            <Events />
+          </>
+        } />
         <Route path="/" element={
           <>
             <Navbar />

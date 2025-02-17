@@ -9,11 +9,11 @@ const Footer = () => {
     });
   }, []);
 
-  const contacts = [
-    { name: 'Nirmit Patil', phone: '7020529126' },
-    { name: 'Deep Patil', phone: '9765392092' },
-    { name: 'Priyal Bari', phone: '8928801668' }
-  ];
+const contacts = [
+    { name: 'Devang Vartak', phone: '8080179406' },
+    { name: 'Omkar Shinde', phone: '9975229442' },
+    { name: 'Gracy Yadav', phone: '8767820269' }
+];
 
   return (
     <footer className="bg-black/80 text-white py-12 pt-16 mt-4 relative">

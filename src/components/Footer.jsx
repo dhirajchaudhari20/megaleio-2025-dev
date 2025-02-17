@@ -4,21 +4,23 @@ import 'aos/dist/aos.css';
 
 const Footer = () => {
   useEffect(() => {
-    AOS.init({ duration: 800 });
+    AOS.init({
+      duration: 800,
+    });
   }, []);
 
-  const contacts = [
-    { name: 'Swapnil Malipatil (Faculty Coordinator)', phone: '98XXXXXXXX' },
-    { name: 'Devang Vartak (Student Coordinator)', phone: '8080179406' },
-    { name: 'Omkar Shinde (Student Coordinator)', phone: '9975229442' },
-    { name: 'Gracy Yadav (Student Coordinator)', phone: '8767820269' }
+  const facultyCoordinator = { name: 'Prof. John Doe', phone: '9876543210' };
+  
+  const students = [
+    { name: 'Devang Vartak', phone: '8080179406' },
+    { name: 'Omkar Shinde', phone: '9975229442' },
+    { name: 'Gracy Yadav', phone: '8767820269' }
   ];
 
   return (
     <footer className="bg-black/80 text-white py-12 pt-16 mt-4 relative">
       <div className="container mx-auto px-6" data-aos="fade-up">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          
           {/* Brand Section */}
           <div className="text-center md:text-left">
             <h2 className="text-3xl font-[Minecraft] text-[#5FFF00] mb-4">MEGALEIO</h2>
@@ -33,18 +35,29 @@ const Footer = () => {
           <div className="text-center md:text-left">
             <h3 className="text-xl font-[Minecraft] text-[#5FFF00] mb-4">Contact Us</h3>
             <div className="space-y-2 font-[Minecraft-light]">
-              <p className="flex items-center justify-center md:justify-start gap-2">
-                <span className="text-[#5FFF00]">✉</span>
-                <a href="mailto:megaleio@sjcem.edu.in" className="hover:text-[#5FFF00] transition-colors">
-                  megaleio@sjcem.edu.in
+              {/* Faculty Coordinator */}
+              <p className="text-sm font-semibold text-[#5FFF00]">Faculty Coordinator</p>
+              <p className="text-xs flex items-center justify-center md:justify-start gap-2">
+                <span className="text-[#5FFF00]">☎</span>
+                <span>{facultyCoordinator.name}:</span>
+                <a href={`tel:${facultyCoordinator.phone}`} 
+                   className="hover:text-[#5FFF00] transition-colors">
+                  {facultyCoordinator.phone}
                 </a>
               </p>
-              {contacts.map((contact, index) => (
-                <p key={index} className="flex items-center justify-center md:justify-start gap-2">
+
+              {/* Line Break */}
+              <br />
+
+              {/* Students */}
+              <p className="text-sm font-semibold text-[#5FFF00]">Students</p>
+              {students.map((student, index) => (
+                <p key={index} className="text-xs flex items-center justify-center md:justify-start gap-2">
                   <span className="text-[#5FFF00]">☎</span>
-                  <span>{contact.name}:</span>
-                  <a href={`tel:${contact.phone}`} className="hover:text-[#5FFF00] transition-colors">
-                    {contact.phone}
+                  <span>{student.name}:</span>
+                  <a href={`tel:${student.phone}`} 
+                     className="hover:text-[#5FFF00] transition-colors">
+                    {student.phone}
                   </a>
                 </p>
               ))}

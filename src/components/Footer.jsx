@@ -15,9 +15,9 @@ const Footer = () => {
   ];
 
   const studentCoordinators = [
-    { name: 'Devang Vartak', phone: '8080179406' },
-    { name: 'Omkar Shinde', phone: '9975229442' },
-    { name: 'Gracy Yadav', phone: '8767820269' }
+    { name: 'Mr. Devang Vartak', phone: '+91 8080179406' },
+    { name: 'Mr. Omkar Shinde', phone: '+91 9975229442' },
+    { name: 'Ms. Gracy Yadav', phone: '+91 8767820269' }
   ];
 
   return (

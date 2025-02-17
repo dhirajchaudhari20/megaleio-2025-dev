@@ -1,5 +1,91 @@
 import { useState, useEffect } from 'react';
 import AOS from 'aos';
+import 'aos/dist/aos.css';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const bounce = keyframes`
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+`;
+
+const CountdownContainer = styled.div`
+  background-size: cover;
+  background-position: center;
+  padding: 2rem 1rem;
+  text-align: center;
+  animation: ${fadeIn} 2s ease-in-out;
+`;
+
+const CountdownTitle = styled.h2`
+  font-size: 3rem;
+  font-family: 'Minecraft', sans-serif;
+  color: #00ff00;
+  text-shadow: 2px 2px 4px #000000;
+  letter-spacing: 0.1em;
+  animation: ${bounce} 2s infinite;
+`;
+
+const CountdownSubtitle = styled.p`
+  font-size: 1.25rem;
+  color: #d3d3d3;
+  margin-top: 0.5rem;
+`;
+
+const CountdownTimer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+`;
+
+const CountdownUnit = styled.div`
+  min-width: 75px;
+  border: 4px solid #00ff00;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 0 10px #00ff00;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+const CountdownValue = styled.span`
+  font-size: 3rem;
+  font-family: 'Minecraft', sans-serif;
+  color: #00ff00;
+  text-shadow: 2px 2px 4px #000000;
+`;
+
+const CountdownLabel = styled.div`
+  font-size: 1rem;
+  color: #d3d3d3;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+`;
 
 const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -37,35 +123,34 @@ const Countdown = () => {
   }, []);
 
   return (
-    <div className="bg-[#111] py-8 px-4 text-center font-[Minecraft]" data-aos="fade-up" data-aos-duration="1000">
-      <h2 className="text-2xl md:text-4xl font-bold text-[#00ff00] drop-shadow-[0_0_2px_#00ff00] tracking-wider">
-        Countdown to Megaleio 2025!
-      </h2>
-      <p className="text-sm md:text-lg mt-2 text-[#ddd]">
-        Get ready for the ultimate Minecraft-themed tech fest!
-      </p>
+    <CountdownContainer
+    style={{ backgroundImage: 'url(https://64.media.tumblr.com/2281d82f725a860e1351a5d7db9007b5/e02ab34e2c7a472c-dc/s1280x1920/80feb3412a626eaf72b9ee0f1248e8a6ef530fd1.gif)' }}
+    data-aos="fade-up"
+    data-aos-duration="1000"
+  >
+    {/* Your content here */}
 
-      <div className="flex justify-center flex-wrap gap-3 mt-6">
+  
+      <CountdownTitle>
+        Countdown to Megaleio 2025!
+      </CountdownTitle>
+      <CountdownSubtitle>
+        Get ready for the ultimate Minecraft-themed tech fest!
+      </CountdownSubtitle>
+
+      <CountdownTimer>
         {Object.entries(timeLeft).map(([unit, value]) => (
-          <div key={unit} className="
-            min-w-[75px] md:min-w-[100px]
-            border-3 border-[#00ff00]
-            p-2.5 md:p-4
-            text-center
-            shadow-[0_0_4px_#00ff00]
-            bg-black
-            flex flex-col items-center
-          ">
-            <span className="text-2xl md:text-4xl font-bold text-[#00ff00] drop-shadow-[0_0_1px_#00ff00]">
+          <CountdownUnit key={unit}>
+            <CountdownValue>
               {value}
-            </span>
-            <div className="text-xs md:text-sm text-[#ddd] mt-1 uppercase">
+            </CountdownValue>
+            <CountdownLabel>
               {unit}
-            </div>
-          </div>
+            </CountdownLabel>
+          </CountdownUnit>
         ))}
-      </div>
-    </div>
+      </CountdownTimer>
+    </CountdownContainer>
   );
 };
 

@@ -46,7 +46,7 @@ const Banner = () => {
               </p>
               
               <a 
-                href="/register" 
+                href="https://linktr.ee/Megaleio_2025" 
                 className="inline-block mt-6 px-8 py-3 bg-green-600 text-black font-[Minecraft-light] hover:bg-green-800 transition-color"
               >
                 REGISTER NOW

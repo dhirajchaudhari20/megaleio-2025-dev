@@ -1,51 +1,38 @@
 import { useState, useRef, useMemo, useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-
 const galleryData = [
   {
     title: "Welcome!",
     subtitle: "Grab your orb and meet your guides!",
-    image: "https://i.ibb.co/9x7KPdD/Whats-App-Image-2025-02-03-at-10-04-46-PM-2.jpg"
+    image: "https://i.ibb.co/9HGhD3dQ/IMG-9006.jpg"
   },
-
   {
     title: "Teamwork in Action",
     subtitle: "Moments of collaboration and success.",
-    image: "https://i.ibb.co/7tQq83sR/Whats-App-Image-2025-02-03-at-10-03-34-PM.jpg",
+    image: "https://i.ibb.co/XrDztvbc/IMG-9008.jpg",
   },
   {
     title: "Brilliant Minds at Work",
     subtitle: "Exploring ideas that transform the future.",
-    image: "https://i.ibb.co/BHKdvk6n/Whats-App-Image-2025-02-03-at-10-03-35-PM-1.jpg",
+    image: "https://i.ibb.co/YK2t5TG/6-S9-A4650-Copy.jpg",
   },
   {
     title: "Mega Hack 4.0 Glimpses",
     subtitle: "Innovation takes center stage.",
-    image: "https://i.ibb.co/9kN9Nqy1/Whats-App-Image-2025-02-03-at-10-03-35-PM.jpg",
+    image: "https://i.ibb.co/DHV19LtT/IMG-9048.jpg",
   },
   {
     title: "Innovation in Progress",
     subtitle: "Capturing the essence of creativity and teamwork.",
-    image: "https://i.ibb.co/Wv3JWCdM/Whats-App-Image-2025-02-03-at-10-03-36-PM.jpg",
+    image: "https://i.ibb.co/Q75KNKQ1/IMG-9249.jpg",
   },
-
   {
     title: "Innovation in Progress",
     subtitle: "Capturing the essence of creativity and teamwork.",
-    image: "  https://i.ibb.co/wN3XqkX8/IMG-6611.jpg",
+    image: "https://i.ibb.co/pBvk0mk9/IMG-9014.jpg",
   },
-
-  {
-    title: "Innovation in Progress",
-    subtitle: "Capturing the essence of creativity and teamwork.",
-    image: "  https://i.ibb.co/1YHGjbSR/IMG-9843.jpg",
-  },
-
-
-
-  // Add other images here...
-]
+];
 
 export default function Gallery() {
   const [activeSlide, setActiveSlide] = useState(0)

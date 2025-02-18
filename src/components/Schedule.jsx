@@ -1,8 +1,13 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "@fontsource/press-start-2p";
 
 const scheduleData = {
+  ongoing: [
+    { time: "10:30 - 18:00", room: "Lab 3 & Lab 4", session: "MEGAHACK", speaker: "Hackathon Team" }
+  ],
+  upcoming: [
+    { time: "11:00 - 11:30", room: "Auditorium", session: "Unleashing the Power of FlutterFlow", speaker: "Vivek Yadav" }
+  ],
   day1: [
     { time: "10:00 - 10:30", room: "Auditorium", session: "INAUGURATION", speaker: "Event Team" },
     { time: "10:30 - 18:00", room: "Lab 3 & Lab 4", session: "MEGAHACK", speaker: "Hackathon Team" },
@@ -19,50 +24,54 @@ const scheduleData = {
 
 export default function Schedule() {
   return (
-    <section className="min-h-screen w-full px-12 pt-24 bg-gray-800 text-green-300 font-['Press_Start_2P'] bg-[url('/minecraft-bg.png')] bg-cover flex justify-center items-center">
-      <div className="container max-w-5xl mx-auto text-center">
-        <h1 className="text-5xl mb-12 tracking-widest animate-pulse border-b-4 border-green-500 pb-4">HACKATHON SCHEDULE</h1>
-        
-        <div className="relative flex flex-col items-center space-y-12">
-          <div className="absolute w-1 bg-green-500 h-full top-0 left-1/2 transform -translate-x-1/2"></div>
-          
-          {/* Day 1 Schedule */}
-          <h2 className="text-3xl underline bg-green-700 p-2 rounded-md shadow-md">Day 1 (March 7, 2025)</h2>
-          {scheduleData.day1.map((event, index) => (
-            <motion.div
-              key={index}
-              className="relative w-full md:w-2/3 bg-gray-900 border-green-400 border-4 p-6 rounded-lg mb-6 shadow-lg hover:scale-110 transition-transform hover:bg-green-700 hover:text-black pixelated-border"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <div className="text-lg text-yellow-400 font-bold">{event.time}</div>
-              <div className="text-sm text-gray-300">Room: {event.room}</div>
-              <div className="text-2xl mt-2">{event.session}</div>
-              <div className="text-sm text-gray-400">Speaker: {event.speaker}</div>
-              <div className="absolute left-1/2 w-6 h-6 bg-green-500 rounded-sm transform -translate-x-1/2 -top-3"></div>
-            </motion.div>
-          ))}
-          
-          {/* Day 2 Schedule */}
-          <h2 className="text-3xl underline bg-green-700 p-2 rounded-md shadow-md mt-12">Day 2 (March 8, 2025)</h2>
-          {scheduleData.day2.map((event, index) => (
-            <motion.div
-              key={index}
-              className="relative w-full md:w-2/3 bg-gray-900 border-green-400 border-4 p-6 rounded-lg mb-6 shadow-lg hover:scale-110 transition-transform hover:bg-green-700 hover:text-black pixelated-border"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <div className="text-lg text-yellow-400 font-bold">{event.time}</div>
-              <div className="text-sm text-gray-300">Room: {event.room}</div>
-              <div className="text-2xl mt-2">{event.session}</div>
-              <div className="text-sm text-gray-400">Speaker: {event.speaker}</div>
-              <div className="absolute left-1/2 w-6 h-6 bg-green-500 rounded-sm transform -translate-x-1/2 -top-3"></div>
-            </motion.div>
+    <section 
+      className="min-h-screen w-full px-6 md:px-48 pt-24 text-green-300 font-['Press_Start_2P'] 
+      bg-cover bg-center flex flex-col justify-center items-center relative overflow-hidden"
+      style={{ backgroundImage: "url('/public/back.gif')" }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+      <div className="container max-w-screen-xl mx-auto text-center relative z-10">
+        <h1 className="text-6xl mb-12 tracking-widest animate-pulse pb-4 text-center">
+          HACKATHON SCHEDULE
+        </h1>
+
+        <div className="flex flex-col items-center space-y-12 w-full">
+          {["ongoing", "upcoming", "day1", "day2"].map((category) => (
+            <div key={category} className="w-full">
+              <h2 className="text-3xl bg-green-700 p-4 rounded-md shadow-md inline-block text-center w-full">
+                {category.toUpperCase()} EVENTS
+              </h2>
+              {scheduleData[category].map((event, index) => (
+                <motion.div
+                  key={index}
+                  className="w-full md:w-3/4 bg-gray-900 border-green-400 border-4 p-10 rounded-lg mb-8 
+                  shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out
+                  hover:bg-green-700 hover:text-black mx-auto"
+                  data-aos="zoom-in-up"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  <div className="text-lg text-yellow-400 font-bold text-center">{event.time}</div>
+                  <div className="text-sm text-gray-300 text-center">Room: {event.room}</div>
+                  <div className="text-2xl mt-2 font-bold text-center">{event.session}</div>
+                  <div className="text-sm text-gray-400 text-center">Speaker: {event.speaker}</div>
+                </motion.div>
+              ))}
+            </div>
           ))}
         </div>
       </div>
+
+      {/* Scroll End Animation */}
+      <motion.div 
+        className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-black to-transparent"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      ></motion.div>
     </section>
   );
 }

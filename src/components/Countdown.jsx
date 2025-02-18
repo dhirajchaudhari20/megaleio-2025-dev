@@ -1,27 +1,17 @@
-import { useState, useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import styled, { keyframes } from 'styled-components';
+import { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import styled, { keyframes } from "styled-components";
 
 const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 `;
 
 const bounce = keyframes`
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-30px);
-  }
-  60% {
-    transform: translateY(-15px);
-  }
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
 `;
 
 const CountdownContainer = styled.div`
@@ -36,7 +26,7 @@ const CountdownTitle = styled.h2`
   font-size: 3rem;
   font-family: 'Minecraft', sans-serif;
   color: #00ff00;
-  text-shadow: 2px 2px 4px #000000;
+  text-shadow: 3px 3px 6px #000000;
   letter-spacing: 0.1em;
   animation: ${bounce} 2s infinite;
 `;
@@ -51,17 +41,17 @@ const CountdownTimer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem;
   margin-top: 1.5rem;
 `;
 
 const CountdownUnit = styled.div`
-  min-width: 75px;
-  border: 4px solid #00ff00;
-  padding: 1rem;
+  min-width: 70px;
+  border: 3px solid #00ff00;
+  padding: 0.75rem;
   text-align: center;
-  box-shadow: 0 0 10px #00ff00;
   background-color: #000000;
+  box-shadow: 0 0 10px #00ff00;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,7 +64,7 @@ const CountdownUnit = styled.div`
 `;
 
 const CountdownValue = styled.span`
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-family: 'Minecraft', sans-serif;
   color: #00ff00;
   text-shadow: 2px 2px 4px #000000;
@@ -89,15 +79,15 @@ const CountdownLabel = styled.div`
 
 const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState({
-    days: '00',
-    hours: '00',
-    minutes: '00',
-    seconds: '00'
+    D: "00",
+    H: "00",
+    M: "00",
+    S: "00"
   });
 
   useEffect(() => {
     AOS.init();
-    const targetDate = new Date('2025-03-07T10:00:00'); // Set your event date here
+    const targetDate = new Date("2025-03-07T10:00:00"); 
 
     const calculateTimeLeft = () => {
       const now = new Date();
@@ -110,10 +100,10 @@ const Countdown = () => {
         const seconds = Math.floor((difference / 1000) % 60);
 
         setTimeLeft({
-          days: days.toString().padStart(2, '0'),
-          hours: hours.toString().padStart(2, '0'),
-          minutes: minutes.toString().padStart(2, '0'),
-          seconds: seconds.toString().padStart(2, '0')
+          D: days.toString().padStart(2, "0"),
+          H: hours.toString().padStart(2, "0"),
+          M: minutes.toString().padStart(2, "0"),
+          S: seconds.toString().padStart(2, "0"),
         });
       }
     };
@@ -124,29 +114,18 @@ const Countdown = () => {
 
   return (
     <CountdownContainer
-    style={{ backgroundImage: 'url(https://64.media.tumblr.com/2281d82f725a860e1351a5d7db9007b5/e02ab34e2c7a472c-dc/s1280x1920/80feb3412a626eaf72b9ee0f1248e8a6ef530fd1.gif)' }}
-    data-aos="fade-up"
-    data-aos-duration="1000"
-  >
-    {/* Your content here */}
-
-  
-      <CountdownTitle>
-        Countdown to Megaleio 2025!
-      </CountdownTitle>
-      <CountdownSubtitle>
-        Get ready for the ultimate Minecraft-themed tech fest!
-      </CountdownSubtitle>
+      style={{ backgroundImage: "url(https://64.media.tumblr.com/2281d82f725a860e1351a5d7db9007b5/e02ab34e2c7a472c-dc/s1280x1920/80feb3412a626eaf72b9ee0f1248e8a6ef530fd1.gif)" }}
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
+      <CountdownTitle>Countdown to Megaleio 2025!</CountdownTitle>
+      <CountdownSubtitle>Get ready for the ultimate Minecraft-themed tech fest!</CountdownSubtitle>
 
       <CountdownTimer>
         {Object.entries(timeLeft).map(([unit, value]) => (
           <CountdownUnit key={unit}>
-            <CountdownValue>
-              {value}
-            </CountdownValue>
-            <CountdownLabel>
-              {unit}
-            </CountdownLabel>
+            <CountdownValue>{value}</CountdownValue>
+            <CountdownLabel>{unit}</CountdownLabel>
           </CountdownUnit>
         ))}
       </CountdownTimer>

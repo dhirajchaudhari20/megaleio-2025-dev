@@ -11,6 +11,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Events from './components/Events.jsx';
 import Schedule from './components/Schedule.jsx';
 import Agenda from './components/Agenda.jsx';
+import JDoodleEmbed from './components/sjcem-compiler.jsx'; // Import the JDoodleEmbed component
+
 function App() {
   return (
     <Router>
@@ -34,13 +36,18 @@ function App() {
             <Footer />
           </>
         } />
-		<Route path="/schedule" element={
-		  <>
-			<Navbar />
-			<Agenda />
-		  </>
-			
-		} />
+        <Route path="/schedule" element={
+          <>
+            <Navbar />
+            <Agenda />
+          </>
+        } />
+        <Route path="/sjcem-compiler" element={
+          <>
+            <Navbar />
+            <JDoodleEmbed />
+          </>
+        } />
       </Routes>
     </Router>
   );

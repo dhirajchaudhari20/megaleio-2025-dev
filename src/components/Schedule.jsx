@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import "./minecraft.css"; // Make sure to add custom styles
+import { motion } from "framer-motion";
+import "@fontsource/press-start-2p";
 
 const scheduleData = {
   day1: [
@@ -17,71 +18,48 @@ const scheduleData = {
 };
 
 export default function Schedule() {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  useEffect(() => {
-    const nextEventDate = new Date("March 7, 2025 10:00:00").getTime();
-
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = nextEventDate - now;
-
-      setTimeLeft({
-        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000)
-      });
-
-      if (distance < 0) {
-        clearInterval(timer);
-      }
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   return (
-    <section className="minecraft-bg min-h-screen p-8 text-white">
-      <div className="container mx-auto">
-        <h1 className="minecraft-title text-6xl text-center mb-12">Schedule</h1>
-
-        {/* Countdown Timer */}
-        <div className="countdown-container">
-          <h2 className="text-3xl text-center mb-4">Event Starts In</h2>
-          <div className="countdown-grid">
-            {["days", "hours", "minutes", "seconds"].map((unit) => (
-              <div key={unit} className="countdown-block">
-                <span className="countdown-number">{timeLeft[unit]}</span>
-                <span className="countdown-label">{unit.toUpperCase()}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Day 1 Schedule */}
-        <div className="schedule-day">
-          <h2 className="schedule-title">Day 1 (March 7, 2025)</h2>
+    <section className="min-h-screen w-full px-12 pt-24 bg-gray-800 text-green-300 font-['Press_Start_2P'] bg-[url('/minecraft-bg.png')] bg-cover flex justify-center items-center">
+      <div className="container max-w-5xl mx-auto text-center">
+        <h1 className="text-5xl mb-12 tracking-widest animate-pulse border-b-4 border-green-500 pb-4">HACKATHON SCHEDULE</h1>
+        
+        <div className="relative flex flex-col items-center space-y-12">
+          <div className="absolute w-1 bg-green-500 h-full top-0 left-1/2 transform -translate-x-1/2"></div>
+          
+          {/* Day 1 Schedule */}
+          <h2 className="text-3xl underline bg-green-700 p-2 rounded-md shadow-md">Day 1 (March 7, 2025)</h2>
           {scheduleData.day1.map((event, index) => (
-            <div key={index} className="schedule-card">
-              <div className="schedule-time">{event.time}</div>
-              <div className="schedule-room">Room: {event.room}</div>
-              <div className="schedule-session">{event.session}</div>
-              <div className="schedule-speaker">{event.speaker}</div>
-            </div>
+            <motion.div
+              key={index}
+              className="relative w-full md:w-2/3 bg-gray-900 border-green-400 border-4 p-6 rounded-lg mb-6 shadow-lg hover:scale-110 transition-transform hover:bg-green-700 hover:text-black pixelated-border"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <div className="text-lg text-yellow-400 font-bold">{event.time}</div>
+              <div className="text-sm text-gray-300">Room: {event.room}</div>
+              <div className="text-2xl mt-2">{event.session}</div>
+              <div className="text-sm text-gray-400">Speaker: {event.speaker}</div>
+              <div className="absolute left-1/2 w-6 h-6 bg-green-500 rounded-sm transform -translate-x-1/2 -top-3"></div>
+            </motion.div>
           ))}
-        </div>
-
-        {/* Day 2 Schedule */}
-        <div className="schedule-day">
-          <h2 className="schedule-title">Day 2 (March 8, 2025)</h2>
+          
+          {/* Day 2 Schedule */}
+          <h2 className="text-3xl underline bg-green-700 p-2 rounded-md shadow-md mt-12">Day 2 (March 8, 2025)</h2>
           {scheduleData.day2.map((event, index) => (
-            <div key={index} className="schedule-card">
-              <div className="schedule-time">{event.time}</div>
-              <div className="schedule-room">Room: {event.room}</div>
-              <div className="schedule-session">{event.session}</div>
-              <div className="schedule-speaker">{event.speaker}</div>
-            </div>
+            <motion.div
+              key={index}
+              className="relative w-full md:w-2/3 bg-gray-900 border-green-400 border-4 p-6 rounded-lg mb-6 shadow-lg hover:scale-110 transition-transform hover:bg-green-700 hover:text-black pixelated-border"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <div className="text-lg text-yellow-400 font-bold">{event.time}</div>
+              <div className="text-sm text-gray-300">Room: {event.room}</div>
+              <div className="text-2xl mt-2">{event.session}</div>
+              <div className="text-sm text-gray-400">Speaker: {event.speaker}</div>
+              <div className="absolute left-1/2 w-6 h-6 bg-green-500 rounded-sm transform -translate-x-1/2 -top-3"></div>
+            </motion.div>
           ))}
         </div>
       </div>

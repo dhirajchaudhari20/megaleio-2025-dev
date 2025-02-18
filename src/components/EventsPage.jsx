@@ -49,6 +49,7 @@ export default function EventsPage() {
       {/* Main Events Section */}
       <section className="relative top-20 font-[Minecraft] min-h-[calc(100vh+150px)] bg-[#1D1C1B]">
         <div>
+		<br></br>
           <div className="text-center mb-8">
             <h1 className="text-5xl md:text-6xl font-bold mb-4">
               This Year's <br />Events

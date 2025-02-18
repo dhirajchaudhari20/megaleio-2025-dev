@@ -33,7 +33,7 @@ const Banner = () => {
                  data-aos-duration="1200">
               <h2 className="font-[Minecraft] text-3xl md:text-4xl leading-none text-center md:text-left">
                 <span className="block text-5xl md:text-6xl pt-1 text-[#5FFF00]">MEGALEIO 2025</span>
-                National Level Intercollegiate Technical Event
+                National Level Technical Event
               </h2>
               
               <p className="mt-4 text-base font-[Minecraft-light]">

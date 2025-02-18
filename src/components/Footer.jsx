@@ -26,12 +26,14 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Brand Section */}
           <div className="text-center md:text-left">
-            <h2 className="text-3xl font-[Minecraft] text-[#5FFF00] mb-4">MEGALEIO</h2>
+           
             <img 
               src="/megaleio-logo.webp" 
               alt="Megaleio Logo" 
               className="h-24 mx-auto md:mx-0 drop-shadow-[0_0_5px_rgba(255,255,255,1)]"
             />
+            <br></br>
+            <p>A National Level Intercollegiate Technical Event where innovation meets excellence</p>
           </div>
 
           {/* Contact Section */}
@@ -95,7 +97,7 @@ const Footer = () => {
 
         <div className="text-center mt-8 pt-8 border-t border-[#5FFF00]/30 font-[Minecraft-light]">
           <p className="text-sm text-[#5FFF00]">
-            © 2025 MEGALEIO. All rights reserved.
+          © 2025 Megaleio. All rights reserved. | St. John's College of Engineering and Management is the organizer of the event.
           </p>
         </div>
       </div>

@@ -14,7 +14,7 @@ const Navbar = () => {
     { name: 'Home', href: '/' },
     { name: 'Events', href: '/events' },
     { name: 'Schedule', href: '/schedule' },
-    { name: 'Megahack', href: 'megahack.in' },
+{ name: 'Megahack', href: 'https://megahack.in' }
     { name: 'Contact Us', href: '#contactus' },
   ];
 

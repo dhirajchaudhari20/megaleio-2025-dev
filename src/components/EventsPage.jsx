@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const eventsData = [
 	// MegaHack 5.0 Events
@@ -30,6 +32,13 @@ export default function EventsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [openModal, setOpenModal] = useState(null);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out'
+    });
+  }, []);
+
   const filteredEvents = eventsData.filter(event =>
     event.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -38,7 +47,7 @@ export default function EventsPage() {
     <>
 
       {/* Main Events Section */}
-      <section className="relative top-20 font-[Minecraft]">
+      <section className="relative top-20 font-[Minecraft] min-h-[calc(100vh+150px)] bg-[#1D1C1B]">
         <div>
           <div className="text-center mb-8">
             <h1 className="text-5xl md:text-6xl font-bold mb-4">
@@ -51,9 +60,8 @@ export default function EventsPage() {
               </p>
             </div>
           </div>
-          {/* Removed custom "custom-line" */}
           {/* Updated Search Container */}
-          <div className="my-5 flex justify-center items-center gap-2">
+          {/* <div className="my-5 flex justify-center items-center gap-2">
             <input
               type="text"
               className="w-[250px] p-2.5 border-2 border-blue-500 rounded bg-white text-gray-800 text-sm font-[Minecraft]"
@@ -62,15 +70,21 @@ export default function EventsPage() {
               onChange={e => setSearchTerm(e.target.value)}
             />
             <i className="fa fa-search w-[30px] h-[30px] cursor-pointer" aria-hidden="true"></i>
-          </div>
-          <div id="eventGrid" className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center p-5">
-            {filteredEvents.map(event => (
-              <div key={event.id} className="bg-white border-2 border-blue-500 p-5 rounded-lg text-center flex flex-col shadow-md text-black" data-event={event.name.toLowerCase()}>
+          </div> */}
+          <div id="eventGrid" className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center p-5 px-5 md:px-32">
+            {filteredEvents.map((event, index) => (
+              <div 
+                key={event.id} 
+                data-aos="fade-up"
+                data-aos-delay={index * 50}
+                className="bg-white border-2 border-blue-500 p-5 rounded-3xl text-center flex flex-col shadow-md text-black" 
+                data-event={event.name.toLowerCase()}
+              >
                 <div className="h-24">
-                  <img className="w-full h-full rounded" src={event.img} alt={event.name} />
+                  <img className="w-full h-full rounded-3xl" src={event.img} alt={event.name} />
                 </div>
-                <h2 className="font-[Press Start 2P] text-2xl md:text-3xl my-2">{event.name}</h2>
-                <p className="font-[Press Start 2P] text-sm md:text-base mb-4">{event.desc}</p>
+                <h2 className="text-2xl md:text-3xl my-2">{event.name}</h2>
+                <p className="text-sm md:text-base mb-4">{event.desc}</p>
                 <a
                   href={event.link}
                   className="w-4/5 mx-auto bg-green-600 border-2 border-green-600 p-2.5 mt-2 text-center text-sm rounded cursor-pointer text-white transition transform duration-200 ease-in-out hover:scale-105"
@@ -110,6 +124,7 @@ export default function EventsPage() {
               </div>
             ))}
           </div>
+		  <div className="h-10"></div>
         </div>
       </section>
     </>

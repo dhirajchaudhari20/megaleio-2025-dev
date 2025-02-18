@@ -21,7 +21,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-black/80 text-white py-12 pt-16 mt-4 relative">
+    <footer id='contactus' className="bg-black/80 text-white py-12 pt-16 mt-4 relative">
       <div className="container mx-auto px-6" data-aos="fade-up">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Brand Section */}

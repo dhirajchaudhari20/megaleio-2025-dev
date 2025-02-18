@@ -105,7 +105,7 @@ export default function EventCarousel() {
   const isVisible = (index) => {
     const total = events.length;
     const offset = (index - currentIndex + total) % total;
-    return offset === 0 || offset === 1 || offset === total - 1;
+    return offset === 0 || offset === 1 || offset === total - 1 || offset === total - 2;
   };
 
   return (

@@ -13,9 +13,9 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Events', href: '/events' },
-    { name: 'Schedule', href: '/#schedule' },
-    { name: 'Megahack', href: '/#megahack' },
-    { name: 'Contact Us', href: '/#contact' },
+    { name: 'Schedule', href: '/schedule' },
+    { name: 'Megahack', href: 'megahack.in' },
+    { name: 'Contact Us', href: '#contactus' },
   ];
 
   return (

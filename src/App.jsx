@@ -3,15 +3,14 @@ import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
 import Countdown from './components/Countdown.jsx';
 import Banner from './components/Banner.jsx';
-import EventCarousel from './components/EventCarousel.jsx';
 import Gallery from './components/Gallery.jsx';
 import Location from './components/Location.jsx';
 import Footer from './components/Footer.jsx';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Events from './pages/Events';
-import EventsPage from './pages/EventsPage';
-
+import Events from './components/Events.jsx';
+import Schedule from './components/Schedule.jsx';
+import Agenda from './components/Agenda.jsx';
 function App() {
   return (
     <Router>
@@ -35,6 +34,13 @@ function App() {
             <Footer />
           </>
         } />
+		<Route path="/schedule" element={
+		  <>
+			<Navbar />
+			<Agenda />
+		  </>
+			
+		} />
       </Routes>
     </Router>
   );

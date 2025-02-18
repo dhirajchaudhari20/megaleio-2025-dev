@@ -9,7 +9,7 @@ const Hero = () => {
 
   return (
     <div className="relative bg-[#1D1C1B] w-full h-screen flex items-center justify-center">
-      <div className="w-full absolute inset-0 flex">
+      <div className="w-full absolute inset-0 flex blur-sm">
         <video 
           className="w-full h-full object-cover" 
           src="/video.mp4" // Make sure this video exists in your public folder
@@ -25,7 +25,7 @@ const Hero = () => {
             <img 
               loading="lazy" 
               decoding="async" 
-              className="w-full max-w-[450px] mx-auto" 
+              className="w-full max-w-[450px] mx-auto drop-shadow-[0_0_10px_rgba(255,255,255,1)]" 
               src="/megaleio-logo.webp" 
               alt="Megaleio logo" 
             />

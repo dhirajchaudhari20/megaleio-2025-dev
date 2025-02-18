@@ -2,7 +2,7 @@ import EventsPage from "./EventsPage";
 
 const Events = () => {
   return (
-    <div className="min-h-screen bg-[#1D1C1B]">
+    <div className="">
       <EventsPage />
     </div>
   );

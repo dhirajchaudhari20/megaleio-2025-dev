@@ -11,29 +11,14 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="w-full bg-black flex justify-center items-center py-12">
-      <div className="container mx-auto">
-        <div className="flex flex-col items-center text-center">
-          {/* Image Section */}
+    <div className="w-full bg-black flex justify-center items-center py-12 overflow-y-hidden">
+      <div className="container mx-auto px-4">
+        {/* Changed to row layout on desktop */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between md:gap-8">
+          {/* Content Section - Now on left for desktop */}
           <div
-            className="relative w-full md:w-3/4 lg:w-2/3"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <div className="absolute w-full bottom-0 h-18 bg-gradient-to-t from-black to-transparent left-0" />
-            <img
-              src="/megaleio-banner.png"
-              className="block w-full h-auto object-cover"
-              alt="Megaleio 2025 banner"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-
-          {/* Content Section */}
-          <div
-            className="mt-8 max-w-2xl text-white"
-            data-aos="fade-up"
+            className="mt-8 md:mt-0 md:w-1/2 text-white text-center order-2 md:order-1"
+            data-aos="fade-right"
             data-aos-duration="1200"
           >
             <h2 className="font-[Minecraft] text-4xl md:text-5xl leading-none">
@@ -67,6 +52,22 @@ const Banner = () => {
             >
               REGISTER NOW
             </a>
+          </div>
+
+          {/* Image Section - Now on right for desktop */}
+          <div
+            className="relative w-full md:w-1/2 order-1 md:order-2"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+          >
+            <div className="absolute w-full bottom-0 h-18 bg-gradient-to-t from-black to-transparent left-0" />
+            <img
+              src="/megaleio-banner.png"
+              className="block w-full h-auto object-cover rounded-lg"
+              alt="Megaleio 2025 banner"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </div>

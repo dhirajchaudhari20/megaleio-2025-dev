@@ -8,7 +8,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative bg-[#1D1C1B] w-full h-screen flex items-center justify-center">
+    <div className="relative bg-[#1D1C1B] w-screen h-screen flex items-center justify-center">
       <div className="w-full absolute inset-0 flex blur-sm">
         <video 
           className="w-full h-full object-cover" 

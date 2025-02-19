@@ -37,10 +37,10 @@ function App() {
           </>
         } />
         <Route path="/schedule" element={
-          <>
+          <div>
             <Navbar />
             <Agenda />
-          </>
+          </div>
         } />
         <Route path="/sjcem-compiler" element={
           <>

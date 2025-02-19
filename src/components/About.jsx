@@ -15,11 +15,6 @@ const About = () => {
       {/* Main Container with Minecraft Theme */}
       <div className="bg-[#0F0F0F] text-white font-[Minecraft] min-h-screen flex flex-col items-center justify-center px-4">
 
-        {/* Decorative Grass Block on Top */}
-        <div className="relative w-full max-w-6xl flex justify-center">
-          <div className="absolute -top-5 w-[120px] h-[40px] bg-green-600 shadow-lg shadow-green-500 pixel-border rounded-lg"></div>
-        </div>
-
         {/* Content Wrapper */}
         <div className="relative flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-6xl px-6 py-10">
           
@@ -38,7 +33,7 @@ const About = () => {
             className="md:w-1/2 flex flex-col items-center text-center px-4"
             data-aos="fade-up"
           >
-            <h2 className="text-5xl text-green-400 drop-shadow-[3px_3px_0px_rgba(0,255,0,0.8)] mb-6">
+            <h2 className="text-5xl text-green-400 drop-shadow-[2px_2px_0px_rgba(0,255,0,0.8)] mb-6">
               WHERE INNOVATION MEETS ADVENTURE!
             </h2>
 

@@ -12,7 +12,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+/* * {
+	outline: 1px solid red;
+  } */
+  
 
 /* Add smooth scrolling behavior */
 html {
@@ -78,3 +81,19 @@ body {
 
   .edge-bottom-white{z-index:10}[class*=edge-bottom]
   .edge-bottom-white:before{background-size:1268px 130px;height:130px;transform:none}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}

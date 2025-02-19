@@ -47,7 +47,7 @@ const CountdownTimer = styled.div`
 `;
 
 const CountdownUnit = styled.div`
-  min-width: 70px;
+  width: 100px; 
   border: 3px solid #00ff00;
   padding: 0.75rem;
   text-align: center;
@@ -62,6 +62,9 @@ const CountdownUnit = styled.div`
   &:hover {
     transform: scale(1.1);
   }
+	@media (max-width: 768px) {
+		width: 70px;
+	}
 `;
 
 const CountdownValue = styled.span`
@@ -80,10 +83,10 @@ const CountdownLabel = styled.div`
 
 const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState({
-    D: "00",
-    H: "00",
-    M: "00",
-    S: "00"
+    Days: "00",
+    Hours: "00",
+    Minutes: "00",
+    Seconds: "00"
   });
 
   useEffect(() => {
@@ -101,10 +104,10 @@ const Countdown = () => {
         const seconds = Math.floor((difference / 1000) % 60);
 
         setTimeLeft({
-          D: days.toString().padStart(2, "0"),
-          H: hours.toString().padStart(2, "0"),
-          M: minutes.toString().padStart(2, "0"),
-          S: seconds.toString().padStart(2, "0"),
+          Days: days.toString().padStart(2, "0"),
+          Hours: hours.toString().padStart(2, "0"),
+          Minutes: minutes.toString().padStart(2, "0"),
+          Seconds: seconds.toString().padStart(2, "0"),
         });
       }
     };
@@ -124,9 +127,9 @@ const Countdown = () => {
 
       <CountdownTimer>
         {Object.entries(timeLeft).map(([unit, value]) => (
-          <CountdownUnit key={unit}>
+          <CountdownUnit key={unit} className="w-24 md:w-[100px]">
             <CountdownValue>{value}</CountdownValue>
-            <CountdownLabel>{unit}</CountdownLabel>
+            <CountdownLabel className="font-[Minecraft-light]">{unit}</CountdownLabel>
           </CountdownUnit>
         ))}
       </CountdownTimer>

@@ -25,15 +25,13 @@ const scheduleData = {
 export default function Schedule() {
   return (
     <section 
-      className="min-h-screen w-full px-6 md:px-48 pt-24 text-green-300 font-['Press_Start_2P'] 
-      bg-cover bg-center flex flex-col justify-center items-center relative overflow-hidden"
-      style={{ backgroundImage: "url('/public/back.gif')" }}
+      className="min-h-screen w-screen px-6 md:px-48 pt-24 text-green-300 font-['Press_Start_2P'] bg-[image:url('/public/back.gif')] bg-cover bg-center flex flex-col justify-center items-center relative overflow-hidden"
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div className="absolute inset-0 bg-black/50"></div>
 
       <div className="container max-w-screen-xl mx-auto text-center relative z-10">
-        <h1 className="text-6xl mb-12 tracking-widest animate-pulse pb-4 text-center">
+        <h1 className="text-4xl md:text-6xl mb-12 tracking-widest animate-pulse pb-4 text-center">
           HACKATHON SCHEDULE
         </h1>
 
@@ -51,7 +49,7 @@ export default function Schedule() {
                   hover:bg-green-700 hover:text-black mx-auto"
                   data-aos="zoom-in-up"
                   initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 25 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                   <div className="text-lg text-yellow-400 font-bold text-center">{event.time}</div>

@@ -7,17 +7,17 @@ const eventsData = [
 	{
 		id: "techQuiz",
 		name: "Tech Quiz", 
-		img: "https://i.ibb.co/zVZh50dD/Copy-of-Copy-of-MEGALEIO-2024-2.jpg",
+		img: "https://i.ibb.co/WWxCbQnp/tech-quiz.jpg",
 		desc: "Showcase your tech knowledge in an exciting quiz! Answer questions on various tech topics and compete for the top spot.",
-		link: "https://docs.google.com/forms/d/1N55_GjT8JCIKX57dX6nykgBS8Ei10Ib-FWv0l7VPN48/edit",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLSdBCVmSj2dfL7ZK6Gwvie_IviJG10btsM1DEgZvokZO32Eq3w/viewform?usp=preview",
 		rulebook: "https://rulebook.techquiz.com"
 	},
 	{
 		id: "robomaze",
 		name: "Robomaze",
-		img: "https://i.ibb.co/WvrvghT9/Copy-of-Copy-of-MEGALEIO-2024-3.jpg",
+		img: "https://i.ibb.co/5t4wmPN/robomaze.jpg",
 		desc: "Navigate through a challenging maze with your robot! Test your robotics skills and see if you can complete the maze in record time.",
-		link: "https://docs.google.com/forms/d/1np6C3Y3c_9SwyFpUa_WcHrQExsau7OrJLPF125T-DrU/edit",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLScOdrd5hlXPowIhZ5aQDkdkfCdvvlRq4yR_TprB6pja5T1mEg/viewform?usp=preview",
 		rulebook: "https://rulebook.robomaze.com"
 	},
 	{
@@ -25,7 +25,7 @@ const eventsData = [
 		name: "Robo Soccer",
 		img: "https://i.ibb.co/f6F20L8/Copy-of-Copy-of-MEGALEIO-2024-2.png",
 		desc: "Compete in an AI-powered soccer match! Program your robots to play soccer and compete against other teams.",
-		link: "https://docs.google.com/forms/d/16gK6SakHvDkb1m8ouQIjsvM7Ln6Ztn0IrtiP6S14vtQ/edit",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLSc1Wz8Qf175LBVK4_RKFK1Qr5EEidmGwA6uf2n4ZeggidwjZQ/viewform?usp=preview",
 		rulebook: "https://rulebook.robosoccer.com"
 	},
 	{
@@ -33,15 +33,15 @@ const eventsData = [
 		name: "Code Relay",
 		img: "https://i.ibb.co/Y75qdZcW/Copy-of-Copy-of-MEGALEIO-2024-4.jpg",
 		desc: "Team up and write code in a relay format! Collaborate with your team to solve coding challenges in a relay race.",
-		link: "https://docs.google.com/forms/d/18iUmtSW6bEcoXj9F-Wl-uBkbc9RGgpwyTYO6Fw0gGWc/edit",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLScWEk1AwwQP8mOR8edd825y-CCNag4y_0EbubfVIA74gj48-g/viewform?usp=preview",
 		rulebook: "https://rulebook.coderelay.com"
 	},
 	{
 		id: "businessPlan",
-		name: "Business Plan",
+		name: "Business Plan Presentation",
 		img: "business-plan.png",
 		desc: "Present your innovative business ideas. Showcase your entrepreneurial skills and compete for the best business plan.",
-		link: "https://register.businessplan.com",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLSePiH569U8j0a-5sACOTQetsIcnqr9xwt2mDYcKwmz_5DNiyg/viewform?usp=preview",
 		rulebook: "https://rulebook.businessplan.com"
 	},
 	{
@@ -49,31 +49,23 @@ const eventsData = [
 		name: "Blind C",
 		img: "https://i.ibb.co/Y4YtLXMk/Copy-of-Copy-of-MEGALEIO-2024-1.jpgg",
 		desc: "Test your C skills in a blind coding challenge. Compete against others and prove your expertise in C programming without seeing the code.",
-		link: "https://docs.google.com/forms/d/164lPFxGkzW-JJPBBCMHVQauUuZ0_901XFBfqd0ha9EI/edit",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLSePZ8TvncFpx13M4OjcgRbC1IBF3Kfcct99pmAZYY7cgUYWSw/viewform?usp=preview",
 		rulebook: "https://rulebook.blindc.com"
-	},
-	{
-		id: "presentation",
-		name: "Presentation",
-		img: "presentation.png",
-		desc: "Showcase your research and innovative ideas. Present your projects and compete for the best presentation.",
-		link: "https://register.presentation.com",
-		rulebook: "https://rulebook.presentation.com"
 	},
 	{
 		id: "megaHack",
 		name: "MegaHack 5.0",
-		img: "https://i.ibb.co/C3fFyFmV/Copy-of-Copy-of-MEGALEIO-2024-11.jpg",
+		img: "https://i.ibb.co/mC7hT09k/megahack.jpg",
 		desc: "Showcase your research and innovative ideas. Present your projects and compete for the best presentation.",
-		link: "https://register.presentation.com",
+		link: "https://megahack.in",
 		rulebook: "https://rulebook.presentation.com"
 	},
 	{
 		id: "bridgeIt",
 		name: "Bridge It",
-		img: "bridge-it.png",
+		img: "https://i.ibb.co/ZR26J2JC/bridge-it.jpg",
 		desc: "Construct the strongest and most efficient bridge! Test your engineering skills and compete to build the best bridge.",
-		link: "https://docs.google.com/forms/d/1YRNWNuLLK8xIdHaMJY9b5suWcjBl5jLZE6ejA1m4rX8/edit",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLSeHbWY_ErNq4uCe_NM-o9TTHsQ9GvSmr9eWyJ7pOKBq9L_liQ/viewform?usp=preview",
 		rulebook: "https://rulebook.bridgeit.com"
 	},
 	{
@@ -81,48 +73,48 @@ const eventsData = [
 		name: "Powerlifting",
 		img: "https://i.ibb.co/VW9kWBFj/Copy-of-Copy-of-MEGALEIO-2024-6.jpg",
 		desc: "Showcase your strength in this lifting challenge. Compete against others to lift the heaviest weights.",
-		link: "https://docs.google.com/forms/d/1HxhKEg4oZWyXRV9h9Jr50vpoNENrYRztNfenZuhrztI/edit",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLSeAlKec-MR3BgCjm9xRA0SYUH3ELOnx5XZ4V1MtiVjGtIufnA/viewform?usp=preview",
 		rulebook: "https://rulebook.powerlifting.com"
 	},
 	{
 		id: "civilJunkyard",
 		name: "Civil Junkyard",
-		img: "https://i.ibb.co/WNSGc3hW/Copy-of-Copy-of-MEGALEIO-2024-5.jpg",
+		img: "https://i.ibb.co/Q7DKhh6x/civil-junkyard.jpg",
 		desc: "Create engineering marvels from scrap! Use your creativity and engineering skills to build something amazing from junk.",
-		link: "https://docs.google.com/forms/d/1rF9Tcfvzfb-93PL9hqczykz5cIDgU2Jmc0Boe_wDMhM/edit",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLSeUx3HKI0EwFoyOUxVjQkAhsJDEZhN7s3O32Lp2PgMsPzTZuQ/viewform?usp=preview",
 		rulebook: "https://rulebook.civiljunkyard.com"
 	},
 	{
 		id: "neonCricket",
 		name: "Neon Cricket",
-		img: "neon-cricket.png",
+		img: "https://i.ibb.co/wNMJrbh5/neon-cricket.jpg",
 		desc: "Experience cricket like never before under neon lights! Play cricket in a unique and exciting neon-lit environment.",
-		link: "https://docs.google.com/forms/d/1C4mor6QqG9qsockEzL09Bm-bX9n4FgrnMEUI6arGwzc/edit",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLSeB43GCtRpfwzDNuphRto90VxUJqzQ6krPiTsvcrQEVzoU0TA/viewform?usp=preview",
 		rulebook: "https://rulebook.neoncricket.com"
-	},
-	{
-		id: "armWrestling",
-		name: "Arm Wrestling",
-		img: "https://i.ibb.co/8gfsyP9Q/Copy-of-Copy-of-MEGALEIO-2024-7.jpg",
-		desc: "Test your arm strength in a battle of endurance! Compete against others in an arm wrestling competition.",
-		link: "https://register.armwrestling.com",
-		rulebook: "https://rulebook.armwrestling.com"
 	},
 	{
 		id: "clashRoyale",
 		name: "Clash Royale",
-		img: "https://i.ibb.co/d4BzDkfJ/Copy-of-Copy-of-MEGALEIO-2024-10.jpg",
+		img: "https://i.ibb.co/N6j1Mc9C/clash-royale.jpg",
 		desc: "Strategize and battle it out in this competitive mobile game. Compete against others in Clash Royale and prove your skills.",
-		link: "https://docs.google.com/forms/d/1-1Xv18xCecRYe5e3iScO1ZNJS_DmTOd1l0ttl6XSygM/edit",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLScQii-lqIPkXwRLheBfO5gTNa6eAKyCDI2zTf-6KWFaLp1TrA/viewform?usp=preview",
 		rulebook: "https://rulebook.clashroyale.com"
 	},
 	{
 		id: "bgmi",
 		name: "BGMI",
-		img: "https://i.ibb.co/60httT3D/Copy-of-Copy-of-MEGALEIO-2024-9.jpg",
+		img: "https://i.ibb.co/QFksvMc7/bgmi.jpg",
 		desc: "Compete in the ultimate battle royale experience! Show your skills in BGMI and compete against others to be the last one standing.",
-		link: "https://docs.google.com/forms/d/16jIBLNMRYZtx7xkih0C5_hFs6aAXJ9l6CZ1RQEXGow8/edit",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLScrgIojItZTFxEcXo3TPvPB7frOFsr6mpiqDZRq6FigyVL9bw/viewform?usp=preview",
 		rulebook: "https://rulebook.bgmi.com"
+	},
+	{
+		id: "droneDexterity",
+		name: "Drone Dexterity",
+		img: "https://i.ibb.co/V0xK06MS/drone.jpg", // Update with actual image URL
+		desc: "Navigate through an obstacle course with your drone! Test your piloting skills and compete in this exciting drone racing challenge.",
+		link: "https://docs.google.com/forms/d/e/1FAIpQLSd7OkahU6fW9jKxedYe9dxtn6_7lJA2aZQHqFRBtrYu4TAjtw/viewform?usp=preview", // Update with actual form link
+		rulebook: "https://rulebook.dronedexterity.com" // Update with actual rulebook link
 	}
 ];
 
@@ -158,10 +150,10 @@ export default function EventsPage() {
     <>
 
       {/* Main Events Section */}
-      <section className="relative top-20 font-[Minecraft] min-h-[calc(100vh+150px)] bg-[#1D1C1B] min-w-screen">
+      <section className="relative font-[Minecraft] min-h-[calc(100vh+150px)] bg-[#1D1C1B] min-w-screen">
         <div>
         <br></br>
-          <div className="text-center mb-8">
+          <div className="text-center mb-8 mt-20">
             <h1 className="text-5xl md:text-6xl font-bold mb-4">
               This Year's <br />Events
             </h1>

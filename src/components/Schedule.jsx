@@ -3,59 +3,132 @@ import { useState, useEffect } from "react";
 import "@fontsource/press-start-2p";
 
 const scheduleData = {
-  day1: [
-    { 
-      time: "10:00 - 10:30",
-      date: "2025-03-07", 
-      room: "Auditorium", 
-      title: "INAUGURATION"
-    },
-    { 
-      time: "10:30 - 23:59",
-      date: "2025-03-07", 
-      room: "Lab 3 & Lab 4", 
-      title: "MEGAHACK"
-    },
-    { 
-      time: "10:30 - 18:00",
-      date: "2025-03-07", 
-      room: "Civil Department", 
-      title: "BRIDGE IT"
-    },
-    { 
-      time: "11:00 - 12:00",
-      date: "2025-03-07", 
-      room: "Open Ground", 
-      title: "LASER TAG"
-    }
-  ],
-  day2: [
-    { 
-      time: "00:00 - 12:00",
-      date: "2025-03-08", 
-      room: "Lab 3 & Lab 4", 
-      title: "MEGAHACK"
-    },
-    { 
-      time: "10:00 - 18:00",
-      date: "2025-03-08", 
-      room: "Civil Department", 
-      title: "BRIDGE IT"
-    },
-    { 
-      time: "10:00 - 11:00",
-      date: "2025-03-08", 
-      room: "Mechanical Workshop", 
-      title: "ROBO SOCCER"
-    },
-    { 
-      time: "11:00 - 12:00",
-      date: "2025-03-08", 
-      room: "Lab 1 & Lab 2", 
-      title: "CODING CONTEST"
-    }
-  ]
-};
+	day1: [
+	  { 
+		time: "10:00 - 10:30",
+		date: "2025-03-07", 
+		room: "Auditorium", 
+		title: "INAUGURATION"
+	  },
+	  { 
+		time: "10:30 - 23:59",
+		date: "2025-03-07", 
+		room: "4th Floor Labs", 
+		title: "MEGAHACK 5.0"
+	  },
+	  { 
+		time: "10:30 - 18:00",
+		date: "2025-03-07", 
+		room: "Auditorium", 
+		title: "BRIDGE IT"
+	  },
+	  { 
+		time: "10:30 - 18:00",
+		date: "2025-03-07", 
+		room: "HMS Hall", 
+		title: "TECH QUIZ"
+	  },
+	  { 
+		time: "10:30 - 18:00",
+		date: "2025-03-07", 
+		room: "Classroom", 
+		title: "BUSINESS PLAN PRESENTATION"
+	  },
+	  { 
+		time: "10:30 - 18:00",
+		date: "2025-03-07", 
+		room: "Labs First Floor", 
+		title: "CODE RELAY"
+	  },
+	  { 
+		time: "10:30 AM - 11:30 AM",
+		date: "2025-03-07", 
+		room: "Gaming Area", 
+		title: "CLASH ROYALE"
+	  },
+	  { 
+		time: "10:30 AM - 12:00 PM",
+		date: "2025-03-07", 
+		room: "Gaming Area", 
+		title: "NEON CRICKET"
+	  },
+	  { 
+		time: "10:30 AM - 1:00 PM",
+		date: "2025-03-07", 
+		room: "Gaming Area", 
+		title: "BGMI"
+	  },
+	  { 
+		time: "11:00 AM - 12:00 PM",
+		date: "2025-03-07", 
+		room: "Open Ground", 
+		title: "POWER LIFTING/ARM WRESTLING"
+	  }
+	],
+	day2: [
+	  { 
+		time: "00:00 - 12:00",
+		date: "2025-03-08", 
+		room: "4th Floor Labs", 
+		title: "MEGAHACK 5.0"
+	  },
+	  { 
+		time: "10:30 - 18:00",
+		date: "2025-03-08", 
+		room: "Civil Department", 
+		title: "BRIDGE IT"
+	  },
+	  { 
+		time: "10:30 - 12:30",
+		date: "2025-03-08", 
+		room: "Big Ground", 
+		title: "DRONE DEXTERITY"
+	  },
+	  { 
+		time: "10:30 - 12:30",
+		date: "2025-03-08", 
+		room: "Quadrangle A", 
+		title: "ROBOMAZE"
+	  },
+	  { 
+		time: "10:30 - 12:30",
+		date: "2025-03-08", 
+		room: "Quadrangle A", 
+		title: "ROBO SOCCER"
+	  },
+	  { 
+		time: "10:30 - 12:30",
+		date: "2025-03-08", 
+		room: "Labs First Floor", 
+		title: "BLIND C"
+	  },
+	  { 
+		time: "10:30 - 12:30",
+		date: "2025-03-08", 
+		room: "Auditorium", 
+		title: "CIVIL JUNKYARD"
+	  },
+	  { 
+		time: "9:30 AM - 10:30 AM",
+		date: "2025-03-08", 
+		room: "Gaming Area", 
+		title: "CLASH ROYALE"
+	  },
+	  { 
+		time: "9:30 AM - 11:00 AM",
+		date: "2025-03-08", 
+		room: "Gaming Area", 
+		title: "NEON CRICKET"
+	  },
+	  { 
+		time: "9:30 AM - 12:00 PM",
+		date: "2025-03-08", 
+		room: "Gaming Area", 
+		title: "BGMI"
+	  }
+	]
+  };
+  
 
 const getTimeInMinutes = (timeStr) => {
   const [hours, minutes] = timeStr.split(':').map(Number);
@@ -93,15 +166,15 @@ const EventCard = ({ event }) => (
   <motion.div
     className="w-full md:w-3/4 bg-gray-900 border-green-400 border-4 p-10 rounded-lg mb-8 
     shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out
-    hover:bg-green-700 hover:text-black mx-auto"
+    hover:bg-green-700 hover:text-black mx-auto flex flex-col justify-center items-center"
     data-aos="zoom-in-up"
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 25 }}
     transition={{ duration: 0.6, ease: "easeOut" }}
   >
-    <div className="text-lg text-yellow-400 font-bold text-center">{event.time}</div>
+    <div className="text-sm md:text-lg text-yellow-400 font-bold text-center mb-2">{event.time}</div>
     <div className="text-sm text-gray-300 text-center mb-4">Room: {event.room}</div>
-    <div className="text-4xl mt-2 font-bold text-center text-green-400">{event.title}</div>
+    <div className="text-2xl md:text-4xl mt-2 font-bold text-center text-green-400">{event.title}</div>
   </motion.div>
 );
 

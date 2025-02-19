@@ -1,5 +1,3 @@
-
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -14,8 +12,8 @@ const Navbar = () => {
     { name: 'Home', href: '/' },
     { name: 'Events', href: '/events' },
     { name: 'Schedule', href: '/schedule' },
-{ name: 'Megahack', href: 'https://megahack.in', target: '_blank', rel: 'noopener noreferrer' },
-    { name: 'Team', href: 'https://megahack.in' },
+	{ name: 'Megahack', href: 'https://megahack.in', target: '_blank', rel: 'noopener noreferrer' },
+    { name: 'Team', href: '/team' },
     { name: 'Contact Us', href: '#contactus' },
   ];
 
@@ -46,6 +44,8 @@ const Navbar = () => {
                   key={item.name}
                   href={item.href}
                   onClick={handleNavClick}
+				  target={item.target}
+				  rel={item.rel}
                   className="text-white hover:text-[#5FFF00] font-[Minecraft] text-base uppercase tracking-wider transition-colors"
                 >
                   {item.name}
@@ -103,6 +103,8 @@ const Navbar = () => {
                     key={item.name}
                     href={item.href}
                     onClick={handleNavClick}
+					target={item.target}
+				  	rel={item.rel}
                     className="text-white hover:text-[#5FFF00] font-[Minecraft] text-lg uppercase tracking-wider transition-colors"
                   >
                     {item.name}

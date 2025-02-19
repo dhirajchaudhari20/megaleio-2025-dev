@@ -13,6 +13,7 @@ import Schedule from './components/Schedule.jsx';
 import Agenda from './components/Agenda.jsx';
 import JDoodleEmbed from './components/sjcem-compiler.jsx'; // Import the JDoodleEmbed component
 
+
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
           <>
             <Navbar />
             <Events />
+			<Footer />
           </>
         } />
         <Route path="/" element={
@@ -40,13 +42,20 @@ function App() {
           <div>
             <Navbar />
             <Agenda />
+			<Footer />
           </div>
         } />
         <Route path="/sjcem-compiler" element={
           <>
             <Navbar />
             <JDoodleEmbed />
+			<Footer />
           </>
+        } />
+        <Route path="/team" element={
+          <>
+            <Navbar />
+			</>
         } />
       </Routes>
     </Router>

@@ -2,28 +2,29 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 
 const MinecraftPreloader = ({ onFadeComplete }) => {
+  const [progress, setProgress] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
-    // Ensure video has loaded before starting animation
-    const videoElement = document.getElementById("preloader-video");
-    if (videoElement) {
-      videoElement.oncanplaythrough = () => {
-        setVideoLoaded(true);
-      };
-    }
-  }, []);
-
-  const handleVideoEnd = () => {
-    setFadeOut(true); // Start fade-out effect
-    setTimeout(() => {
-      if (onFadeComplete) onFadeComplete(); // Remove preloader
-    }, 1000);
-  };
+    const timer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev < 100) {
+          return prev + 1;
+        } else {
+          clearInterval(timer);
+          setFadeOut(true);
+          setTimeout(() => {
+            if (onFadeComplete) onFadeComplete();
+          }, 1000);
+          return 100;
+        }
+      });
+    }, 30); // Increments progress every 30ms (~3 seconds total)
+    return () => clearInterval(timer);
+  }, [onFadeComplete]);
 
   return (
-    <div className={`preloader ${fadeOut ? "fade-out" : ""}`} style={{ display: videoLoaded ? "flex" : "none" }}>
+    <div className={`preloader ${fadeOut ? "fade-out" : ""}`}>
       <Helmet>
         <style>{`
           .preloader {
@@ -32,8 +33,9 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: black;
+            background: #000;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 9999;
@@ -43,24 +45,40 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
           .fade-out {
             opacity: 0;
           }
-          .preloader video {
-            width: 100%;
+          .loading-text {
+            color: #fff;
+            font-family: 'Minecraft', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ff00;
+          }
+          .progress-container {
+            width: 80%;
+            height: 20px;
+            background: #333;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+          }
+          .progress-bar {
             height: 100%;
-            object-fit: cover;
+            background: linear-gradient(90deg, #00ff00, #007700);
+            width: ${progress}%;
+            transition: width 0.3s ease;
+          }
+          .progress-percent {
+            margin-top: 10px;
+            color: #fff;
+            font-family: 'Minecraft', sans-serif;
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px #00ff00;
           }
         `}</style>
       </Helmet>
-      <video
-        id="preloader-video"
-        autoPlay
-        muted
-        playsInline
-        preload="auto"
-        onEnded={handleVideoEnd}
-      >
-        <source src="/preloader.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <div className="loading-text">Loading Minecraft World...</div>
+      <div className="progress-container">
+        <div className="progress-bar" />
+      </div>
+      <div className="progress-percent">{progress}%</div>
     </div>
   );
 };

@@ -201,7 +201,7 @@ export default function Schedule() {
 
       <div className="container max-w-screen-xl mx-auto text-center relative z-10">
         <h1 className="text-4xl md:text-6xl mb-12 tracking-widest animate-pulse pb-4 text-center">
-          HACKATHON SCHEDULE
+        SCHEDULE
         </h1>
 
         <div className="flex flex-col items-center space-y-12 w-full">

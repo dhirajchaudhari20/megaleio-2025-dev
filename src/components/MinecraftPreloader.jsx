@@ -5,15 +5,15 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    // Trigger fade out after 3 seconds
+    // Wait for the GIF to fully play (set to 5000ms for example)
     const timer = setTimeout(() => {
       setFadeOut(true);
-    }, 3000);
+    }, 5000); // Change this if your GIF has a different duration
 
-    // Optionally call a callback after fade out completes (e.g., after 4 seconds total)
+    // Remove the preloader after fade-out completes (1s fade-out)
     const removalTimer = setTimeout(() => {
       if (onFadeComplete) onFadeComplete();
-    }, 4000);
+    }, 6000);
 
     return () => {
       clearTimeout(timer);

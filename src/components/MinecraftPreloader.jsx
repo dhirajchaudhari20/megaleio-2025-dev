@@ -49,8 +49,15 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
             color: #fff;
             font-family: 'Minecraft', sans-serif;
             font-size: 2rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-shadow: 0 0 10px #00ff00;
+          }
+          .sub-text {
+            color: #fff;
+            font-family: 'Minecraft', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px #00ff00;
           }
           .progress-container {
             width: 80%;
@@ -74,7 +81,8 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
           }
         `}</style>
       </Helmet>
-      <div className="loading-text">Loading Minecraft World...</div>
+      <div className="loading-text">Welcome to Megaleio Tech Fest 2025</div>
+      <div className="sub-text">Loading the experience, please wait...</div>
       <div className="progress-container">
         <div className="progress-bar" />
       </div>

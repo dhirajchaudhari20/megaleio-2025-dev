@@ -1,25 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 const MinecraftPreloader = ({ onFadeComplete }) => {
   const [fadeOut, setFadeOut] = useState(false);
 
-  useEffect(() => {
-    // Wait for the GIF to fully play (set to 5000ms for example)
-    const timer = setTimeout(() => {
-      setFadeOut(true);
-    }, 5000); // Change this if your GIF has a different duration
-
-    // Remove the preloader after fade-out completes (1s fade-out)
-    const removalTimer = setTimeout(() => {
+  const handleVideoEnd = () => {
+    // When the video finishes, trigger fade-out animation
+    setFadeOut(true);
+    // After 1 second of fade-out, call the callback to unmount the preloader
+    setTimeout(() => {
       if (onFadeComplete) onFadeComplete();
-    }, 6000);
-
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(removalTimer);
-    };
-  }, [onFadeComplete]);
+    }, 1000);
+  };
 
   return (
     <div className={`preloader ${fadeOut ? 'fade-out' : ''}`}>
@@ -31,7 +23,7 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: url("https://media1.tenor.com/m/OzbOApcXbqoAAAAC/minecraft-minecraft-movie.gif") center center / cover no-repeat;
+            overflow: hidden;
             z-index: 9999;
             opacity: 1;
             transition: opacity 1s ease-out;
@@ -39,8 +31,22 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
           .fade-out {
             opacity: 0;
           }
+          .preloader video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
         `}</style>
       </Helmet>
+      <video 
+        autoPlay 
+        muted 
+        preload="auto"
+        onEnded={handleVideoEnd}
+      >
+        <source src="/preloader.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
   );
 };

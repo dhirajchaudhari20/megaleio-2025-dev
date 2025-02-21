@@ -1,26 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 
-const MinecraftPreloader = ({ contentLoaded, onFadeComplete }) => {
-  const [videoEnded, setVideoEnded] = useState(false);
+const MinecraftPreloader = ({ onFadeComplete }) => {
   const [fadeOut, setFadeOut] = useState(false);
-
-  const handleVideoEnd = () => {
-    setVideoEnded(true);
-  };
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
-    // When both the video has ended and content is loaded, fade out the preloader
-    if (videoEnded && contentLoaded) {
-      setFadeOut(true);
-      setTimeout(() => {
-        if (onFadeComplete) onFadeComplete();
-      }, 1000);
+    // Ensure video has loaded before starting animation
+    const videoElement = document.getElementById("preloader-video");
+    if (videoElement) {
+      videoElement.oncanplaythrough = () => {
+        setVideoLoaded(true);
+      };
     }
-  }, [videoEnded, contentLoaded, onFadeComplete]);
+  }, []);
+
+  const handleVideoEnd = () => {
+    setFadeOut(true); // Start fade-out effect
+    setTimeout(() => {
+      if (onFadeComplete) onFadeComplete(); // Remove preloader
+    }, 1000);
+  };
 
   return (
-    <div className={`preloader ${fadeOut ? 'fade-out' : ''}`}>
+    <div className={`preloader ${fadeOut ? "fade-out" : ""}`} style={{ display: videoLoaded ? "flex" : "none" }}>
       <Helmet>
         <style>{`
           .preloader {
@@ -29,14 +32,13 @@ const MinecraftPreloader = ({ contentLoaded, onFadeComplete }) => {
             left: 0;
             width: 100vw;
             height: 100vh;
-            overflow: hidden;
-            z-index: 9999;
             background: black;
-            opacity: 1;
-            transition: opacity 1s ease-out;
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 1s ease-out;
           }
           .fade-out {
             opacity: 0;
@@ -45,14 +47,14 @@ const MinecraftPreloader = ({ contentLoaded, onFadeComplete }) => {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            pointer-events: none;
           }
         `}</style>
       </Helmet>
-      <video 
-        autoPlay 
-        playsInline 
-        muted 
+      <video
+        id="preloader-video"
+        autoPlay
+        muted
+        playsInline
         preload="auto"
         onEnded={handleVideoEnd}
       >

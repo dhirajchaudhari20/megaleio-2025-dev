@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
-const MinecraftPreloader = ({ onFadeComplete }) => {
+const MinecraftPreloader = ({ contentLoaded, onFadeComplete }) => {
+  const [videoEnded, setVideoEnded] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
 
   const handleVideoEnd = () => {
-    // When the video finishes, trigger fade-out animation
-    setFadeOut(true);
-    // After 1 second of fade-out, call the callback to unmount the preloader
-    setTimeout(() => {
-      if (onFadeComplete) onFadeComplete();
-    }, 1000);
+    setVideoEnded(true);
   };
+
+  useEffect(() => {
+    // When both the video has ended and content is loaded, fade out the preloader
+    if (videoEnded && contentLoaded) {
+      setFadeOut(true);
+      setTimeout(() => {
+        if (onFadeComplete) onFadeComplete();
+      }, 1000);
+    }
+  }, [videoEnded, contentLoaded, onFadeComplete]);
 
   return (
     <div className={`preloader ${fadeOut ? 'fade-out' : ''}`}>
@@ -25,8 +31,12 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
             height: 100vh;
             overflow: hidden;
             z-index: 9999;
+            background: black;
             opacity: 1;
             transition: opacity 1s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
           .fade-out {
             opacity: 0;
@@ -35,11 +45,13 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            pointer-events: none;
           }
         `}</style>
       </Helmet>
       <video 
         autoPlay 
+        playsInline 
         muted 
         preload="auto"
         onEnded={handleVideoEnd}

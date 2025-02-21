@@ -18,17 +18,25 @@ import "./App.css";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [videoFinished, setVideoFinished] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
+    // Simulate content loading (adjust as needed)
+    const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000); // Adjust preloader time if needed
+    }, 3000); 
+
+    return () => clearTimeout(timer);
   }, []);
+
+  const handlePreloaderComplete = () => {
+    setVideoFinished(true);
+  };
 
   return (
     <Router>
-      {loading ? (
-        <MinecraftPreloader />
+      {loading || !videoFinished ? (
+        <MinecraftPreloader onFadeComplete={handlePreloaderComplete} />
       ) : (
         <Routes>
           <Route

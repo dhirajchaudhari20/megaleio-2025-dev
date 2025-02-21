@@ -31,7 +31,7 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: url("https://cdn.modrinth.com/data/cached_images/f45cf303ffc62d2a32568c1ea35766649e6d6242.gif") center center / cover no-repeat;
+            background: url("https://media1.tenor.com/m/Vpp2yLz6CMEAAAAC/minecraft-loading.gif") center center / cover no-repeat;
             z-index: 9999;
             opacity: 1;
             transition: opacity 1s ease-out;

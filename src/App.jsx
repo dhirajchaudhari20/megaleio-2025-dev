@@ -15,6 +15,7 @@ import JDoodleEmbed from "./components/sjcem-compiler.jsx";
 import Team from "./components/Team.jsx"; // New Minecraft Team Cards Section
 import MinecraftPreloader from "./components/MinecraftPreloader.jsx"; // Preloader
 import "./App.css";
+import Sponsors from "./components/Sponsors.jsx";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -59,6 +60,7 @@ function App() {
                 <Countdown />
                 <Banner />
                 <Gallery />
+				<Sponsors />
                 <Location />
                 <div className="h-14 w-full bg-green-500" />
                 <Footer />

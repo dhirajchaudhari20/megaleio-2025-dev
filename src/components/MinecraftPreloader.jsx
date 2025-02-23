@@ -79,6 +79,17 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
             font-size: 1.2rem;
             text-shadow: 0 0 5px #00ff00;
           }
+			@media (max-width: 768px) {
+				.loading-text {
+					text-align: center;
+				}
+				.sub-text {
+					font-size: 1rem;
+				}
+				.progress-percent {
+					font-size: 1rem;
+				}
+			}
         `}</style>
       </Helmet>
       <div className="loading-text">Welcome to Megaleio Tech Fest 2025</div>

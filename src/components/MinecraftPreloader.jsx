@@ -92,7 +92,7 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
 			}
         `}</style>
       </Helmet>
-      <div className="loading-text">Welcome to Megaleio Tech Fest 2025</div>
+
       <div className="sub-text">Loading the experience, please wait...</div>
       <div className="progress-container">
         <div className="progress-bar" />

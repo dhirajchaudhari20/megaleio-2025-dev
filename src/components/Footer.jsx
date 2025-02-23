@@ -9,6 +9,10 @@ const Footer = () => {
     });
   }, []);
 
+  const facultyCoordinators = [
+    { name: 'Mr. Swapnil Malipatil', phone: '+91 81473 34657' },
+    { name: 'Mrs. Vishakha Rane', phone: '+91 97303 71605' },
+  ];
 
   const studentCoordinators = [
     { name: 'Mr. Devang Vartak', phone: '+91 8080179406' },
@@ -36,7 +40,17 @@ const Footer = () => {
           <div className="text-center md:text-left">
             <h3 className="text-xl font-[Minecraft] text-[#5FFF00] mb-4">Contact Us</h3>
             <div className="space-y-3 font-[Minecraft-light] text-base">
-              
+              <p className="text-lg font-semibold text-[#5FFF00]">Faculty Coordinators</p>
+              {facultyCoordinators.map((coordinator, index) => (
+                <p key={index} className="flex items-center justify-center md:justify-start gap-2">
+                  <span className="text-[#5FFF00]">☎</span>
+                  <span>{coordinator.name}:</span>
+                  <a href={`tel:${coordinator.phone}`} className="hover:text-[#5FFF00] transition-colors">
+                    {coordinator.phone}
+                  </a>
+                </p>
+              ))}
+              <br />
               <p className="text-lg font-semibold text-[#5FFF00]">Student Coordinators</p>
               {studentCoordinators.map((student, index) => (
                 <p key={index} className="flex items-center justify-center md:justify-start gap-2">

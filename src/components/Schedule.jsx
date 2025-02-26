@@ -3,130 +3,130 @@ import { useState, useEffect } from "react";
 import "@fontsource/press-start-2p";
 
 const scheduleData = {
-	day1: [
-	  { 
-		time: "10:00 - 10:30",
-		date: "2025-03-07", 
-		room: "Auditorium", 
-		title: "INAUGURATION"
-	  },
-	  { 
-		time: "10:30 - 23:59",
-		date: "2025-03-07", 
-		room: "4th Floor Labs", 
-		title: "MEGAHACK 5.0"
-	  },
-	  { 
-		time: "10:30 - 18:00",
-		date: "2025-03-07", 
-		room: "Auditorium", 
-		title: "BRIDGE IT"
-	  },
-	  { 
-		time: "10:30 - 18:00",
-		date: "2025-03-07", 
-		room: "HMS Hall", 
-		title: "TECH QUIZ"
-	  },
-	  { 
-		time: "10:30 - 18:00",
-		date: "2025-03-07", 
-		room: "Classroom", 
-		title: "BUSINESS PLAN PRESENTATION"
-	  },
-	  { 
-		time: "10:30 - 18:00",
-		date: "2025-03-07", 
-		room: "Labs First Floor", 
-		title: "CODE RELAY"
-	  },
-	  { 
-		time: "10:30 AM - 11:30 AM",
-		date: "2025-03-07", 
-		room: "Gaming Area", 
-		title: "CLASH ROYALE"
-	  },
-	  { 
-		time: "10:30 AM - 12:00 PM",
-		date: "2025-03-07", 
-		room: "Gaming Area", 
-		title: "NEON CRICKET"
-	  },
-	  { 
-		time: "10:30 AM - 1:00 PM",
-		date: "2025-03-07", 
-		room: "Gaming Area", 
-		title: "BGMI"
-	  },
-	  { 
-		time: "11:00 AM - 12:00 PM",
-		date: "2025-03-07", 
-		room: "Open Ground", 
-		title: "POWER LIFTING/ARM WRESTLING"
-	  }
-	],
-	day2: [
-	  { 
-		time: "00:00 - 12:00",
-		date: "2025-03-08", 
-		room: "4th Floor Labs", 
-		title: "MEGAHACK 5.0"
-	  },
-	  { 
-		time: "10:30 - 18:00",
-		date: "2025-03-08", 
-		room: "Civil Department", 
-		title: "BRIDGE IT"
-	  },
-	  { 
-		time: "10:30 - 12:30",
-		date: "2025-03-08", 
-		room: "Big Ground", 
-		title: "DRONE DEXTERITY"
-	  },
-	  { 
-		time: "10:30 - 12:30",
-		date: "2025-03-08", 
-		room: "Quadrangle A", 
-		title: "ROBOMAZE"
-	  },
-	  { 
-		time: "10:30 - 12:30",
-		date: "2025-03-08", 
-		room: "Quadrangle A", 
-		title: "ROBO SOCCER"
-	  },
-	  { 
-		time: "10:30 - 12:30",
-		date: "2025-03-08", 
-		room: "Labs First Floor", 
-		title: "BLIND C"
-	  },
-	  { 
-		time: "10:30 - 12:30",
-		date: "2025-03-08", 
-		room: "Auditorium", 
-		title: "CIVIL JUNKYARD"
-	  },
-	  { 
-		time: "9:30 AM - 10:30 AM",
-		date: "2025-03-08", 
-		room: "Gaming Area", 
-		title: "CLASH ROYALE"
-	  },
-	  { 
-		time: "9:30 AM - 11:00 AM",
-		date: "2025-03-08", 
-		room: "Gaming Area", 
-		title: "NEON CRICKET"
-	  },
-	  { 
-		time: "9:30 AM - 12:00 PM",
-		date: "2025-03-08", 
-		room: "Gaming Area", 
-		title: "BGMI"
-	  }
-	]
+    day1: [
+      { 
+        time: "10:00 - 10:30",
+        date: "2025-03-07", 
+        room: "Auditorium", 
+        title: "INAUGURATION"
+      },
+      { 
+        time: "10:30 - 23:59",
+        date: "2025-03-07", 
+        room: "4th Floor Labs", 
+        title: "MEGAHACK 5.0"
+      },
+      { 
+        time: "10:30 - 18:00",
+        date: "2025-03-07", 
+        room: "Auditorium", 
+        title: "BRIDGE IT"
+      },
+      { 
+        time: "10:30 - 18:00",
+        date: "2025-03-07", 
+        room: "HMS Hall", 
+        title: "TECH QUIZ"
+      },
+      { 
+        time: "10:30 - 18:00",
+        date: "2025-03-07", 
+        room: "Classroom", 
+        title: "BUSINESS PLAN PRESENTATION"
+      },
+      { 
+        time: "10:30 - 18:00",
+        date: "2025-03-07", 
+        room: "Labs First Floor", 
+        title: "CODE RELAY"
+      },
+      { 
+        time: "10:30 AM - 11:30 AM",
+        date: "2025-03-07", 
+        room: "Gaming Area", 
+        title: "CLASH ROYALE"
+      },
+      { 
+        time: "10:30 AM - 12:00 PM",
+        date: "2025-03-07", 
+        room: "Gaming Area", 
+        title: "NEON CRICKET"
+      },
+      { 
+        time: "10:30 AM - 1:00 PM",
+        date: "2025-03-07", 
+        room: "Gaming Area", 
+        title: "BGMI"
+      },
+      { 
+        time: "11:00 AM - 12:00 PM",
+        date: "2025-03-07", 
+        room: "Open Ground", 
+        title: "POWER LIFTING/ARM WRESTLING"
+      }
+    ],
+    day2: [
+      { 
+        time: "00:00 - 12:00",
+        date: "2025-03-08", 
+        room: "4th Floor Labs", 
+        title: "MEGAHACK 5.0"
+      },
+      { 
+        time: "10:30 - 18:00",
+        date: "2025-03-08", 
+        room: "Civil Department", 
+        title: "BRIDGE IT"
+      },
+      { 
+        time: "10:30 - 12:30",
+        date: "2025-03-08", 
+        room: "Big Ground", 
+        title: "DRONE DEXTERITY"
+      },
+      { 
+        time: "10:30 - 12:30",
+        date: "2025-03-08", 
+        room: "Quadrangle A", 
+        title: "ROBOMAZE"
+      },
+      { 
+        time: "10:30 - 12:30",
+        date: "2025-03-08", 
+        room: "Quadrangle A", 
+        title: "ROBO SOCCER"
+      },
+      { 
+        time: "10:30 - 12:30",
+        date: "2025-03-08", 
+        room: "Labs First Floor", 
+        title: "BLIND C"
+      },
+      { 
+        time: "10:30 - 12:30",
+        date: "2025-03-08", 
+        room: "Auditorium", 
+        title: "CIVIL JUNKYARD"
+      },
+      { 
+        time: "9:30 AM - 10:30 AM",
+        date: "2025-03-08", 
+        room: "Gaming Area", 
+        title: "CLASH ROYALE"
+      },
+      { 
+        time: "9:30 AM - 11:00 AM",
+        date: "2025-03-08", 
+        room: "Gaming Area", 
+        title: "NEON CRICKET"
+      },
+      { 
+        time: "9:30 AM - 12:00 PM",
+        date: "2025-03-08", 
+        room: "Gaming Area", 
+        title: "BGMI"
+      }
+    ]
   };
   
 
@@ -250,7 +250,7 @@ export default function Schedule() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
       />
-	  <div className="bottom-0 w-full h-20"></div>
+      <div className="bottom-0 w-full h-20"></div>
     </section>
   );
 }

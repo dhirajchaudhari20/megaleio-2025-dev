@@ -3,121 +3,121 @@ import { useNavigate } from "react-router-dom";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const eventsData = [
-	{
-		id: "techQuiz",
-		name: "Tech Quiz", 
-		img: "https://i.ibb.co/WWxCbQnp/tech-quiz.jpg",
-		desc: "Showcase your tech knowledge in an exciting quiz! Answer questions on various tech topics and compete for the top spot.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLSdBCVmSj2dfL7ZK6Gwvie_IviJG10btsM1DEgZvokZO32Eq3w/viewform?usp=preview",
-		rulebook: "https://rulebook.techquiz.com"
-	},
-	{
-		id: "robomaze",
-		name: "Robomaze",
-		img: "https://i.ibb.co/5t4wmPN/robomaze.jpg",
-		desc: "Navigate through a challenging maze with your robot! Test your robotics skills and see if you can complete the maze in record time.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLScOdrd5hlXPowIhZ5aQDkdkfCdvvlRq4yR_TprB6pja5T1mEg/viewform?usp=preview",
-		rulebook: "https://rulebook.robomaze.com"
-	},
-	{
-		id: "roboSoccer",
-		name: "Robo Soccer",
-		img: "https://i.ibb.co/f6F20L8/Copy-of-Copy-of-MEGALEIO-2024-2.png",
-		desc: "Compete in an AI-powered soccer match! Program your robots to play soccer and compete against other teams.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLSc1Wz8Qf175LBVK4_RKFK1Qr5EEidmGwA6uf2n4ZeggidwjZQ/viewform?usp=preview",
-		rulebook: "https://rulebook.robosoccer.com"
-	},
-	{
-		id: "codeRelay",
-		name: "Code Relay",
-		img: "https://i.ibb.co/Y75qdZcW/Copy-of-Copy-of-MEGALEIO-2024-4.jpg",
-		desc: "Team up and write code in a relay format! Collaborate with your team to solve coding challenges in a relay race.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLScWEk1AwwQP8mOR8edd825y-CCNag4y_0EbubfVIA74gj48-g/viewform?usp=preview",
-		rulebook: "https://rulebook.coderelay.com"
-	},
-	{
-		id: "businessPlan",
-		name: "Business Plan Presentation",
-		img: "business-plan.png",
-		desc: "Present your innovative business ideas. Showcase your entrepreneurial skills and compete for the best business plan.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLSePiH569U8j0a-5sACOTQetsIcnqr9xwt2mDYcKwmz_5DNiyg/viewform?usp=preview",
-		rulebook: "https://rulebook.businessplan.com"
-	},
-	{
-		id: "blindC",
-		name: "Blind C",
-		img: "https://i.ibb.co/Y4YtLXMk/Copy-of-Copy-of-MEGALEIO-2024-1.jpgg",
-		desc: "Test your C skills in a blind coding challenge. Compete against others and prove your expertise in C programming without seeing the code.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLSePZ8TvncFpx13M4OjcgRbC1IBF3Kfcct99pmAZYY7cgUYWSw/viewform?usp=preview",
-		rulebook: "https://rulebook.blindc.com"
-	},
-	{
-		id: "megaHack",
-		name: "MegaHack 5.0",
-		img: "https://i.ibb.co/mC7hT09k/megahack.jpg",
-		desc: "Showcase your research and innovative ideas. Present your projects and compete for the best presentation.",
-		link: "https://megahack.in",
-		rulebook: "https://rulebook.presentation.com"
-	},
-	{
-		id: "bridgeIt",
-		name: "Bridge It",
-		img: "https://i.ibb.co/ZR26J2JC/bridge-it.jpg",
-		desc: "Construct the strongest and most efficient bridge! Test your engineering skills and compete to build the best bridge.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLSeHbWY_ErNq4uCe_NM-o9TTHsQ9GvSmr9eWyJ7pOKBq9L_liQ/viewform?usp=preview",
-		rulebook: "https://rulebook.bridgeit.com"
-	},
-	{
-		id: "powerlifting",
-		name: "Powerlifting",
-		img: "https://i.ibb.co/VW9kWBFj/Copy-of-Copy-of-MEGALEIO-2024-6.jpg",
-		desc: "Showcase your strength in this lifting challenge. Compete against others to lift the heaviest weights.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLSeAlKec-MR3BgCjm9xRA0SYUH3ELOnx5XZ4V1MtiVjGtIufnA/viewform?usp=preview",
-		rulebook: "https://rulebook.powerlifting.com"
-	},
-	{
-		id: "civilJunkyard",
-		name: "Civil Junkyard",
-		img: "https://i.ibb.co/Q7DKhh6x/civil-junkyard.jpg",
-		desc: "Create engineering marvels from scrap! Use your creativity and engineering skills to build something amazing from junk.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLSeUx3HKI0EwFoyOUxVjQkAhsJDEZhN7s3O32Lp2PgMsPzTZuQ/viewform?usp=preview",
-		rulebook: "https://rulebook.civiljunkyard.com"
-	},
-	{
-		id: "neonCricket",
-		name: "Neon Cricket",
-		img: "https://i.ibb.co/wNMJrbh5/neon-cricket.jpg",
-		desc: "Experience cricket like never before under neon lights! Play cricket in a unique and exciting neon-lit environment.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLSeB43GCtRpfwzDNuphRto90VxUJqzQ6krPiTsvcrQEVzoU0TA/viewform?usp=preview",
-		rulebook: "https://rulebook.neoncricket.com"
-	},
-	{
-		id: "clashRoyale",
-		name: "Clash Royale",
-		img: "https://i.ibb.co/N6j1Mc9C/clash-royale.jpg",
-		desc: "Strategize and battle it out in this competitive mobile game. Compete against others in Clash Royale and prove your skills.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLScQii-lqIPkXwRLheBfO5gTNa6eAKyCDI2zTf-6KWFaLp1TrA/viewform?usp=preview",
-		rulebook: "https://rulebook.clashroyale.com"
-	},
-	{
-		id: "bgmi",
-		name: "BGMI",
-		img: "https://i.ibb.co/QFksvMc7/bgmi.jpg",
-		desc: "Compete in the ultimate battle royale experience! Show your skills in BGMI and compete against others to be the last one standing.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLScrgIojItZTFxEcXo3TPvPB7frOFsr6mpiqDZRq6FigyVL9bw/viewform?usp=preview",
-		rulebook: "https://rulebook.bgmi.com"
-	},
-	{
-		id: "droneDexterity",
-		name: "Drone Dexterity",
-		img: "https://i.ibb.co/V0xK06MS/drone.jpg", // Update with actual image URL
-		desc: "Navigate through an obstacle course with your drone! Test your piloting skills and compete in this exciting drone racing challenge.",
-		link: "https://docs.google.com/forms/d/e/1FAIpQLSd7OkahU6fW9jKxedYe9dxtn6_7lJA2aZQHqFRBtrYu4TAjtw/viewform?usp=preview", // Update with actual form link
-		rulebook: "https://rulebook.dronedexterity.com" // Update with actual rulebook link
-	}
-];
 
+const eventsData = [
+  {
+      id: "techQuiz",
+      name: "Tech Quiz", 
+      img: "https://i.ibb.co/WWxCbQnp/tech-quiz.jpg",
+      desc: "Showcase your tech knowledge in an exciting quiz! Answer questions on various tech topics and compete for the top spot.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSdBCVmSj2dfL7ZK6Gwvie_IviJG10btsM1DEgZvokZO32Eq3w/viewform?usp=preview",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "robomaze",
+      name: "Robomaze",
+      img: "https://i.ibb.co/5t4wmPN/robomaze.jpg",
+      desc: "Navigate through a challenging maze with your robot! Test your robotics skills and see if you can complete the maze in record time.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLScOdrd5hlXPowIhZ5aQDkdkfCdvvlRq4yR_TprB6pja5T1mEg/viewform?usp=preview",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "roboSoccer",
+      name: "Robo Soccer",
+      img: "https://i.ibb.co/f6F20L8/Copy-of-Copy-of-MEGALEIO-2024-2.png",
+      desc: "Compete in an AI-powered soccer match! Program your robots to play soccer and compete against other teams.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSc1Wz8Qf175LBVK4_RKFK1Qr5EEidmGwA6uf2n4ZeggidwjZQ/viewform?usp=preview",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "codeRelay",
+      name: "Code Relay",
+      img: "https://i.ibb.co/Y75qdZcW/Copy-of-Copy-of-MEGALEIO-2024-4.jpg",
+      desc: "Team up and write code in a relay format! Collaborate with your team to solve coding challenges in a relay race.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLScWEk1AwwQP8mOR8edd825y-CCNag4y_0EbubfVIA74gj48-g/viewform?usp=preview",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "businessPlan",
+      name: "Business Plan Presentation",
+      img: "business-plan.png",
+      desc: "Present your innovative business ideas. Showcase your entrepreneurial skills and compete for the best business plan.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSePiH569U8j0a-5sACOTQetsIcnqr9xwt2mDYcKwmz_5DNiyg/viewform?usp=preview",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "blindC",
+      name: "Blind C",
+      img: "https://i.ibb.co/Y4YtLXMk/Copy-of-Copy-of-MEGALEIO-2024-1.jpgg",
+      desc: "Test your C skills in a blind coding challenge. Compete against others and prove your expertise in C programming without seeing the code.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSePZ8TvncFpx13M4OjcgRbC1IBF3Kfcct99pmAZYY7cgUYWSw/viewform?usp=preview",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "megaHack",
+      name: "MegaHack 5.0",
+      img: "https://i.ibb.co/mC7hT09k/megahack.jpg",
+      desc: "Showcase your research and innovative ideas. Present your projects and compete for the best presentation.",
+      link: "https://megahack.in",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "bridgeIt",
+      name: "Bridge It",
+      img: "https://i.ibb.co/ZR26J2JC/bridge-it.jpg",
+      desc: "Construct the strongest and most efficient bridge! Test your engineering skills and compete to build the best bridge.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSeHbWY_ErNq4uCe_NM-o9TTHsQ9GvSmr9eWyJ7pOKBq9L_liQ/viewform?usp=preview",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "powerlifting",
+      name: "Powerlifting",
+      img: "https://i.ibb.co/VW9kWBFj/Copy-of-Copy-of-MEGALEIO-2024-6.jpg",
+      desc: "Showcase your strength in this lifting challenge. Compete against others to lift the heaviest weights.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSeAlKec-MR3BgCjm9xRA0SYUH3ELOnx5XZ4V1MtiVjGtIufnA/viewform?usp=preview",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "civilJunkyard",
+      name: "Civil Junkyard",
+      img: "https://i.ibb.co/Q7DKhh6x/civil-junkyard.jpg",
+      desc: "Create engineering marvels from scrap! Use your creativity and engineering skills to build something amazing from junk.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSeUx3HKI0EwFoyOUxVjQkAhsJDEZhN7s3O32Lp2PgMsPzTZuQ/viewform?usp=preview",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "neonCricket",
+      name: "Neon Cricket",
+      img: "https://i.ibb.co/wNMJrbh5/neon-cricket.jpg",
+      desc: "Experience cricket like never before under neon lights! Play cricket in a unique and exciting neon-lit environment.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSeB43GCtRpfwzDNuphRto90VxUJqzQ6krPiTsvcrQEVzoU0TA/viewform?usp=preview",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "clashRoyale",
+      name: "Clash Royale",
+      img: "https://i.ibb.co/N6j1Mc9C/clash-royale.jpg",
+      desc: "Strategize and battle it out in this competitive mobile game. Compete against others in Clash Royale and prove your skills.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLScQii-lqIPkXwRLheBfO5gTNa6eAKyCDI2zTf-6KWFaLp1TrA/viewform?usp=preview",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "bgmi",
+      name: "BGMI",
+      img: "https://i.ibb.co/QFksvMc7/bgmi.jpg",
+      desc: "Compete in the ultimate battle royale experience! Show your skills in BGMI and compete against others to be the last one standing.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLScrgIojItZTFxEcXo3TPvPB7frOFsr6mpiqDZRq6FigyVL9bw/viewform?usp=preview",
+      rulebook: "/rulebook-meglaio.pdf"
+  },
+  {
+      id: "droneDexterity",
+      name: "Drone Dexterity",
+      img: "https://i.ibb.co/V0xK06MS/drone.jpg", // Update with actual image URL
+      desc: "Navigate through an obstacle course with your drone! Test your piloting skills and compete in this exciting drone racing challenge.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSd7OkahU6fW9jKxedYe9dxtn6_7lJA2aZQHqFRBtrYu4TAjtw/viewform?usp=preview", // Update with actual form link
+      rulebook: "/rulebook-meglaio.pdf" // Update with actual rulebook link
+  }
+];
 export default function EventsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [flippedCards, setFlippedCards] = useState(new Set());

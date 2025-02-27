@@ -12,7 +12,7 @@ const Hero = () => {
       <div className="w-full absolute inset-0 flex blur-sm">
         <video 
           className="w-full h-full object-cover" 
-          src="/video.mp4" // Make sure this video exists in your public folder
+          src="/back-loader.mp4" // Make sure this video exists in your public folder
           muted 
           autoPlay 
           loop 

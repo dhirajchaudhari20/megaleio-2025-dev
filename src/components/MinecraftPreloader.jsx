@@ -5,14 +5,15 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setFadeOut(true);
-      setTimeout(() => {
-        if (onFadeComplete) onFadeComplete();
-      }, 1000); // Wait for fade-out animation to complete
-    }, 3000); // Show video for 3 seconds
-
-    return () => clearTimeout(timer);
+    const videoElement = document.getElementById("preloader-video");
+    if (videoElement) {
+      videoElement.onended = () => {
+        setFadeOut(true);
+        setTimeout(() => {
+          if (onFadeComplete) onFadeComplete();
+        }, 1000); // Wait for fade-out animation to complete
+      };
+    }
   }, [onFadeComplete]);
 
   return (
@@ -44,7 +45,7 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
         `}</style>
       </Helmet>
 
-      <video autoPlay muted loop>
+      <video id="preloader-video" autoPlay muted>
         <source src="mainloader.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>

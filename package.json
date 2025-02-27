@@ -20,6 +20,7 @@
     "react-helmet": "^6.1.0",
     "react-lazyload": "^3.2.1",
     "react-router-dom": "^7.1.5",
+    "react-tsparticles": "^2.12.2",
     "react-youtube": "^10.1.0",
     "styled-components": "^6.1.15"
   },

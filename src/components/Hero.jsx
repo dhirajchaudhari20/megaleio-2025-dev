@@ -27,12 +27,12 @@ const Hero = () => {
         }}
       />
 
-      {/* Video Background */}
-      <div className="w-full absolute inset-0 flex">
+      {/* Video Background with Fallback Poster */}
+      <div className="absolute inset-0 flex">
         <video
           className="w-full h-full object-cover"
           src="/back-loader.mp4"
-          poster="/back-loader-poster.jpg" // Fallback image
+          poster="/back-loader-poster.jpg" // Fallback image if video lags
           muted
           autoPlay
           loop
@@ -41,17 +41,20 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#1D1C1B]/80 to-transparent z-10"></div>
       </div>
 
-      {/* Content */}
+      {/* Content with Advanced Animations */}
       <motion.div 
         className="relative z-20 container mx-auto px-4 text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
+       
+
+        {/* Main Logo */}
         <motion.div 
           data-aos="zoom-in" 
           data-aos-duration="1000"
-          className="drop-shadow-[0_0_20px_rgba(255,255,255,0.9)]"
+          className="drop-shadow-[0_0_20px_rgba(255,255,255,0.9)] mb-6"
           initial={{ scale: 0.8 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1 }}
@@ -64,8 +67,10 @@ const Hero = () => {
             alt="Megaleio logo"
           />
         </motion.div>
+
+        {/* Headline */}
         <motion.h1 
-          className="text-4xl md:text-6xl mt-6 font-[Minecraft] text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
+          className="text-4xl md:text-6xl mt-2 font-[Minecraft] text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
           data-aos="fade-up"
           data-aos-duration="1000"
           initial={{ opacity: 0 }}
@@ -74,6 +79,8 @@ const Hero = () => {
         >
           Welcome to <span className="text-[#00ff00]">MEGALEIO 2025</span>
         </motion.h1>
+
+        {/* Subtitle */}
         <motion.p 
           className="mt-4 text-lg md:text-xl text-gray-300"
           data-aos="fade-up"
@@ -84,16 +91,16 @@ const Hero = () => {
         >
           Where Innovation Meets Creativity
         </motion.p>
-        <motion.button
-          className="mt-6 px-8 py-3 bg-[#00ff00] text-black font-bold text-lg rounded-lg shadow-md hover:shadow-lg transition transform hover:scale-105"
-          data-aos="fade-up"
-          data-aos-delay="400"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-        >
-          Get Started
-        </motion.button>
+        <button
+  className="mt-6 px-8 py-3 bg-[#00ff00] text-black font-bold text-lg rounded-lg 
+  shadow-md transition transform hover:scale-110 
+  hover:shadow-[0_0_15px_#00ff00,0_0_30px_#00ff00] duration-300 ease-in-out"
+  data-aos="fade-up"
+  data-aos-delay="400"
+>
+  Get Started
+</button>
+
       </motion.div>
     </div>
   );

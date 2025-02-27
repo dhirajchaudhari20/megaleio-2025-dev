@@ -59,7 +59,7 @@ const teamMembers = [
       "The Advisor aims to guide the technical event towards academic excellence, innovation, and industry relevance. They provide strategic insights, mentorship, and foster connections with thought leaders to ensure the event remains a hub for cutting-edge knowledge.",
     content: "left",
     media: "right",
-    img: "/leon.webp"
+    img: "/kkk.jpg"
   }
 ];
 

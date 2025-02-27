@@ -9,30 +9,34 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
   const [dots, setDots] = useState(0);
 
   useEffect(() => {
-    const progressInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(progressInterval);
-          setFadeOut(true);
-          setTimeout(() => {
-            if (onFadeComplete) onFadeComplete();
-          }, 800); // Wait for fade-out animation to complete
-          return 100;
-        }
-        return prev + 5;
-      });
-    }, 60); // Simulates loading progress
+    const videoElement = document.getElementById("preloader-video");
+    if (videoElement) {
+      videoElement.onended = () => {
+        setShowSpinner(true);
+        const progressInterval = setInterval(() => {
+          setProgress((prev) => {
+            if (prev >= 100) {
+              clearInterval(progressInterval);
+              setFadeOut(true);
+              setTimeout(() => {
+                if (onFadeComplete) onFadeComplete();
+              }, 800); // Wait for fade-out animation to complete
+              return 100;
+            }
+            return prev + 5;
+          });
+        }, 60); // Simulates loading progress
+      };
+    }
 
     const dotsInterval = setInterval(() => {
       setDots((prev) => (prev + 1) % 4); // Cycles through 0 to 3
-      if (progress >= 100) clearInterval(dotsInterval);
     }, 300); // Updates dots every 300ms
 
     return () => {
-      clearInterval(progressInterval);
       clearInterval(dotsInterval);
     };
-  }, [onFadeComplete, progress]);
+  }, [onFadeComplete]);
 
   return (
     <div className={`preloader ${fadeOut ? "fade-out" : ""}`}>

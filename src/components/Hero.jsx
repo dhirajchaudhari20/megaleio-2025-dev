@@ -48,7 +48,18 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-       
+        {/* Tagline Above Logo */}
+        <motion.div 
+          data-aos="fade-down"
+          data-aos-duration="1000"
+          className="text-lg md:text-2xl text-[#00ff00] mb-4"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 1 }}
+        > 
+
+        .
+        </motion.div>
 
         {/* Main Logo */}
         <motion.div 

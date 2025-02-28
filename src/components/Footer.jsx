@@ -1,6 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+const MySwal = withReactContent(Swal);
 
 const Footer = () => {
   useEffect(() => {
@@ -8,8 +12,6 @@ const Footer = () => {
       duration: 800,
     });
   }, []);
-
-  const [alertMessage, setAlertMessage] = useState('');
 
   const facultyCoordinators = [
     { name: 'Mr. Swapnil Malipatil', phone: '+91 81473 34657' },
@@ -24,9 +26,31 @@ const Footer = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    // Retrieve form field values
     const name = e.target.elements.name.value;
-    setAlertMessage(`Form submitted: ${name}`);
-    // TODO: Add further form submission logic (e.g., API call) if needed
+    const phone = e.target.elements.phone.value;
+    const query = e.target.elements.query.value;
+
+    // TODO: You can add your API call here to send the data to your Google Sheet.
+    // Recommended Google Sheet columns: "Name", "Phone Number", "Query" (and optionally, "Timestamp")
+
+    // Show SweetAlert modal with a Minecraft theme
+    MySwal.fire({
+      title: <p className="font-[Minecraft] text-2xl">Success!</p>,
+      html: `<div class="font-[Minecraft-light] text-white">Form submitted: ${name}</div>`,
+      icon: 'success',
+      confirmButtonText: 'Cool!',
+      customClass: {
+        popup: 'bg-black/70 border border-[#5FFF00]/40 rounded p-4',
+        title: 'text-white',
+        content: 'text-white font-[Minecraft-light]',
+        confirmButton: 'bg-[#5FFF00] text-black font-[Minecraft] px-4 py-2 rounded hover:bg-[#5FFF00]/80 transition-colors'
+      },
+      buttonsStyling: false,
+    });
+
+    // Optionally, reset the form after submission:
+    e.target.reset();
   };
 
   return (
@@ -74,7 +98,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* 3) Social + Small Form Section */}
+          {/* 3) Social + Form Section */}
           <div className="text-center md:text-left">
             <h3 className="text-xl font-[Minecraft] text-[#5FFF00] mb-4">Follow Us</h3>
             
@@ -119,14 +143,7 @@ const Footer = () => {
               </a>
             </div>
 
-            {/* Alert Message */}
-            {alertMessage && (
-              <div className="bg-green-500 text-white px-4 py-2 rounded mt-4 font-[Minecraft]">
-                {alertMessage}
-              </div>
-            )}
-
-            {/* Small Form Right Below Social Icons */}
+            {/* Form Section */}
             <form onSubmit={handleFormSubmit} className="mt-4 space-y-3 font-[Minecraft-light]">
               <div>
                 <label className="block mb-1 text-sm" htmlFor="name">
@@ -137,10 +154,7 @@ const Footer = () => {
                   id="name"
                   name="name"
                   required
-                  className="w-full px-3 py-2 bg-black/70 text-white 
-                             border border-[#5FFF00]/40 rounded 
-                             focus:outline-none focus:border-[#5FFF00] 
-                             placeholder-gray-400"
+                  className="w-full px-3 py-2 bg-black/70 text-white border border-[#5FFF00]/40 rounded focus:outline-none focus:border-[#5FFF00] placeholder-gray-400"
                   placeholder="Enter your name"
                 />
               </div>
@@ -154,10 +168,7 @@ const Footer = () => {
                   id="phone"
                   name="phone"
                   required
-                  className="w-full px-3 py-2 bg-black/70 text-white 
-                             border border-[#5FFF00]/40 rounded 
-                             focus:outline-none focus:border-[#5FFF00] 
-                             placeholder-gray-400"
+                  className="w-full px-3 py-2 bg-black/70 text-white border border-[#5FFF00]/40 rounded focus:outline-none focus:border-[#5FFF00] placeholder-gray-400"
                   placeholder="Enter your phone number"
                 />
               </div>
@@ -171,19 +182,14 @@ const Footer = () => {
                   name="query"
                   rows="2"
                   required
-                  className="w-full px-3 py-2 bg-black/70 text-white 
-                             border border-[#5FFF00]/40 rounded 
-                             focus:outline-none focus:border-[#5FFF00] 
-                             placeholder-gray-400"
+                  className="w-full px-3 py-2 bg-black/70 text-white border border-[#5FFF00]/40 rounded focus:outline-none focus:border-[#5FFF00] placeholder-gray-400"
                   placeholder="Ask us anything..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="bg-[#5FFF00] text-black font-[Minecraft] px-4 py-2 
-                           rounded hover:bg-[#5FFF00]/80 transition-colors 
-                           cursor-pointer"
+                className="bg-[#5FFF00] text-black font-[Minecraft] px-4 py-2 rounded hover:bg-[#5FFF00]/80 transition-colors cursor-pointer"
               >
                 Submit
               </button>

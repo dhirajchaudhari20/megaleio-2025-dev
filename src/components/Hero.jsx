@@ -102,15 +102,7 @@ const Hero = () => {
         >
           Where Innovation Meets Creativity
         </motion.p>
-        <button
-  className="mt-6 px-8 py-3 bg-[#00ff00] text-black font-bold text-lg rounded-lg 
-  shadow-md transition transform hover:scale-110 
-  hover:shadow-[0_0_15px_#00ff00,0_0_30px_#00ff00] duration-300 ease-in-out"
-  data-aos="fade-up"
-  data-aos-delay="400"
->
-  Get Started
-</button>
+
 
       </motion.div>
     </div>

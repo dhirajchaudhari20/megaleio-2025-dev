@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Swal from 'sweetalert2';
@@ -13,6 +13,8 @@ const Footer = () => {
     });
   }, []);
 
+  const [loading, setLoading] = useState(false);
+
   const facultyCoordinators = [
     { name: 'Mr. Swapnil Malipatil', phone: '+91 81473 34657' },
     { name: 'Mrs. Vishakha Rane', phone: '+91 97303 71605' },
@@ -21,36 +23,73 @@ const Footer = () => {
   const studentCoordinators = [
     { name: 'Mr. Devang Vartak', phone: '+91 8080179406' },
     { name: 'Mr. Omkar Shinde', phone: '+91 9975229442' },
-    { name: 'Ms. Gracy Yadav', phone: '+91 8767820269' }
+    { name: 'Ms. Gracy Yadav', phone: '+91 8767820269' },
   ];
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // Retrieve form field values
+    setLoading(true);
+
     const name = e.target.elements.name.value;
     const phone = e.target.elements.phone.value;
     const query = e.target.elements.query.value;
 
-    // TODO: You can add your API call here to send the data to your Google Sheet.
-    // Recommended Google Sheet columns: "Name", "Phone Number", "Query" (and optionally, "Timestamp")
-
-    // Show SweetAlert modal with a Minecraft theme
-    MySwal.fire({
-      title: <p className="font-[Minecraft] text-2xl">Success!</p>,
-      html: `<div class="font-[Minecraft-light] text-white">Form submitted: ${name}</div>`,
-      icon: 'success',
-      confirmButtonText: 'Cool!',
-      customClass: {
-        popup: 'bg-black/70 border border-[#5FFF00]/40 rounded p-4',
-        title: 'text-white',
-        content: 'text-white font-[Minecraft-light]',
-        confirmButton: 'bg-[#5FFF00] text-black font-[Minecraft] px-4 py-2 rounded hover:bg-[#5FFF00]/80 transition-colors'
+    // Construct payload for SheetDB (matching your Google Sheet columns)
+    const payload = {
+      data: {
+        name,
+        phone,
+        query,
       },
-      buttonsStyling: false,
-    });
+    };
 
-    // Optionally, reset the form after submission:
-    e.target.reset();
+    try {
+      const response = await fetch('https://sheetdb.io/api/v1/o6l382zzfdp7c', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Show success modal with Minecraft theme
+      MySwal.fire({
+        title: <p className="font-[Minecraft] text-2xl">Success!</p>,
+        html: `<div class="font-[Minecraft-light] text-white">Your query has been submitted successfully!</div>`,
+        icon: 'success',
+        confirmButtonText: 'Cool!',
+        customClass: {
+          popup: 'bg-black/70 border border-[#5FFF00]/40 rounded p-4',
+          title: 'text-white',
+          content: 'text-white font-[Minecraft-light]',
+          confirmButton: 'bg-[#5FFF00] text-black font-[Minecraft] px-4 py-2 rounded hover:bg-[#5FFF00]/80 transition-colors',
+        },
+        buttonsStyling: false,
+      });
+
+      e.target.reset();
+    } catch (error) {
+      // Show error modal with Minecraft theme
+      MySwal.fire({
+        title: <p className="font-[Minecraft] text-2xl">Error!</p>,
+        html: `<div class="font-[Minecraft-light] text-white">There was an error submitting your form. Please try again.</div>`,
+        icon: 'error',
+        confirmButtonText: 'Okay',
+        customClass: {
+          popup: 'bg-black/70 border border-[#5FFF00]/40 rounded p-4',
+          title: 'text-white',
+          content: 'text-white font-[Minecraft-light]',
+          confirmButton: 'bg-[#5FFF00] text-black font-[Minecraft] px-4 py-2 rounded hover:bg-[#5FFF00]/80 transition-colors',
+        },
+        buttonsStyling: false,
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -189,9 +228,34 @@ const Footer = () => {
 
               <button
                 type="submit"
+                disabled={loading}
                 className="bg-[#5FFF00] text-black font-[Minecraft] px-4 py-2 rounded hover:bg-[#5FFF00]/80 transition-colors cursor-pointer"
               >
-                Submit
+                {loading ? (
+                  <div className="flex items-center justify-center">
+                    <svg
+                      className="animate-spin h-5 w-5 mr-2 text-black"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="#5FFF00"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="#5FFF00"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                      ></path>
+                    </svg>
+                    Submitting...
+                  </div>
+                ) : (
+                  'Submit'
+                )}
               </button>
             </form>
           </div>

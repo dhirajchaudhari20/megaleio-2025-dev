@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -8,6 +8,8 @@ const Footer = () => {
       duration: 800,
     });
   }, []);
+
+  const [alertMessage, setAlertMessage] = useState('');
 
   const facultyCoordinators = [
     { name: 'Mr. Swapnil Malipatil', phone: '+91 81473 34657' },
@@ -22,12 +24,13 @@ const Footer = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // TODO: Handle form submission logic (e.g., send to API or email service)
-    alert("Form submitted!");
+    const name = e.target.elements.name.value;
+    setAlertMessage(`Form submitted: ${name}`);
+    // TODO: Add further form submission logic (e.g., API call) if needed
   };
 
   return (
-    <footer id='contactus' className="bg-black/80 text-white py-12 pt-16 mt-4 relative">
+    <footer id="contactus" className="bg-black/80 text-white py-12 pt-16 mt-4 relative">
       <div className="container mx-auto px-6" data-aos="fade-up">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* 1) Brand Section */}
@@ -37,8 +40,8 @@ const Footer = () => {
               alt="Megaleio Logo" 
               className="h-24 mx-auto md:mx-0 drop-shadow-[0_0_5px_rgba(255,255,255,1)]"
             />
-            <br/>
-            <p className='font-[Minecraft-light]'>
+            <br />
+            <p className="font-[Minecraft-light]">
               A National Level Intercollegiate Technical Event where innovation meets excellence
             </p>
           </div>
@@ -116,66 +119,75 @@ const Footer = () => {
               </a>
             </div>
 
-         {/* Small Form Right Below Social Icons */}
-<form onSubmit={handleFormSubmit} className="mt-4 space-y-3 font-[Minecraft-light]">
-  <div>
-    <label className="block mb-1 text-sm" htmlFor="name">
-      Name
-    </label>
-    <input
-      type="text"
-      id="name"
-      required
-      className="w-full px-3 py-2 bg-black/70 text-white 
-                 border border-[#5FFF00]/40 rounded 
-                 focus:outline-none focus:border-[#5FFF00] 
-                 placeholder-gray-400"
-      placeholder="Enter your name"
-    />
-  </div>
+            {/* Alert Message */}
+            {alertMessage && (
+              <div className="bg-green-500 text-white px-4 py-2 rounded mt-4 font-[Minecraft]">
+                {alertMessage}
+              </div>
+            )}
 
-  <div>
-    <label className="block mb-1 text-sm" htmlFor="phone">
-      Phone Number
-    </label>
-    <input
-      type="tel"
-      id="phone"
-      required
-      className="w-full px-3 py-2 bg-black/70 text-white 
-                 border border-[#5FFF00]/40 rounded 
-                 focus:outline-none focus:border-[#5FFF00] 
-                 placeholder-gray-400"
-      placeholder="Enter your phone number"
-    />
-  </div>
+            {/* Small Form Right Below Social Icons */}
+            <form onSubmit={handleFormSubmit} className="mt-4 space-y-3 font-[Minecraft-light]">
+              <div>
+                <label className="block mb-1 text-sm" htmlFor="name">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  className="w-full px-3 py-2 bg-black/70 text-white 
+                             border border-[#5FFF00]/40 rounded 
+                             focus:outline-none focus:border-[#5FFF00] 
+                             placeholder-gray-400"
+                  placeholder="Enter your name"
+                />
+              </div>
 
-  <div>
-    <label className="block mb-1 text-sm" htmlFor="query">
-      Your Query
-    </label>
-    <textarea
-      id="query"
-      rows="2"
-      required
-      className="w-full px-3 py-2 bg-black/70 text-white 
-                 border border-[#5FFF00]/40 rounded 
-                 focus:outline-none focus:border-[#5FFF00] 
-                 placeholder-gray-400"
-      placeholder="Ask us anything..."
-    />
-  </div>
+              <div>
+                <label className="block mb-1 text-sm" htmlFor="phone">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  className="w-full px-3 py-2 bg-black/70 text-white 
+                             border border-[#5FFF00]/40 rounded 
+                             focus:outline-none focus:border-[#5FFF00] 
+                             placeholder-gray-400"
+                  placeholder="Enter your phone number"
+                />
+              </div>
 
-  <button
-    type="submit"
-    className="bg-[#5FFF00] text-black font-[Minecraft] px-4 py-2 
-               rounded hover:bg-[#5FFF00]/80 transition-colors 
-               cursor-pointer"
-  >
-    Submit
-  </button>
-</form>
+              <div>
+                <label className="block mb-1 text-sm" htmlFor="query">
+                  Your Query
+                </label>
+                <textarea
+                  id="query"
+                  name="query"
+                  rows="2"
+                  required
+                  className="w-full px-3 py-2 bg-black/70 text-white 
+                             border border-[#5FFF00]/40 rounded 
+                             focus:outline-none focus:border-[#5FFF00] 
+                             placeholder-gray-400"
+                  placeholder="Ask us anything..."
+                />
+              </div>
 
+              <button
+                type="submit"
+                className="bg-[#5FFF00] text-black font-[Minecraft] px-4 py-2 
+                           rounded hover:bg-[#5FFF00]/80 transition-colors 
+                           cursor-pointer"
+              >
+                Submit
+              </button>
+            </form>
           </div>
         </div>
 

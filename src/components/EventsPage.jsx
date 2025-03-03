@@ -175,7 +175,7 @@ export default function EventsPage() {
             <input
               type="text"
               className="w-[250px] p-2.5 pl-10 border-2 border-blue-500 rounded bg-white text-gray-800 text-sm font-[Minecraft]"
-              placeholder="Search Events..."
+              placeholder="Search Events... 🔍"
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
             />

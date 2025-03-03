@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+// DATA FOR EVENTS
 const eventsData = [
   {
       id: "techQuiz",
@@ -118,12 +119,13 @@ const eventsData = [
   }
 ];
 
-
+// MAIN COMPONENT
 export default function EventsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [flippedCards, setFlippedCards] = useState(new Set());
   const navigate = useNavigate();
 
+  // Initialize AOS for scroll animations
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -131,10 +133,12 @@ export default function EventsPage() {
     });
   }, []);
 
+  // Filter events based on search term
   const filteredEvents = eventsData.filter(event =>
     event.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Flip card handler
   const handleFlip = (eventId) => {
     setFlippedCards(prev => {
       const newFlipped = new Set(prev);
@@ -149,11 +153,11 @@ export default function EventsPage() {
 
   return (
     <>
-
       {/* Main Events Section */}
       <section className="relative font-[Minecraft] min-h-[calc(100vh+150px)] bg-[#1D1C1B] min-w-screen">
         <div>
-        <br></br>
+          <br />
+          {/* Page Title */}
           <div className="text-center mb-8 mt-20">
             <h1 className="text-5xl md:text-6xl font-bold mb-4">
               This Year's <br />Events
@@ -165,21 +169,27 @@ export default function EventsPage() {
               </p>
             </div>
           </div>
-     {/* Updated Search Container */}
-<div className="my-5 flex justify-center items-center gap-2 relative">
-  <input
-    type="text"
-    className="w-[250px] p-2.5 pl-10 border-2 border-blue-500 rounded bg-white text-gray-800 text-sm font-[Minecraft]"
-    placeholder="Search Events..."
-    value={searchTerm}
-    onChange={e => setSearchTerm(e.target.value)}
-  />
-  {/* Search Icon */}
-  <span className="absolute left-3 text-gray-500">
-    🔍
-  </span>
-</div>
-          <div id="eventGrid" className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center p-5 px-5 md:px-32">
+
+          {/* Search Container */}
+          <div className="my-5 flex justify-center items-center gap-2 relative">
+            <input
+              type="text"
+              className="w-[250px] p-2.5 pl-10 border-2 border-blue-500 rounded bg-white text-gray-800 text-sm font-[Minecraft]"
+              placeholder="Search Events..."
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+            />
+            {/* Search Icon */}
+            <span className="absolute left-3 text-gray-500">
+              🔍
+            </span>
+          </div>
+
+          {/* Events Grid */}
+          <div
+            id="eventGrid"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center p-5 px-5 md:px-32"
+          >
             {filteredEvents.map((event, index) => (
               <div 
                 key={event.id}
@@ -187,10 +197,15 @@ export default function EventsPage() {
                 data-aos-delay={index * 50}
                 className="relative h-[400px] perspective-1000"
               >
-                <div className={`relative w-full h-full transition-transform duration-500 transform-style-preserve-3d ${flippedCards.has(event.id) ? 'rotate-y-180' : ''}`}>
-                  {/* Front of card */}
+                {/* 3D Container */}
+                <div
+                  className={`relative w-full h-full transition-transform duration-500 transform-style-preserve-3d ${
+                    flippedCards.has(event.id) ? 'rotate-y-180' : ''
+                  }`}
+                >
+                  {/* Front of Card */}
                   <div className="absolute w-full h-full backface-hidden">
-                    <div 
+                    <div
                       className="relative h-full border-2 border-blue-500 p-5 rounded-3xl text-center flex flex-col shadow-md overflow-hidden"
                       style={{
                         backgroundImage: `url(${event.img})`,
@@ -198,22 +213,36 @@ export default function EventsPage() {
                         backgroundPosition: 'center'
                       }}
                     >
-                      {/* Dark overlay */}
+                      {/* Dark Overlay */}
                       <div className="absolute inset-0 bg-black/60"></div>
 
-                      {/* Content */}
-                      <div className={`relative z-10 flex flex-col h-full text-white ${flippedCards.has(event.id) ? 'pointer-events-none' : ''}`}>
-                        <h2 className="text-2xl md:text-3xl my-2">{event.name}</h2>
-                        <p className="text-sm md:text-base mb-4">{event.desc}</p>
+                      {/* Front Content */}
+                      <div
+                        className={`relative z-10 flex flex-col h-full text-white ${
+                          flippedCards.has(event.id) ? 'pointer-events-none' : ''
+                        }`}
+                      >
+                        <h2 className="text-2xl md:text-3xl my-2">
+                          {event.name}
+                        </h2>
+                        <p className="text-sm md:text-base mb-4">
+                          {event.desc}
+                        </p>
                         <div className="mt-auto">
+                          {/* Register Button */}
                           <a
                             href={event.link}
-                            className={`w-4/5 mx-auto bg-green-600 border-2 border-green-600 p-2.5 mt-2 text-center text-sm rounded cursor-pointer text-white transition transform duration-200 ease-in-out hover:scale-105 block ${flippedCards.has(event.id) ? 'opacity-50' : ''}`}
+                            className={`w-4/5 mx-auto bg-green-600 border-2 border-green-600 p-2.5 mt-2 text-center text-sm rounded cursor-pointer text-white transition transform duration-200 ease-in-out hover:scale-105 block ${
+                              flippedCards.has(event.id) ? 'opacity-50' : ''
+                            }`}
                           >
                             REGISTER NOW
                           </a>
+                          {/* View Details Button */}
                           <button
-                            className={`w-4/5 mx-auto bg-yellow-400 border-2 border-yellow-400 p-2.5 mt-2 text-center text-sm rounded cursor-pointer text-white transition transform duration-200 ease-in-out hover:scale-105 ${flippedCards.has(event.id) ? 'opacity-50' : ''}`}
+                            className={`w-4/5 mx-auto bg-yellow-400 border-2 border-yellow-400 p-2.5 mt-2 text-center text-sm rounded cursor-pointer text-white transition transform duration-200 ease-in-out hover:scale-105 ${
+                              flippedCards.has(event.id) ? 'opacity-50' : ''
+                            }`}
                             onClick={() => handleFlip(event.id)}
                           >
                             VIEW DETAILS
@@ -223,39 +252,48 @@ export default function EventsPage() {
                     </div>
                   </div>
 
-                  {/* Back of card */}
+                  {/* Back of Card */}
                   <div className="absolute w-full h-full backface-hidden rotate-y-180">
                     <div className="bg-white border-2 border-blue-500 p-5 rounded-3xl text-center flex flex-col shadow-md h-full relative">
-                      <button 
+                      {/* Close Button */}
+                      <button
                         onClick={() => handleFlip(event.id)}
                         className="absolute -top-2 -right-2 text-red-500 text-3xl font-bold w-12 h-12 rounded-full 
-                        hover:drop-shadow-[0px_0px_5px_rgba(255,0,0,0.8)] transition-all font-sans 
-                        flex justify-center items-center bg-white border-2 border-red-500
-                        hover:bg-red-50 z-20"
+                          hover:drop-shadow-[0px_0px_5px_rgba(255,0,0,0.8)] transition-all font-sans 
+                          flex justify-center items-center bg-white border-2 border-red-500
+                          hover:bg-red-50 z-20"
                       >
                         ×
                       </button>
-                      <h2 className="text-2xl md:text-3xl mb-4 text-black">{event.name}</h2>
+
+                      {/* Back Content */}
+                      <h2 className="text-2xl md:text-3xl mb-4 text-black">
+                        {event.name}
+                      </h2>
                       <div className="flex-grow overflow-y-auto px-4">
-                        <p className="text-base mb-4 text-gray-700">{event.desc}</p>
+                        <p className="text-base mb-4 text-gray-700">
+                          {event.desc}
+                        </p>
                         <p className="text-sm text-gray-500 mb-4">
                           Additional details and rules can be found in the rulebook.
                         </p>
                       </div>
                       <div className="flex flex-col gap-2 mt-auto">
+                        {/* Optional Button for Blind C or Code Relay */}
                         {(event.id === "blindC" || event.id === "codeRelay") && (
                           <button
                             onClick={() => navigate('/sjcem-compiler')}
                             className="w-4/5 mx-auto bg-blue-500 border-2 border-blue-500 p-2.5 text-center text-sm rounded cursor-pointer text-white 
-                            transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:bg-blue-600"
+                              transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:bg-blue-600"
                           >
                             Open Code Editor
                           </button>
                         )}
+                        {/* Rulebook Button */}
                         <button
                           onClick={() => window.open(event.rulebook, '_blank', 'noopener,noreferrer')}
                           className="w-4/5 mx-auto bg-green-600 border-2 border-green-600 p-2.5 text-center text-sm rounded cursor-pointer text-white 
-                          transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:bg-green-700"
+                            transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:bg-green-700"
                         >
                           View Rulebook
                         </button>
@@ -263,6 +301,7 @@ export default function EventsPage() {
                     </div>
                   </div>
                 </div>
+                {/* End of 3D Container */}
               </div>
             ))}
           </div>

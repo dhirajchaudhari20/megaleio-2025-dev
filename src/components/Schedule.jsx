@@ -7,61 +7,61 @@ const scheduleData = {
       { 
         time: "10:00 - 10:30",
         date: "2025-03-07", 
-        venue: "Auditorium", 
+        room: "Auditorium", 
         title: "INAUGURATION"
       },
       { 
         time: "10:30 - 23:59",
         date: "2025-03-07", 
-        venue: "4th Floor Labs", 
+        room: "4th Floor Labs", 
         title: "MEGAHACK 5.0"
       },
       { 
         time: "10:30 - 18:00",
         date: "2025-03-07", 
-        venue: "Auditorium", 
+        room: "Auditorium", 
         title: "BRIDGE IT"
       },
       { 
         time: "10:30 - 18:00",
         date: "2025-03-07", 
-        venue: "HMS Hall", 
+        room: "HMS Hall", 
         title: "TECH QUIZ"
       },
       { 
         time: "10:30 - 18:00",
         date: "2025-03-07", 
-        venue: "Classroom", 
+        room: "Classroom", 
         title: "BUSINESS PLAN PRESENTATION"
       },
       { 
         time: "10:30 - 18:00",
         date: "2025-03-07", 
-        venue: "Labs First Floor", 
+        room: "Labs First Floor", 
         title: "CODE RELAY"
       },
       { 
         time: "10:30 AM - 11:30 AM",
         date: "2025-03-07", 
-        venue: "Gaming Area", 
+        room: "Gaming Area", 
         title: "CLASH ROYALE"
       },
       { 
         time: "10:30 AM - 12:00 PM",
         date: "2025-03-07", 
-        venue: "Gaming Area", 
+        room: "Gaming Area", 
         title: "NEON CRICKET"
       },
       { 
         time: "10:30 AM - 1:00 PM",
         date: "2025-03-07", 
-        venue: "Gaming Area", 
+        room: "Gaming Area", 
         title: "BGMI"
       },
       { 
         time: "11:00 AM - 12:00 PM",
         date: "2025-03-07", 
-        venue: "Open Ground", 
+        room: "Open Ground", 
         title: "POWER LIFTING/ARM WRESTLING"
       }
     ],
@@ -69,65 +69,66 @@ const scheduleData = {
       { 
         time: "00:00 - 12:00",
         date: "2025-03-08", 
-        venue: "4th Floor Labs", 
+        room: "4th Floor Labs", 
         title: "MEGAHACK 5.0"
       },
       { 
         time: "10:30 - 18:00",
         date: "2025-03-08", 
-        venue: "Civil Department", 
+        room: "Civil Department", 
         title: "BRIDGE IT"
       },
       { 
         time: "10:30 - 12:30",
         date: "2025-03-08", 
-        venue: "Big Ground", 
+        room: "Big Ground", 
         title: "DRONE DEXTERITY"
       },
       { 
         time: "10:30 - 12:30",
         date: "2025-03-08", 
-        venue: "Quadrangle A", 
+        room: "Quadrangle A", 
         title: "ROBOMAZE"
       },
       { 
         time: "10:30 - 12:30",
         date: "2025-03-08", 
-        venue: "Quadrangle A", 
+        room: "Quadrangle A", 
         title: "ROBO SOCCER"
       },
       { 
         time: "10:30 - 12:30",
         date: "2025-03-08", 
-        venue: "Labs First Floor", 
+        room: "Labs First Floor", 
         title: "BLIND C"
       },
       { 
         time: "10:30 - 12:30",
         date: "2025-03-08", 
-        venue: "Auditorium", 
+        room: "Auditorium", 
         title: "CIVIL JUNKYARD"
       },
       { 
         time: "9:30 AM - 10:30 AM",
         date: "2025-03-08", 
-        venue: "Gaming Area", 
+        room: "Gaming Area", 
         title: "CLASH ROYALE"
       },
       { 
         time: "9:30 AM - 11:00 AM",
         date: "2025-03-08", 
-        venue: "Gaming Area", 
+        room: "Gaming Area", 
         title: "NEON CRICKET"
       },
       { 
         time: "9:30 AM - 12:00 PM",
         date: "2025-03-08", 
-        venue: "Gaming Area", 
+        room: "Gaming Area", 
         title: "BGMI"
       }
     ]
-};
+  };
+   
 
 const getTimeInMinutes = (timeStr) => {
   const [hours, minutes] = timeStr.split(':').map(Number);
@@ -172,7 +173,7 @@ const EventCard = ({ event }) => (
     transition={{ duration: 0.6, ease: "easeOut" }}
   >
     <div className="text-sm md:text-lg text-yellow-400 font-bold text-center mb-2">{event.time}</div>
-    <div className="text-sm text-gray-300 text-center mb-4">Room: {event.room}</div>
+    <div className="text-sm text-gray-300 text-center mb-4">Venue: {event.room}</div>
     <div className="text-2xl md:text-4xl mt-2 font-bold text-center text-green-400">{event.title}</div>
   </motion.div>
 );

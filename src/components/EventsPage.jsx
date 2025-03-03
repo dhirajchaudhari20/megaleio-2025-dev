@@ -179,11 +179,7 @@ export default function EventsPage() {
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
             />
-            {/* Search Icon */}
-            <span className="absolute left-3 text-gray-500">
-              🔍
-            </span>
-          </div>
+          
 
           {/* Events Grid */}
           <div

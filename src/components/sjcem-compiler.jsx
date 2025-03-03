@@ -25,8 +25,8 @@ const JDoodleEmbed = () => {
       }}
     >
       <div
-        // Attempt to hide header and footer via query parameters
-        data-pym-src="https://www.jdoodle.com/embed/v1/6cb9ff2931124a17?hideHeader=true&hideFooter=true"
+        // Changed query parameters to use numeric values
+        data-pym-src="https://www.jdoodle.com/embed/v1/6cb9ff2931124a17?hideHeader=1&hideFooter=1"
         style={{ flex: 1 }}
       />
     </div>

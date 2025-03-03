@@ -165,16 +165,20 @@ export default function EventsPage() {
               </p>
             </div>
           </div>
-          {/* Updated Search Container */}
-      <div className="my-5 flex justify-center items-center gap-2">
-            <input
-              type="text"
-              className="w-[250px] p-2.5 border-2 border-blue-500 rounded bg-white text-gray-800 text-sm font-[Minecraft]"
-              placeholder="Search Events..."
-              value={searchTerm}
-              onChange={e => setSearchTerm(e.target.value)}
-            />
-          </div>
+     {/* Updated Search Container */}
+<div className="my-5 flex justify-center items-center gap-2 relative">
+  <input
+    type="text"
+    className="w-[250px] p-2.5 pl-10 border-2 border-blue-500 rounded bg-white text-gray-800 text-sm font-[Minecraft]"
+    placeholder="Search Events..."
+    value={searchTerm}
+    onChange={e => setSearchTerm(e.target.value)}
+  />
+  {/* Search Icon */}
+  <span className="absolute left-3 text-gray-500">
+    🔍
+  </span>
+</div>
           <div id="eventGrid" className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center p-5 px-5 md:px-32">
             {filteredEvents.map((event, index) => (
               <div 

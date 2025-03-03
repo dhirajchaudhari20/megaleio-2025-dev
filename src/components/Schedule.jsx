@@ -7,61 +7,61 @@ const scheduleData = {
       { 
         time: "10:00 - 10:30",
         date: "2025-03-07", 
-        room: "Auditorium", 
+        venue: "Auditorium", 
         title: "INAUGURATION"
       },
       { 
         time: "10:30 - 23:59",
         date: "2025-03-07", 
-        room: "4th Floor Labs", 
+        venue: "4th Floor Labs", 
         title: "MEGAHACK 5.0"
       },
       { 
         time: "10:30 - 18:00",
         date: "2025-03-07", 
-        room: "Auditorium", 
+        venue: "Auditorium", 
         title: "BRIDGE IT"
       },
       { 
         time: "10:30 - 18:00",
         date: "2025-03-07", 
-        room: "HMS Hall", 
+        venue: "HMS Hall", 
         title: "TECH QUIZ"
       },
       { 
         time: "10:30 - 18:00",
         date: "2025-03-07", 
-        room: "Classroom", 
+        venue: "Classroom", 
         title: "BUSINESS PLAN PRESENTATION"
       },
       { 
         time: "10:30 - 18:00",
         date: "2025-03-07", 
-        room: "Labs First Floor", 
+        venue: "Labs First Floor", 
         title: "CODE RELAY"
       },
       { 
         time: "10:30 AM - 11:30 AM",
         date: "2025-03-07", 
-        room: "Gaming Area", 
+        venue: "Gaming Area", 
         title: "CLASH ROYALE"
       },
       { 
         time: "10:30 AM - 12:00 PM",
         date: "2025-03-07", 
-        room: "Gaming Area", 
+        venue: "Gaming Area", 
         title: "NEON CRICKET"
       },
       { 
         time: "10:30 AM - 1:00 PM",
         date: "2025-03-07", 
-        room: "Gaming Area", 
+        venue: "Gaming Area", 
         title: "BGMI"
       },
       { 
         time: "11:00 AM - 12:00 PM",
         date: "2025-03-07", 
-        room: "Open Ground", 
+        venue: "Open Ground", 
         title: "POWER LIFTING/ARM WRESTLING"
       }
     ],
@@ -69,66 +69,65 @@ const scheduleData = {
       { 
         time: "00:00 - 12:00",
         date: "2025-03-08", 
-        room: "4th Floor Labs", 
+        venue: "4th Floor Labs", 
         title: "MEGAHACK 5.0"
       },
       { 
         time: "10:30 - 18:00",
         date: "2025-03-08", 
-        room: "Civil Department", 
+        venue: "Civil Department", 
         title: "BRIDGE IT"
       },
       { 
         time: "10:30 - 12:30",
         date: "2025-03-08", 
-        room: "Big Ground", 
+        venue: "Big Ground", 
         title: "DRONE DEXTERITY"
       },
       { 
         time: "10:30 - 12:30",
         date: "2025-03-08", 
-        room: "Quadrangle A", 
+        venue: "Quadrangle A", 
         title: "ROBOMAZE"
       },
       { 
         time: "10:30 - 12:30",
         date: "2025-03-08", 
-        room: "Quadrangle A", 
+        venue: "Quadrangle A", 
         title: "ROBO SOCCER"
       },
       { 
         time: "10:30 - 12:30",
         date: "2025-03-08", 
-        room: "Labs First Floor", 
+        venue: "Labs First Floor", 
         title: "BLIND C"
       },
       { 
         time: "10:30 - 12:30",
         date: "2025-03-08", 
-        room: "Auditorium", 
+        venue: "Auditorium", 
         title: "CIVIL JUNKYARD"
       },
       { 
         time: "9:30 AM - 10:30 AM",
         date: "2025-03-08", 
-        room: "Gaming Area", 
+        venue: "Gaming Area", 
         title: "CLASH ROYALE"
       },
       { 
         time: "9:30 AM - 11:00 AM",
         date: "2025-03-08", 
-        room: "Gaming Area", 
+        venue: "Gaming Area", 
         title: "NEON CRICKET"
       },
       { 
         time: "9:30 AM - 12:00 PM",
         date: "2025-03-08", 
-        room: "Gaming Area", 
+        venue: "Gaming Area", 
         title: "BGMI"
       }
     ]
-  };
-  
+};
 
 const getTimeInMinutes = (timeStr) => {
   const [hours, minutes] = timeStr.split(':').map(Number);

@@ -78,19 +78,17 @@ const Hero = () => {
             alt="Megaleio logo"
           />
         </motion.div>
-
-        {/* Headline */}
-        <motion.h1 
-          className="text-4xl md:text-6xl mt-2 font-[Minecraft] text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-        >
-          Welcome to <span className="text-[#00ff00]">MEGALEIO 2025</span>
-        </motion.h1>
-
+{/* Headline */}
+<motion.h1 
+  className="text-3xl md:text-6xl mt-2 font-[Minecraft] text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
+  data-aos="fade-up"
+  data-aos-duration="1000"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.5, duration: 1 }}
+>
+  Welcome to <span className="text-[#00ff00]">MEGALEIO 2025</span>
+</motion.h1>
         {/* Subtitle */}
         <motion.p 
           className="mt-4 text-lg md:text-xl text-gray-300"

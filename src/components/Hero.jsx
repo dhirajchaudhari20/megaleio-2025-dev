@@ -27,19 +27,20 @@ const Hero = () => {
         }}
       />
 
-      {/* Video Background with Fallback Poster */}
-      <div className="absolute inset-0 flex">
-        <video
-          className="w-full h-full object-cover"
-          src="/back-loader.mp4"
-          poster="/back-loader-poster.jpg" // Fallback image if video lags
-          muted
-          autoPlay
-          loop
-          playsInline
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1D1C1B]/80 to-transparent z-10"></div>
-      </div>
+{/* Blurred GIF Background with Fallback Image */}
+<div className="absolute inset-0 flex">
+  <img
+    className="w-full h-full object-cover filter blur-md"
+    src="/back-1.gif"
+    alt="Background GIF"
+    onError={(e) => {
+      e.target.onerror = null;
+      e.target.src = "/back-loader-poster.jpg";
+    }}
+  />
+  <div className="absolute inset-0 bg-gradient-to-t from-[#1D1C1B]/40 to-transparent z-10"></div>
+</div>
+
 
       {/* Content with Advanced Animations */}
       <motion.div 

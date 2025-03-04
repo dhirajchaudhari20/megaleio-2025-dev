@@ -25,8 +25,7 @@ const JDoodleEmbed = () => {
       }}
     >
       <div
-        // Changed query parameters to use numeric values
-        data-pym-src="https://www.jdoodle.com/embed/v1/6cb9ff2931124a17?hideHeader=1&hideFooter=1"
+        data-pym-src="https://www.jdoodle.com/embed/v1/6cb9ff2931124a17?hideheader=1&hidefooter=1"
         style={{ flex: 1 }}
       />
     </div>

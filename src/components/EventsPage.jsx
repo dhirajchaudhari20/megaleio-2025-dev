@@ -86,7 +86,7 @@ const eventsData = [
     "desc": "Test your strength and technique in this intense arm-wrestling showdown. Compete to overpower your opponent and claim victory.",
     "link": "https://docs.google.com/forms/d/e/1FAIpQLSeAlKec-MR3BgCjm9xRA0SYUH3ELOnx5XZ4V1MtiVjGtIufnA/viewform?usp=preview",
     "rulebook": "/rulebook-megaleio.pdf#arm-wrestling"
-}
+},
 
 
 

@@ -4,7 +4,7 @@ import "@fontsource/roboto"; // Using a modern sans-serif font for a serious ton
 
 // -- SCHEDULE DATA --
 const scheduleData = {
-<<<<<<< HEAD
+
   day1: [
     {
       time: "10:30 AM",

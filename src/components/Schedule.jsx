@@ -94,7 +94,7 @@ const scheduleData = {
     }
   ]
 };
-=======
+
     day1: [
       { 
         time: "10:00 - 10:30",

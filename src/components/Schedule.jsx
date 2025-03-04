@@ -4,6 +4,7 @@ import "@fontsource/roboto"; // Using a modern sans-serif font for a serious ton
 
 // -- SCHEDULE DATA --
 const scheduleData = {
+<<<<<<< HEAD
   day1: [
     {
       time: "10:30 AM",
@@ -93,6 +94,134 @@ const scheduleData = {
     }
   ]
 };
+=======
+    day1: [
+      { 
+        time: "10:00 - 10:30",
+        date: "2025-03-07", 
+        room: "Auditorium", 
+        title: "INAUGURATION"
+      },
+      { 
+        time: "10:30 - 23:59",
+        date: "2025-03-07", 
+        room: "4th Floor Labs", 
+        title: "MEGAHACK 5.0"
+      },
+      { 
+        time: "10:30 - 18:00",
+        date: "2025-03-07", 
+        room: "Auditorium", 
+        title: "BRIDGE IT"
+      },
+      { 
+        time: "10:30 - 18:00",
+        date: "2025-03-07", 
+        room: "HMS Hall", 
+        title: "TECH QUIZ"
+      },
+      { 
+        time: "10:30 - 18:00",
+        date: "2025-03-07", 
+        room: "Classroom", 
+        title: "BUSINESS PLAN PRESENTATION"
+      },
+      { 
+        time: "10:30 - 18:00",
+        date: "2025-03-07", 
+        room: "Labs First Floor", 
+        title: "CODE RELAY"
+      },
+      { 
+        time: "10:30 AM - 11:30 AM",
+        date: "2025-03-07", 
+        room: "Gaming Area", 
+        title: "CLASH ROYALE"
+      },
+      { 
+        time: "10:30 AM - 12:00 PM",
+        date: "2025-03-07", 
+        room: "Gaming Area", 
+        title: "NEON CRICKET"
+      },
+      { 
+        time: "10:30 AM - 1:00 PM",
+        date: "2025-03-07", 
+        room: "Gaming Area", 
+        title: "BGMI"
+      },
+      { 
+        time: "11:00 AM - 12:00 PM",
+        date: "2025-03-07", 
+        room: "Open Ground", 
+        title: "POWER LIFTING/ARM WRESTLING"
+      }
+    ],
+    day2: [
+      { 
+        time: "00:00 - 12:00",
+        date: "2025-03-08", 
+        room: "4th Floor Labs", 
+        title: "MEGAHACK 5.0"
+      },
+      { 
+        time: "10:30 - 18:00",
+        date: "2025-03-08", 
+        room: "Civil Department", 
+        title: "BRIDGE IT"
+      },
+      { 
+        time: "10:30 - 12:30",
+        date: "2025-03-08", 
+        room: "Big Ground", 
+        title: "DRONE DEXTERITY"
+      },
+      { 
+        time: "10:30 - 12:30",
+        date: "2025-03-08", 
+        room: "Quadrangle A", 
+        title: "ROBOMAZE"
+      },
+      { 
+        time: "10:30 - 12:30",
+        date: "2025-03-08", 
+        room: "Quadrangle A", 
+        title: "ROBO SOCCER"
+      },
+      { 
+        time: "10:30 - 12:30",
+        date: "2025-03-08", 
+        room: "Labs First Floor", 
+        title: "BLIND C"
+      },
+      { 
+        time: "10:30 - 12:30",
+        date: "2025-03-08", 
+        room: "Auditorium", 
+        title: "CIVIL JUNKYARD"
+      },
+      { 
+        time: "9:30 AM - 10:30 AM",
+        date: "2025-03-08", 
+        room: "Gaming Area", 
+        title: "CLASH ROYALE"
+      },
+      { 
+        time: "9:30 AM - 11:00 AM",
+        date: "2025-03-08", 
+        room: "Gaming Area", 
+        title: "NEON CRICKET"
+      },
+      { 
+        time: "9:30 AM - 12:00 PM",
+        date: "2025-03-08", 
+        room: "Gaming Area", 
+        title: "BGMI"
+      }
+    ]
+  };
+   
+>>>>>>> 3a47504f52362455d703232d0fdd9e0faa54fec8
 
 // -- HELPER FUNCTIONS --
 const getTimeInMinutes = (timeStr) => {
@@ -165,6 +294,7 @@ const EventCard = ({ event }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
   >
+<<<<<<< HEAD
     <div className="text-sm md:text-lg text-gray-400 mb-2">
       {event.time}
     </div>
@@ -174,6 +304,11 @@ const EventCard = ({ event }) => (
     <div className="text-xl md:text-2xl mt-2 text-center">
       {event.title}
     </div>
+=======
+    <div className="text-sm md:text-lg text-yellow-400 font-bold text-center mb-2">{event.time}</div>
+    <div className="text-sm text-gray-300 text-center mb-4">Venue: {event.room}</div>
+    <div className="text-2xl md:text-4xl mt-2 font-bold text-center text-green-400">{event.title}</div>
+>>>>>>> 3a47504f52362455d703232d0fdd9e0faa54fec8
   </motion.div>
 );
 

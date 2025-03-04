@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JDoodle Embed</title>
+    <script
+      src="https://www.jdoodle.com/assets/jdoodle-pym.min.js"
+      type="text/javascript"
+      async
+    ></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+      }
+      .embed {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div
+        class="embed"
+        data-pym-src="https://www.jdoodle.com/embed/v1/6cb9ff2931124a17?hideheader=1&hidefooter=1"
+      ></div>
+    </div>
+  </body>
+</html>

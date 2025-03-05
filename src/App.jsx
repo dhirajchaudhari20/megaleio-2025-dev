@@ -81,9 +81,7 @@ function App() {
             path="/sjcem-compiler"
             element={
               <>
-                <Navbar />
                 <JDoodleEmbed />
-                <Footer />
               </>
             }
           />

@@ -28,6 +28,7 @@ const JDoodleEmbed = () => {
         data-pym-src="https://www.jdoodle.com/embed/v1/6cb9ff2931124a17?hideheader=1&hidefooter=1"
         style={{ flex: 1 }}
       />
+
     </div>
   );
 };

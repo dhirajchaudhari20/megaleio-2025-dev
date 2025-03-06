@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const JDoodleEditor = () => {
   const [editorUrl, setEditorUrl] = useState("");
@@ -20,49 +21,84 @@ const JDoodleEditor = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundImage: "url('https://i.pinimg.com/originals/be/fc/2f/befc2f780b5b1ca9a8fee1d0548aa084.gif')",
+        backgroundImage:
+          "url('https://i.pinimg.com/originals/be/fc/2f/befc2f780b5b1ca9a8fee1d0548aa084.gif')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         position: "relative",
+        fontFamily: "Minecraft, sans-serif",
       }}
     >
-      <div style={{ display: "flex", gap: "20px" }}>
-        <button
-          onClick={() => openEditor("c")}
+      <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+        <span
           style={{
-            padding: "10px 20px",
-            fontSize: "16px",
+            fontSize: "20px",
+            fontWeight: "bold",
+            color: "#00ff00",
+            textShadow: "2px 2px 5px black",
+          }}
+        >
+          Blind C
+        </span>
+        <motion.button
+          onClick={() => openEditor("c")}
+          whileHover={{ scale: 1.1 }}
+          style={{
+            padding: "12px 25px",
+            fontSize: "18px",
             fontWeight: "bold",
             cursor: "pointer",
-            backgroundColor: "#007bff",
+            backgroundColor: "#4CAF50",
             color: "#fff",
-            border: "none",
-            borderRadius: "5px",
+            border: "3px solid #2E7D32",
+            borderRadius: "10px",
+            boxShadow: "3px 3px 10px rgba(0, 0, 0, 0.3)",
+            fontFamily: "Minecraft, sans-serif",
           }}
         >
           Open C Editor
-        </button>
-        <button
+        </motion.button>
+        <motion.button
           onClick={() => openEditor("cpp")}
+          whileHover={{ scale: 1.1 }}
           style={{
-            padding: "10px 20px",
-            fontSize: "16px",
+            padding: "12px 25px",
+            fontSize: "18px",
             fontWeight: "bold",
             cursor: "pointer",
-            backgroundColor: "#28a745",
+            backgroundColor: "#2196F3",
             color: "#fff",
-            border: "none",
-            borderRadius: "5px",
+            border: "3px solid #1565C0",
+            borderRadius: "10px",
+            boxShadow: "3px 3px 10px rgba(0, 0, 0, 0.3)",
+            fontFamily: "Minecraft, sans-serif",
           }}
         >
           Open C++ Editor
-        </button>
+        </motion.button>
+        <span
+          style={{
+            fontSize: "20px",
+            fontWeight: "bold",
+            color: "#ffcc00",
+            textShadow: "2px 2px 5px black",
+          }}
+        >
+          Code Relay
+        </span>
       </div>
 
       {editorUrl && (
         <iframe
           src={editorUrl}
-          style={{ width: "100vw", height: "80vh", border: "none", marginTop: "20px" }}
+          style={{
+            width: "95vw",
+            height: "75vh",
+            border: "5px solid #333",
+            marginTop: "20px",
+            borderRadius: "10px",
+            boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.5)",
+          }}
           title="JDoodle Editor"
         ></iframe>
       )}

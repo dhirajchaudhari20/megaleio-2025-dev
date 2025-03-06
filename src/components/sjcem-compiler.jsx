@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const JDoodleEmbed = () => {
+const JDoodleCppEmbed = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://www.jdoodle.com/assets/jdoodle-pym.min.js";
@@ -8,7 +8,6 @@ const JDoodleEmbed = () => {
     script.async = true;
     document.body.appendChild(script);
 
-    // Cleanup the script on component unmount
     return () => {
       document.body.removeChild(script);
     };
@@ -25,12 +24,11 @@ const JDoodleEmbed = () => {
       }}
     >
       <div
-        data-pym-src="https://www.jdoodle.com/embed/v1/6cb9ff2931124a17?hideheader=1&hidefooter=1"
+        data-pym-src="https://www.jdoodle.com/embed/v1/cpp?hideheader=1&hidefooter=1"
         style={{ flex: 1 }}
       />
-
     </div>
   );
 };
 
-export default JDoodleEmbed;
+export default JDoodleCppEmbed;

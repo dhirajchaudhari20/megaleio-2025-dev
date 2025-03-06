@@ -99,7 +99,7 @@ const JDoodleEditor = () => {
             borderRadius: "10px",
             boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.5)",
           }}
-          title="JDoodle Editor"
+          title="SJCEM Editor By Dhiraj"
         ></iframe>
       )}
 

@@ -99,7 +99,7 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 1 }}
         >
-          Where Innovation Meets Creativity
+          <p className="font-[Minecraft-light]">Where Innovation Meets Creativity</p>
         </motion.p>
 
 

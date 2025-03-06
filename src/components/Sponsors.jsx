@@ -69,11 +69,23 @@ const sponsors = {
       name: "Gold Sponsor 8",
       img: "/unstop.webp",
       link: "#"
+    },
+    {
+      id: 9,
+      name: "Gold Sponsor 9",
+      img: "/muscle.webp",
+      link: "#"
+    },
+    {
+      id: 10,
+      name: "Gold Sponsor 10",
+      img: "/kea.webp",
+      link: "#"
     }
   ]
 };
 
-const SponsorTier = ({ title, sponsors, boxSize = "w-72 h-60" }) => (
+const SponsorTier = ({ sponsors, boxSize = "w-72 h-60" }) => (
   <div className="w-full my-12 flex flex-col items-center">
     
     <div className="flex flex-wrap justify-center gap-8 mt-4 w-full">
@@ -98,7 +110,7 @@ const SponsorTier = ({ title, sponsors, boxSize = "w-72 h-60" }) => (
             <img
               src={sponsor.img}
               alt={sponsor.name}
-              className="w-auto h-auto max-w-[80%] max-h-[80%] object-contain
+              className="w-auto h-auto max-w-full max-h-full object-contain
                          transition-transform duration-300
                          group-hover:scale-105
                          group-hover:filter group-hover:brightness-110"

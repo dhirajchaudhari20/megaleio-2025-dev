@@ -1,5 +1,3 @@
-import React from 'react';
-
 const sponsors = {
   title: [
     {
@@ -9,50 +7,75 @@ const sponsors = {
       link: "#"
     }
   ],
-//   platinum: [
-//     {
-//       id: 1,
-//       name: "Platinum Sponsor 1",
-//       img: "https://via.placeholder.com/300x150",
-//       link: "#"
-//     },
-//     {
-//       id: 2,
-//       name: "Platinum Sponsor 2",
-//       img: "https://via.placeholder.com/300x150",
-//       link: "#"
-//     }
-//   ],
-//   gold: [
-//     {
-//       id: 1,
-//       name: "Gold Sponsor 1",
-//       img: "https://via.placeholder.com/250x100",
-//       link: "#"
-//     },
-//     {
-//       id: 2,
-//       name: "Gold Sponsor 2",
-//       img: "https://via.placeholder.com/250x100",
-//       link: "#"
-//     }
-//   ]
+  platinum: [
+    {
+      id: 1,
+      name: "Platinum Sponsor 1",
+      img: "/jetking.webp",
+      link: "#"
+    },
+    {
+      id: 2,
+      name: "Platinum Sponsor 2",
+      img: "/Coral.webp",
+      link: "#"
+    }
+  ],
+  gold: [
+    {
+      id: 1,
+      name: "Gold Sponsor 1",
+      img: "/Datsoft.webp",
+      link: "#"
+    },
+    {
+      id: 2,
+      name: "Gold Sponsor 2",
+      img: "/DJFC.webp",
+      link: "#"
+    },
+    {
+      id: 3,
+      name: "Gold Sponsor 3",
+      img: "/aaradhna.webp",
+      link: "#"
+    },
+    {
+      id: 4,
+      name: "Gold Sponsor 4",
+      img: "/ABGroup.webp",
+      link: "#"
+    },
+    {
+      id: 5,
+      name: "Gold Sponsor 5",
+      img: "/TurningPoint.webp",
+      link: "#"
+    },
+    {
+      id: 6,
+      name: "Gold Sponsor 6",
+      img: "/techComputer.webp",
+      link: "#"
+    },
+    {
+      id: 7,
+      name: "Gold Sponsor 7",
+      img: "/ZainGlobal.webp",
+      link: "#"
+    },
+    {
+      id: 8,
+      name: "Gold Sponsor 8",
+      img: "/unstop.webp",
+      link: "#"
+    }
+  ]
 };
 
 const SponsorTier = ({ title, sponsors, boxSize = "w-72 h-60" }) => (
   <div className="w-full my-12 flex flex-col items-center">
-    <div className="relative mb-8 flex justify-center">
-      <h3 className="text-2xl md:text-3xl font-[Minecraft] text-[#39ff14]
-                     px-8 py-3 border-4 border-[#39ff14] 
-                     bg-black/70 backdrop-blur-sm
-                     shadow-[0_0_10px_#39ff14] 
-                     flex items-center justify-center min-h-[60px]
-                     after:content-[''] after:absolute after:inset-0
-                     after:border-4 after:border-[#39ff14]/30 after:-m-2
-                     hover:shadow-[0_0_20px_#39ff14] transition-all duration-300">
-        <span className="block text-center">{title}</span>
-      </h3>
-    </div>
+    
     <div className="flex flex-wrap justify-center gap-8 mt-4 w-full">
       {sponsors.map((sponsor) => (
         <a
@@ -101,27 +124,45 @@ const Sponsors = () => {
                          relative flex items-center justify-center min-h-[80px]
                          after:content-[''] after:absolute after:inset-0
                          after:border-4 after:border-[#39ff14]/30 after:-m-2">
-            <span className="block text-center">Our Sponsors</span>
+            <span className="block text-center">Title Sponsor</span>
           </h2>
         </div>
         
         <SponsorTier 
-          title="Title Sponsors" 
           sponsors={sponsors.title}
           boxSize="w-[500px] h-[300px] md:w-[600px] md:h-[400px]"
         />
-        
-        {/* <SponsorTier 
-          title="Platinum Sponsors" 
+        <div className="flex justify-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-[Minecraft] text-[#39ff14]
+                         px-12 py-6 border-4 border-[#39ff14] 
+                         bg-black/70 backdrop-blur-sm
+                         shadow-[0_0_20px_#39ff14]
+                         relative flex items-center justify-center min-h-[80px]
+                         after:content-[''] after:absolute after:inset-0
+                         after:border-4 after:border-[#39ff14]/30 after:-m-2">
+            <span className="block text-center">Powered By</span>
+          </h2>
+        </div>
+    	<SponsorTier 
           sponsors={sponsors.platinum}
-          boxSize="w-80 h-40"
+          boxSize="w-[400px] h-[200px] md:w-[500px] md:h-[250px]"
         />
         
+		<div className="flex justify-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-[Minecraft] text-[#39ff14]
+                         px-12 py-6 border-4 border-[#39ff14] 
+                         bg-black/70 backdrop-blur-sm
+                         shadow-[0_0_20px_#39ff14]
+                         relative flex items-center justify-center min-h-[80px]
+                         after:content-[''] after:absolute after:inset-0
+                         after:border-4 after:border-[#39ff14]/30 after:-m-2">
+            <span className="block text-center">Sponsors</span>
+          </h2>
+        </div>
         <SponsorTier 
-          title="Gold Sponsors" 
           sponsors={sponsors.gold}
-          boxSize="w-72 h-36"
-        /> */}
+          boxSize="w-[350px] h-[175px] md:w-[400px] md:h-[200px]"
+        />
       </div>
     </div>
   );

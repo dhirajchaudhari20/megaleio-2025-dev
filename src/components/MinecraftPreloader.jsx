@@ -7,11 +7,18 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
   const [showSpinner, setShowSpinner] = useState(false);
   const [progress, setProgress] = useState(0);
   const [dots, setDots] = useState(0);
+  const [shouldRender, setShouldRender] = useState(true);
 
   useEffect(() => {
+    // Check if preloader has already been shown (only for homepage first load)
+    if (localStorage.getItem("preloaderShown")) {
+      setShouldRender(false);
+      if (onFadeComplete) onFadeComplete();
+      return;
+    }
+
     const videoElement = document.getElementById("preloader-video");
     if (videoElement) {
-      // Once the video ends, switch to spinner & fake progress
       videoElement.onended = () => {
         setShowSpinner(true);
         const progressInterval = setInterval(() => {
@@ -19,9 +26,11 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
             if (prev >= 100) {
               clearInterval(progressInterval);
               setFadeOut(true);
+              // Mark preloader as shown so that subsequent visits skip it
+              localStorage.setItem("preloaderShown", "true");
               setTimeout(() => {
                 if (onFadeComplete) onFadeComplete();
-              }, 800); // Wait for fade-out
+              }, 800); // Wait for fade-out animation to complete
               return 100;
             }
             return prev + 5;
@@ -30,7 +39,7 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
       };
     }
 
-    // Animate the "..." in "Logging into the World..."
+    // Animate the dots in "Logging into the World..."
     const dotsInterval = setInterval(() => {
       setDots((prev) => (prev + 1) % 4);
     }, 300);
@@ -40,10 +49,13 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
     };
   }, [onFadeComplete]);
 
+  if (!shouldRender) {
+    return null;
+  }
+
   return (
     <div className={`preloader ${fadeOut ? "fade-out" : ""}`}>
       <Helmet>
-        {/* Make sure the viewport is correct for mobile devices */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style>{`
           html, body {
@@ -67,7 +79,6 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
           .fade-out {
             opacity: 0;
           }
-          /* Video Wrapper: ensures the video can fill the entire container */
           .video-wrapper {
             position: absolute;
             top: 0;
@@ -81,7 +92,6 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            /* Ensures the video covers the entire container */
             min-width: 100%;
             min-height: 100%;
             object-fit: cover;
@@ -89,7 +99,7 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
             display: block;
           }
           .spinner-container {
-            position: relative; /* so it sits above the video */
+            position: relative;
             z-index: 1;
             width: 100%;
             height: 100%;
@@ -108,19 +118,14 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
             animation: spin 1s linear infinite;
           }
           @keyframes spin {
-            0% {
-              transform: rotate(0deg);
-            }
-            100% {
-              transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
           }
           .progress-text {
             color: #00ff00;
             font-size: 1.5rem;
             text-shadow: 0 0 10px #00ff00;
           }
-          /* Responsive adjustments for smaller screens */
           @media (max-width: 600px) {
             .spinner {
               width: 40px;
@@ -135,14 +140,13 @@ const MinecraftPreloader = ({ onFadeComplete }) => {
       </Helmet>
 
       <LazyLoad offset={100} once>
-        {/* If not showing spinner, display the full-screen video */}
         {!showSpinner ? (
           <div className="video-wrapper">
             <video
               id="preloader-video"
               autoPlay
               muted
-              playsInline  // helps autoplay on iOS
+              playsInline
               preload="auto"
             >
               <source src="mainloader.mp4" type="video/mp4" />

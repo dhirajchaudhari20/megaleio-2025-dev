@@ -86,26 +86,28 @@ const sponsors = {
 };
 
 const SponsorTier = ({ sponsors, boxSize = "w-72 h-60" }) => (
-  <div className="w-full my-12 flex flex-col items-center">
-    
+  <div className="w-full my-12 flex flex-col items-center" data-aos="fade-up">
     <div className="flex flex-wrap justify-center gap-8 mt-4 w-full">
       {sponsors.map((sponsor) => (
         <a
           key={sponsor.id}
           href={sponsor.link}
+          data-aos="fade-up"
           className={`${boxSize} group relative 
-                     border-4 border-[#39ff14] 
-                     bg-black/70 backdrop-blur-sm
-                     transition-all duration-300
-                     hover:scale-105 hover:shadow-[0_0_15px_#39ff14]
-                     flex items-center justify-center
-                     p-8 md:p-12
-                     after:content-[''] after:absolute after:inset-0
-                     after:border-4 after:border-[#39ff14]/30 after:-m-2
-                     hover:after:border-[#39ff14]/50
-                     before:content-[''] before:absolute before:inset-0
-                     before:border-2 before:border-[#39ff14]/20 before:-m-1`}
+                      border-4 border-[#39ff14] 
+                      bg-black/70 backdrop-blur-sm
+                      transition-all duration-300
+                      hover:scale-105 hover:shadow-[0_0_15px_#39ff14]
+                      flex items-center justify-center
+                      p-8 md:p-12
+                      after:content-[''] after:absolute after:inset-0
+                      after:border-4 after:border-[#39ff14]/30 after:-m-2
+                      hover:after:border-[#39ff14]/50
+                      before:content-[''] before:absolute before:inset-0
+                      before:border-2 before:border-[#39ff14]/20 before:-m-1`}
         >
+          {/* Background GIF for each sponsor */}
+          <div className="absolute inset-0 z-[-1] bg-[url('/https://i.pinimg.com/originals/ec/d6/72/ecd67255b08380eb534d3f8ee397bc85.gif')] bg-cover opacity-50"></div>
           <div className="w-full h-full flex items-center justify-center">
             <img
               src={sponsor.img}
@@ -155,12 +157,12 @@ const Sponsors = () => {
             <span className="block text-center">Powered By</span>
           </h2>
         </div>
-    	<SponsorTier 
+        <SponsorTier 
           sponsors={sponsors.platinum}
           boxSize="w-[400px] h-[200px] md:w-[500px] md:h-[250px]"
         />
         
-		<div className="flex justify-center mb-16">
+        <div className="flex justify-center mb-16">
           <h2 className="text-4xl md:text-5xl font-[Minecraft] text-[#39ff14]
                          px-12 py-6 border-4 border-[#39ff14] 
                          bg-black/70 backdrop-blur-sm

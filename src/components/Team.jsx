@@ -19,7 +19,7 @@ const teamMembers = [
       "The Vice President envisions a dynamic tech event that encourages innovation, collaboration, and knowledge-sharing. Through engaging talks, workshops, and networking, it will inspire the next wave of advancements in the industry.",
     content: "left",
     media: "right",
-    img: "https://via.placeholder.com/600x400?text=OS"
+    img: "https://i.ibb.co/YFNvBY5p/IMG-6545.png"
   },
   {
     id: 3,

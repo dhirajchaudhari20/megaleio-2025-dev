@@ -1,14 +1,15 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 
 const JDoodleEditor = () => {
-  const [editorUrl, setEditorUrl] = useState("");
-
   const openEditor = (language) => {
+    let editorUrl = "";
     if (language === "c") {
-      setEditorUrl("https://www.jdoodle.com/c-online-compiler");
+      editorUrl = "https://www.jdoodle.com/c-online-compiler";
     } else if (language === "cpp") {
-      setEditorUrl("https://www.jdoodle.com/online-compiler-c++");
+      editorUrl = "https://www.jdoodle.com/c-online-compiler";
+    }
+    if (editorUrl) {
+      window.open(editorUrl, "_blank"); // Opens in a new tab
     }
   };
 
@@ -87,21 +88,6 @@ const JDoodleEditor = () => {
           Code Relay
         </span>
       </div>
-
-      {editorUrl && (
-        <iframe
-          src={editorUrl}
-          style={{
-            width: "95vw",
-            height: "75vh",
-            border: "5px solid #333",
-            marginTop: "20px",
-            borderRadius: "10px",
-            boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.5)",
-          }}
-          title="SJCEM Editor By Dhiraj"
-        ></iframe>
-      )}
 
       <footer
         style={{

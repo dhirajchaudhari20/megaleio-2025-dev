@@ -49,7 +49,7 @@ const teamMembers = [
       "The Treasurer envisions a financially sound technical event, ensuring prudent budgeting, transparent financial transactions, and responsible resource allocation. Their goal is to maintain fiscal integrity, enabling the event to thrive and meet its objectives.",
     content: "right",
     media: "left",
-    img: "https://i.ibb.co/HT2xBHDG/IMG-6555.png"
+    img: "https://i.ibb.co/MDVVZSYj/IMG-6555.jpg"
   },
   {
     id: 6,

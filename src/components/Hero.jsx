@@ -37,7 +37,7 @@ const Hero = () => {
     playsInline
     onError={(e) => {
       e.target.onerror = null;
-      e.target.outerHTML = `<img class="w-full h-full object-cover" src="/back-loader-poster.jpg" alt="Fallback Image" />`;
+      e.target.outerHTML = `<img class="w-full h-full object-cover" src="/back-1.gif alt="Fallback Image" />`;
     }}
   >
     <source src="/back-loader.mp4" type="video/mp4" />

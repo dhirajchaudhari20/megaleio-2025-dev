@@ -27,17 +27,22 @@ const Hero = () => {
         }}
       />
 
-{/* Blurred GIF Background with Fallback Image */}
+{/* Video Background with Fallback Image */}
 <div className="absolute inset-0 flex">
-  <img
-    className="w-full h-full object-cover filter blur-md"
-    src="/back-1.gif"
-    alt="Background GIF"
+  <video
+    className="w-full h-full object-cover"
+    autoPlay
+    loop
+    muted
+    playsInline
     onError={(e) => {
       e.target.onerror = null;
-      e.target.src = "/back-loader-poster.jpg";
+      e.target.outerHTML = `<img class="w-full h-full object-cover" src="/back-loader-poster.jpg" alt="Fallback Image" />`;
     }}
-  />
+  >
+    <source src="/backloader.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
   <div className="absolute inset-0 bg-gradient-to-t from-[#1D1C1B]/40 to-transparent z-10"></div>
 </div>
 

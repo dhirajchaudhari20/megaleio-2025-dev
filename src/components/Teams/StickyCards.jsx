@@ -3,7 +3,7 @@ import teamData from "../../data/teamData";
 import { FaChevronLeft, FaChevronRight, FaLinkedin } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import fogVideo from "../../assets/vecteezy_dark-forest-and-castle-in-misty-foggy-day_1627233.mov";
+import fogVideo from "../../assets/hero-bg-fog.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -359,11 +359,10 @@ const StickyCards = () => {
                 <button
                   key={index}
                   onClick={() => setMobileIndex(index)}
-                  className={`h-1.5 transition-all ${
-                    index === mobileIndex
+                  className={`h-1.5 transition-all ${index === mobileIndex
                       ? "w-7 bg-red-400"
                       : "w-3 bg-red-900/70"
-                  }`}
+                    }`}
                   aria-label={`Go to member ${index + 1}`}
                 />
               ))}

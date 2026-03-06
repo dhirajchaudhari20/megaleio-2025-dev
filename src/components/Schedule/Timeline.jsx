@@ -4,8 +4,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 /* ── Videos ───────────────────────────────────────────────── */
-import stormVideo from "../../assets/vecteezy_storm-during-night-in-the-forest_1625786.mov";
-import fogVideo from "../../assets/vecteezy_dark-forest-and-castle-in-misty-foggy-day_1627233.mov";
+import stormVideo from "../../assets/hero-bg-storm.mp4";
+import fogVideo from "../../assets/hero-bg-fog.mp4";
 
 /* ── Images ───────────────────────────────────────────────── */
 import logo from "../../assets/images/logo.png";
@@ -615,9 +615,8 @@ const Timeline = () => {
                     borderRadius: "0 0 50% 50%",
                     background: c,
                     "--bulb": c,
-                    animation: `bulbGlow ${1.5 + (i % 3) * 0.4}s ${
-                      i * 0.2
-                    }s ease-in-out infinite`,
+                    animation: `bulbGlow ${1.5 + (i % 3) * 0.4}s ${i * 0.2
+                      }s ease-in-out infinite`,
                     position: "relative",
                     zIndex: 1,
                   }}
@@ -972,18 +971,16 @@ const Timeline = () => {
 
                       {/* ── Event Card ────────────────────────────── */}
                       <div
-                        className={`tl-card ${
-                          isPriority ? "tl-priority-card" : ""
-                        }`}
+                        className={`tl-card ${isPriority ? "tl-priority-card" : ""
+                          }`}
                         style={{
                           background: isPriority
                             ? "linear-gradient(145deg, rgba(220,38,38,0.08) 0%, rgba(40,0,20,0.14) 50%, rgba(5,0,5,0.4) 100%)"
                             : "linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(20,5,15,0.06) 50%, rgba(5,0,5,0.3) 100%)",
-                          border: `1px solid ${
-                            isPriority
+                          border: `1px solid ${isPriority
                               ? "rgba(220,38,38,0.28)"
                               : "rgba(255,255,255,0.05)"
-                          }`,
+                            }`,
                           borderRadius: 16,
                           padding: "1.3rem 1.4rem",
                           backdropFilter: "blur(12px)",
@@ -1284,9 +1281,8 @@ const Timeline = () => {
                     borderRadius: "0 0 50% 50%",
                     background: c,
                     "--bulb": c,
-                    animation: `bulbGlow ${1.8 + (i % 3) * 0.3}s ${
-                      i * 0.25
-                    }s ease-in-out infinite`,
+                    animation: `bulbGlow ${1.8 + (i % 3) * 0.3}s ${i * 0.25
+                      }s ease-in-out infinite`,
                   }}
                 />
               ))}

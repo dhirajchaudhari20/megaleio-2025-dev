@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import fogVideo from "../../assets/vecteezy_dark-forest-and-castle-in-misty-foggy-day_1627233.mov";
 import stormVideo from "../../assets/vecteezy_storm-during-night-in-the-forest_1625786.mov";
 import vecna from "../../assets/vecna_tsp.png";
@@ -56,142 +57,144 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      /* ── 1. Scroll parallax bg ── */
-      gsap.to(bgRef.current, {
-        yPercent: -16,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+  useGSAP(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    /* ── 1. Scroll parallax bg ── */
+    gsap.to(bgRef.current, {
+      yPercent: -16,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
 
-      /* ── 1b. Storm video slower playback ── */
-      if (stormRef.current) stormRef.current.playbackRate = 0.7;
+    /* ── 1b. Storm video slower playback ── */
+    if (stormRef.current) stormRef.current.playbackRate = 0.7;
 
-      /* ── 2. Single slow fog drift ── */
-      gsap.to(fogRef.current, {
-        x: "-8%",
-        duration: 28,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
+    /* ── 2. Single slow fog drift ── */
+    gsap.to(fogRef.current, {
+      x: "-8%",
+      duration: 28,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
 
-      /* ── 3. Heading letter stagger ── */
-      gsap.from(line1Ref.current.querySelectorAll(".letter"), {
-        opacity: 0,
-        y: 50,
-        rotateX: -40,
-        stagger: 0.05,
-        duration: 1.2,
-        ease: "power4.out",
-        delay: 0.4,
-      });
-      gsap.from(line2Ref.current.querySelectorAll(".letter"), {
-        opacity: 0,
-        y: 50,
-        rotateX: -40,
-        stagger: 0.05,
-        duration: 1.2,
-        ease: "power4.out",
-        delay: 0.8,
-      });
+    /* ── 3. Heading letter stagger ── */
+    gsap.from(line1Ref.current.querySelectorAll(".letter"), {
+      opacity: 0,
+      y: 50,
+      rotateX: -40,
+      stagger: 0.05,
+      duration: 1.2,
+      ease: "power4.out",
+      delay: 0.4,
+    });
+    gsap.from(line2Ref.current.querySelectorAll(".letter"), {
+      opacity: 0,
+      y: 50,
+      rotateX: -40,
+      stagger: 0.05,
+      duration: 1.2,
+      ease: "power4.out",
+      delay: 0.8,
+    });
 
-      /* ── 4. Card reveal ── */
-      gsap.from(cardRef.current, {
-        opacity: 0,
-        y: 30,
-        duration: 1.0,
-        ease: "power3.out",
-        delay: 1.5,
-      });
+    /* ── 4. Card reveal ── */
+    gsap.from(cardRef.current, {
+      opacity: 0,
+      y: 30,
+      duration: 1.0,
+      ease: "power3.out",
+      delay: 1.5,
+    });
 
-      /* ── 4b. Vecna rises from below — cinematic entrance ── */
-      gsap.from(vecnaRef.current, {
-        y: 200,
-        opacity: 0,
-        duration: 2.6,
-        ease: "power3.out",
-        delay: 0.2,
-      });
+    /* ── 4b. Vecna rises from below — cinematic entrance ── */
+    gsap.from(vecnaRef.current, {
+      y: 200,
+      opacity: 0,
+      duration: 2.6,
+      ease: "power3.out",
+      delay: 0.2,
+    });
 
-      /* ── 5. Heading glow breathe (very subtle) ── */
-      gsap.to(line1Ref.current, {
-        textShadow: "0 0 40px rgba(220,20,60,0.45)",
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: 1.8,
-      });
+    /* ── 5. Heading glow breathe (very subtle) ── */
+    gsap.to(line1Ref.current, {
+      textShadow: "0 0 40px rgba(220,20,60,0.45)",
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: 1.8,
+    });
 
-      /* ── 6. Random lightning flicker ── */
-      const doLightning = () => {
-        const tl = gsap.timeline({
+    /* ── 6. Random lightning flicker ── */
+    const doLightning = () => {
+      const tl = gsap.timeline({
+        onComplete: () =>
+          gsap.delayedCall(Math.random() * 12 + 6, doLightning),
+      });
+      tl.to(lightningRef.current, { opacity: 0.055, duration: 0.04 })
+        .to(lightningRef.current, { opacity: 0, duration: 0.08 })
+        .to(lightningRef.current, { opacity: 0.035, duration: 0.04 })
+        .to(lightningRef.current, { opacity: 0, duration: 0.14 });
+    };
+    gsap.delayedCall(4, doLightning);
+
+    /* ── 7. Shadow silhouette — psychological tension ── */
+    const doShadow = () => {
+      gsap
+        .timeline({
           onComplete: () =>
-            gsap.delayedCall(Math.random() * 12 + 6, doLightning),
+            gsap.delayedCall(Math.random() * 20 + 20, doShadow),
+        })
+        .to(shadowRef.current, {
+          opacity: 0.07,
+          duration: 1.2,
+          ease: "power2.in",
+        })
+        .to(shadowRef.current, {
+          opacity: 0,
+          duration: 1.8,
+          ease: "power2.out",
+          delay: 0.8,
         });
-        tl.to(lightningRef.current, { opacity: 0.055, duration: 0.04 })
-          .to(lightningRef.current, { opacity: 0, duration: 0.08 })
-          .to(lightningRef.current, { opacity: 0.035, duration: 0.04 })
-          .to(lightningRef.current, { opacity: 0, duration: 0.14 });
-      };
-      gsap.delayedCall(4, doLightning);
+    };
+    gsap.delayedCall(8, doShadow);
 
-      /* ── 7. Shadow silhouette — psychological tension ── */
-      const doShadow = () => {
-        gsap
-          .timeline({
-            onComplete: () =>
-              gsap.delayedCall(Math.random() * 20 + 20, doShadow),
-          })
-          .to(shadowRef.current, {
-            opacity: 0.07,
-            duration: 1.2,
-            ease: "power2.in",
-          })
-          .to(shadowRef.current, {
-            opacity: 0,
-            duration: 1.8,
-            ease: "power2.out",
-            delay: 0.8,
-          });
-      };
-      gsap.delayedCall(8, doShadow);
+    /* ── 8. Dimension tear breathe ── */
+    gsap.to(tearRef.current, {
+      filter: "blur(1.5px) brightness(1.3)",
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
 
-      /* ── 8. Dimension tear breathe ── */
-      gsap.to(tearRef.current, {
-        filter: "blur(1.5px) brightness(1.3)",
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
+    /* ── 9. Dust particles ── */
+    particlesRef.current.forEach((el) => {
+      if (!el) return;
+      gsap.fromTo(
+        el,
+        { y: 0, opacity: parseFloat(el.dataset.opacity) },
+        {
+          y: `-${Math.random() * 180 + 80}px`,
+          opacity: 0,
+          duration: parseFloat(el.dataset.duration),
+          delay: parseFloat(el.dataset.delay),
+          repeat: -1,
+          ease: "none",
+          repeatDelay: Math.random() * 6 + 2,
+        },
+      );
+    });
+  }, { scope: sectionRef });
 
-      /* ── 9. Dust particles ── */
-      particlesRef.current.forEach((el) => {
-        if (!el) return;
-        gsap.fromTo(
-          el,
-          { y: 0, opacity: parseFloat(el.dataset.opacity) },
-          {
-            y: `-${Math.random() * 180 + 80}px`,
-            opacity: 0,
-            duration: parseFloat(el.dataset.duration),
-            delay: parseFloat(el.dataset.delay),
-            repeat: -1,
-            ease: "none",
-            repeatDelay: Math.random() * 6 + 2,
-          },
-        );
-      });
-    }, sectionRef);
-
+  useEffect(() => {
     /* ── 10. Mouse parallax (desktop only) ── */
     const onMouseMove = (e) => {
       if (window.innerWidth < 768) return;
@@ -218,7 +221,6 @@ const Hero = () => {
     window.addEventListener("mousemove", onMouseMove);
 
     return () => {
-      ctx.revert();
       window.removeEventListener("mousemove", onMouseMove);
     };
   }, []);
@@ -631,11 +633,9 @@ const Hero = () => {
                 >
                   <span
                     ref={line1Ref}
-                    className="block"
+                    className="text-glow-red block"
                     style={{
                       width: "100%",
-                      color: "#DC143C",
-                      textShadow: "0 0 60px rgba(220,20,60,0.25)",
                     }}
                   >
                     {splitText("ENTER")}
@@ -657,22 +657,10 @@ const Hero = () => {
                 {/* ── cinematic description ── */}
                 <div
                   ref={cardRef}
-                  className="speak-bubble"
-                  style={{ position: "relative", paddingLeft: "20px" }}
+                  className="glass-card shadow-2xl p-6 md:p-8 rounded-3xl"
+                  style={{ position: "relative" }}
                 >
-                  {/* left accent bar — the only visual connector */}
-                  <div
-                    className="accent-bar"
-                    style={{
-                      position: "absolute",
-                      left: 0,
-                      top: "4px",
-                      bottom: "4px",
-                      width: "2px",
-                      background:
-                        "linear-gradient(to bottom, rgba(220,20,60,0.7), rgba(180,10,20,0.2))",
-                    }}
-                  />
+
 
                   <p
                     className="leading-loose"

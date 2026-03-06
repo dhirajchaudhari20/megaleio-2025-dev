@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useScrollReveal } from "../../hook/useScrollReveal";
 import bgImage from "../../assets/display/bg1.png";
 
 const Countdown = () => {
@@ -64,9 +65,14 @@ const Countdown = () => {
       stagger: 0.1,
       duration: 1.2,
       ease: "back.out(1.7)",
-      delay: 0.5,
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+      }
     });
   }, { scope: sectionRef });
+
+  useScrollReveal(boxesRef.current, { stagger: 0.1, y: 30 });
 
   return (
     <section
@@ -107,12 +113,9 @@ const Countdown = () => {
 
         <h1
           ref={titleRef}
-          className="font-extrabold mb-4 tracking-[0.25em] uppercase select-none"
+          className="text-glow-red mb-6 uppercase select-none leading-tight"
           style={{
-            fontFamily: "'Cinzel Decorative', 'Cinzel', serif",
-            fontSize: "clamp(1.5rem, 5vw, 3.8rem)",
-            color: "#DC143C",
-            textShadow: "0 0 50px rgba(220,20,60,0.5), 0 0 100px rgba(180,0,20,0.3)",
+            fontSize: "clamp(1.8rem, 6vw, 4.2rem)",
           }}
         >
           Countdown to Megaleio 2026

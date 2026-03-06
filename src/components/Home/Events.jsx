@@ -4,15 +4,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { eventImages } from "../../data/EventImages";
 import { useNavigate } from "react-router-dom";
 import { useReveal } from "../../hook/reveal";
+import { useGSAP } from "@gsap/react";
+import { useMagnetic } from "../../hook/useMagnetic";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function EventsGallery() {
-  const sectionRef = useRef(null);
   const colsRef = useRef([]);
+  const btnRef = useRef(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useMagnetic(btnRef, 0.35);
+
+  useGSAP(() => {
     const ctx = gsap.context(() => {
       const section = sectionRef.current;
 
@@ -51,9 +55,7 @@ export default function EventsGallery() {
           0
         );
       });
-    }, sectionRef);
-
-    return () => ctx.revert();
+    }, { scope: sectionRef });
   }, []);
 
   const columns = 4;
@@ -77,10 +79,9 @@ export default function EventsGallery() {
   useReveal(".reveal");
 
   return (
-    <section ref={sectionRef} className="py-32 bg-black">
+    <section ref={sectionRef} className="py-40 bg-black relative">
       <div className="reveal max-w-[1400px] mx-auto px-6">
-
-        <div className="frame relative h-[600px] overflow-hidden rounded-3xl bg-[#111] p-6 isolate">
+        <div className="frame relative h-[650px] overflow-hidden rounded-[2.5rem] bg-[#050505] p-6 isolate border border-white/5">
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 h-full">
             {splitImages.map((col, i) => (
@@ -103,25 +104,27 @@ export default function EventsGallery() {
           </div>
 
           {/* Overlay Content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-            <h2 className="text-white text-4xl md:text-6xl font-bold text-center">
-              Explore Our <br /> Event Highlights
-            </h2>
+          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-20">
+            <div className="glass-card p-10 md:p-16 rounded-[2rem] flex flex-col items-center pointer-events-auto">
+              <h2 className="text-glow-red text-4xl md:text-7xl font-bold text-center leading-tight">
+                Explore Our <br /> <span className="text-white">Event Highlights</span>
+              </h2>
 
-            <button
-              onClick={() => navigate("/event")}
-              className="group relative mt-8 bg-red-600 text-white px-8 py-4 rounded-xl pointer-events-auto transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(255,0,0,0.3)]"
-            >
-              <span className="relative z-10 font-medium tracking-wide">
-                View All Events
-              </span>
-
-              <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
-                →
-              </span>
-
-              <span className="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </button>
+              <button
+                ref={btnRef}
+                onClick={() => navigate("/event")}
+                className="btn-premium group mt-10 text-white px-10 py-5 rounded-2xl pointer-events-auto transition-all duration-500 shadow-2xl"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="relative z-10 font-bold tracking-[0.2em] uppercase text-sm">
+                    View All Events
+                  </span>
+                  <span className="text-xl transition-transform duration-300 group-hover:translate-x-2">
+                    →
+                  </span>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>

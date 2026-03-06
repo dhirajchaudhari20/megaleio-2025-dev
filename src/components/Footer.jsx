@@ -1,6 +1,6 @@
 import React from "react";
 import { FaInstagram, FaYoutube, FaFacebookF } from "react-icons/fa";
-import logo from "../assets/images/logo.png"; // Import the logo
+import logo from "../assets/images/logo.webp"; // Import the logo
 import "./Footer.css"; // Import the CSS file for styling
 
 const Footer = () => {

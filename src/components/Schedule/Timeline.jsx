@@ -8,10 +8,10 @@ import stormVideo from "../../assets/hero-bg-storm.mp4";
 import fogVideo from "../../assets/hero-bg-fog.mp4";
 
 /* ── Images ───────────────────────────────────────────────── */
-import logo from "../../assets/images/logo.png";
-import titleImg from "../../assets/img1.png";
-import darkForest from "../../assets/Dark forest with subtle red fog.jpg";
-import emptyStreet from "../../assets/empty-street-at-night-with-red-lights.jpg";
+import logo from "../../assets/images/logo.webp";
+import titleImg from "../../assets/img1.webp";
+import darkForest from "../../assets/Dark forest with subtle red fog.webp";
+import emptyStreet from "../../assets/empty-street-at-night-with-red-lights.webp";
 import bg2 from "../../assets/display/bg2.webp";
 import vecna from "../../assets/vecna_tsp.webp";
 

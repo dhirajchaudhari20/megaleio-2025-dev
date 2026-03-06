@@ -10,12 +10,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-import img1 from "../../assets/glimpse/1.jpeg";
-import img2 from "../../assets/glimpse/2.jpeg";
-import img3 from "../../assets/glimpse/3.jpeg";
-import img4 from "../../assets/glimpse/4.jpeg";
-import img5 from "../../assets/glimpse/5.jpeg";
-import img6 from "../../assets/glimpse/6.jpeg";
+import img1 from "../../assets/glimpse/1.webp";
+import img2 from "../../assets/glimpse/2.webp";
+import img3 from "../../assets/glimpse/3.webp";
+import img4 from "../../assets/glimpse/4.webp";
+import img5 from "../../assets/glimpse/5.webp";
+import img6 from "../../assets/glimpse/6.webp";
 
 
 gsap.registerPlugin(ScrollTrigger);

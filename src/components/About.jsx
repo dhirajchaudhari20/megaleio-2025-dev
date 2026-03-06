@@ -17,19 +17,19 @@ const About = () => {
 
         {/* Content Wrapper */}
         <div className="relative flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-6xl px-6 py-10">
-          
+
           {/* Minecraft-Themed Image */}
           <div className="relative md:w-1/2 border-4 border-green-500 pixel-border shadow-xl shadow-green-600 rounded-lg">
-            <img 
-              className="w-full h-full object-cover rounded-md" 
-              src="/About.jpg" 
+            <img
+              className="w-full h-full object-cover rounded-md"
+              src="/About.jpg"
               alt="Minecraft Character Adventure"
               loading="lazy"
             />
           </div>
 
           {/* Text Section */}
-          <div 
+          <div
             className="md:w-1/2 flex flex-col items-center text-center px-4"
             data-aos="fade-up"
           >
@@ -47,12 +47,12 @@ const About = () => {
               shadow-lg shadow-green-500 
               text-lg leading-relaxed max-w-2xl
             ">
-              Megaleio is a National Level Technical Event that unites brilliant minds across the country to showcase their 
+              Megaleio is a National Level Technical Event that unites brilliant minds across the country to showcase their
               skills, explore the latest trends in technology, and engage with industry experts.
             </p>
 
             {/* Pixel-Themed Button */}
-            <a 
+            <a
               href="/events"
               className="
                 inline-block 
@@ -84,7 +84,7 @@ const About = () => {
       {/* Custom CSS for Pixel Effects */}
       <style jsx>{`
         .pixel-border {
-          border-image: url('/pixel-border.png') 10 round;
+          border-width: 4px;
         }
         .pixel-button {
           transition: transform 0.2s ease;
@@ -93,12 +93,10 @@ const About = () => {
           transform: scale(1.1);
         }
         .pixel-border-top {
-          background-image: url('/grass-border.png');
-          background-repeat: repeat-x;
+          border-bottom: 4px solid #166534;
         }
         .pixel-border-bottom {
-          background-image: url('/dirt-border.png');
-          background-repeat: repeat-x;
+          border-top: 4px solid #166534;
         }
       `}</style>
     </>

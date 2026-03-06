@@ -107,7 +107,7 @@ const SponsorTier = ({ sponsors, boxSize = "w-72 h-60" }) => (
                       before:border-2 before:border-[#39ff14]/20 before:-m-1`}
         >
           {/* Background GIF for each sponsor */}
-          <div className="absolute inset-0 z-[-1] bg-[url('/https://i.pinimg.com/originals/ec/d6/72/ecd67255b08380eb534d3f8ee397bc85.gif')] bg-cover opacity-50"></div>
+          <div className="absolute inset-0 z-[-1] bg-[url('https://i.pinimg.com/originals/ec/d6/72/ecd67255b08380eb534d3f8ee397bc85.gif')] bg-cover opacity-50"></div>
           <div className="w-full h-full flex items-center justify-center">
             <img
               src={sponsor.img}
@@ -127,7 +127,6 @@ const SponsorTier = ({ sponsors, boxSize = "w-72 h-60" }) => (
 const Sponsors = () => {
   return (
     <div className="w-screen min-h-screen bg-[#262423] bg-opacity-95 
-                    bg-[url('/minecraft-pattern.png')] bg-repeat bg-[length:100px_100px]
                     flex justify-center py-24">
       <div className="w-[90%] max-w-7xl">
         <div className="flex justify-center mb-16">
@@ -141,8 +140,8 @@ const Sponsors = () => {
             <span className="block text-center">Title Sponsor</span>
           </h2>
         </div>
-        
-        <SponsorTier 
+
+        <SponsorTier
           sponsors={sponsors.title}
           boxSize="w-[500px] h-[300px] md:w-[600px] md:h-[400px]"
         />
@@ -157,11 +156,11 @@ const Sponsors = () => {
             <span className="block text-center">Powered By</span>
           </h2>
         </div>
-        <SponsorTier 
+        <SponsorTier
           sponsors={sponsors.platinum}
           boxSize="w-[400px] h-[200px] md:w-[500px] md:h-[250px]"
         />
-        
+
         <div className="flex justify-center mb-16">
           <h2 className="text-4xl md:text-5xl font-[Minecraft] text-[#39ff14]
                          px-12 py-6 border-4 border-[#39ff14] 
@@ -173,7 +172,7 @@ const Sponsors = () => {
             <span className="block text-center">Sponsors</span>
           </h2>
         </div>
-        <SponsorTier 
+        <SponsorTier
           sponsors={sponsors.gold}
           boxSize="w-[350px] h-[175px] md:w-[400px] md:h-[200px]"
         />

@@ -30,8 +30,8 @@ const Navbar = () => {
   /* â”€â”€ Logo / title scroll-in animation (unchanged logic) â”€â”€ */
   useGSAP(() => {
     ScrollTrigger.getAll().forEach((t) => t.kill());
-    gsap.killTweensOf(["#logo", "#title"]);
-    gsap.set(["#logo", "#title"], { clearProps: "all" });
+    gsap.killTweensOf([".nav-logo", ".nav-title"]);
+    gsap.set([".nav-logo", ".nav-title"], { clearProps: "all" });
 
     if (!isHome) return;
 
@@ -44,22 +44,22 @@ const Navbar = () => {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px)", () => {
-        gsap.from("#logo", {
+        gsap.from(".nav-logo", {
           x: 0,
           y: window.innerHeight * 0.45,
           scale: window.innerWidth / 200,
           scrollTrigger: {
-            trigger: "#logo",
+            trigger: ".nav-logo",
             start: "center 50%",
             scrub: 2,
             invalidateOnRefresh: true,
           },
         });
-        gsap.from("#title", {
+        gsap.from(".nav-title", {
           y: window.innerHeight * 0.75,
           scale: window.innerWidth / 500,
           scrollTrigger: {
-            trigger: "#logo",
+            trigger: ".nav-logo",
             start: "center 50%",
             scrub: 2,
             invalidateOnRefresh: true,
@@ -68,22 +68,22 @@ const Navbar = () => {
       });
 
       mm.add("(max-width: 767px)", () => {
-        gsap.from("#logo", {
+        gsap.from(".nav-logo", {
           x: 0,
           y: window.innerHeight * 0.4,
           scale: window.innerWidth / 70,
           scrollTrigger: {
-            trigger: "#logo",
+            trigger: ".nav-logo",
             start: "center 40%",
             scrub: 1,
             invalidateOnRefresh: true,
           },
         });
-        gsap.from("#title", {
+        gsap.from(".nav-title", {
           y: window.innerHeight * 0.7,
           scale: window.innerWidth / 300,
           scrollTrigger: {
-            trigger: "#logo",
+            trigger: ".nav-logo",
             start: "center 40%",
             scrub: 2,
             invalidateOnRefresh: true,
@@ -172,11 +172,10 @@ const Navbar = () => {
     `relative tracking-[0.18em] uppercase transition-all duration-300
      after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-px after:bg-red-700
      after:transition-all after:duration-300
-     ${
-       isActive
-         ? "text-red-500 after:w-full"
-         : "text-[#c0a0a0] hover:text-red-400 after:w-0 hover:after:w-full"
-     }`;
+     ${isActive
+      ? "text-red-500 after:w-full"
+      : "text-[#c0a0a0] hover:text-red-400 after:w-0 hover:after:w-full"
+    }`;
 
   return (
     <>
@@ -259,10 +258,10 @@ const Navbar = () => {
 
             {/* CENTER â€” Logo + Title (GSAP targets: #logo, #title) */}
             <div className="flex flex-col items-center px-5 py-0.5 gap-0.5">
-              <div id="logo">
+              <div className="nav-logo">
                 <img src={logo} alt="logo" className="h-10 md:h-12 w-auto" />
               </div>
-              <div id="title" className="flex items-center justify-center">
+              <div className="nav-title flex items-center justify-center">
                 <img
                   src={title}
                   alt="Megalio 2026"
@@ -287,10 +286,10 @@ const Navbar = () => {
           <div className="relative flex md:hidden items-center justify-center px-4 py-1.5">
             {/* Logo + title — absolutely centered */}
             <div className="flex items-center gap-2.5">
-              <div id="logo">
+              <div className="nav-logo">
                 <img src={logo} alt="logo" className="h-9 w-auto" />
               </div>
-              <div id="title">
+              <div className="nav-title">
                 <img src={title} alt="Megalio 2026" className="h-7 w-auto" />
               </div>
             </div>

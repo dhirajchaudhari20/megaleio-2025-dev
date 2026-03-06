@@ -55,7 +55,8 @@ const Footer = () => {
             />
             <label htmlFor="phone">Phone Number</label>
             <input
-              type="phone" maxlength="10"
+              type="tel"
+              maxLength="10"
               id="phone"
               placeholder="Phone Number"
               className="footer-input"

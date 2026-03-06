@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef } from "react";
+﻿import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import fogVideo from "../../assets/vecteezy_dark-forest-and-castle-in-misty-foggy-day_1627233.mov";
@@ -48,6 +48,13 @@ const Hero = () => {
   const btnRef = useRef(null);
   const vecnaRef = useRef(null);
   const particlesRef = useRef([]);
+  const [showVideo, setShowVideo] = useState(false);
+
+  useEffect(() => {
+    // Defer heavy videos so main thread doesn't choke on load
+    const timer = setTimeout(() => setShowVideo(true), 150);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -288,20 +295,22 @@ const Hero = () => {
           className="absolute pointer-events-none"
           style={{ inset: "-10%", willChange: "transform" }}
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              filter: "brightness(0.75) contrast(1.1) saturate(0.9)",
-            }}
-          >
-            <source src={fogVideo} type="video/mp4" />
-          </video>
+          {showVideo && (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                filter: "brightness(0.75) contrast(1.1) saturate(0.9)",
+              }}
+            >
+              <source src={fogVideo} type="video/mp4" />
+            </video>
+          )}
         </div>
 
         {/* ░ L1b · Storm night forest VIDEO — blended overlay (hidden on mobile) ░ */}
@@ -309,21 +318,23 @@ const Hero = () => {
           className="absolute inset-0 pointer-events-none hidden md:block"
           style={{ mixBlendMode: "overlay", opacity: 0.22, zIndex: 1 }}
         >
-          <video
-            ref={stormRef}
-            autoPlay
-            muted
-            loop
-            playsInline
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              filter: "brightness(0.5) contrast(1.2)",
-            }}
-          >
-            <source src={stormVideo} type="video/mp4" />
-          </video>
+          {showVideo && (
+            <video
+              ref={stormRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                filter: "brightness(0.5) contrast(1.2)",
+              }}
+            >
+              <source src={stormVideo} type="video/mp4" />
+            </video>
+          )}
         </div>
 
         {/* ░ L2 · Heavy dark overlay — kills the red blanket ░ */}

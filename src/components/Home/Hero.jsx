@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import fogVideo from "../../assets/hero-bg-fog.mp4";
 import stormVideo from "../../assets/hero-bg-storm.mp4";
-import vecna from "../../assets/vecna_tsp.png";
+import vecna from "../../assets/vecna_tsp.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 

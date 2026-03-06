@@ -1,5 +1,5 @@
 import React from "react";
-import contactBg from "../../assets/display/contactus.png";
+import contactBg from "../../assets/display/contactus.webp";
 
 const SpookyContactPoster = () => {
   return (
@@ -36,7 +36,7 @@ const SpookyContactPoster = () => {
           </h2>
         </div>
 
-        
+
         {/* FACULTY COORDINATOR SECTION */}
         <div className="w-full max-w-xl flex flex-col items-center mb-12 border-t border-red-900/50 pt-8">
           <h3 className="text-xl md:text-2xl font-bold tracking-widest text-[#ff5733] mb-6 drop-shadow-[0_2px_4px_rgba(255,0,0,0.8)]">
@@ -54,7 +54,7 @@ const SpookyContactPoster = () => {
           </div>
         </div>
 
-          {/* TEAM MEMBERS LIST */}
+        {/* TEAM MEMBERS LIST */}
         <div className="w-full max-w-xl flex flex-col gap-4 text-base sm:text-lg md:text-xl leading-tight font-semibold mb-12 px-2 sm:px-4 items-center justify-center mb-12 border-t border-red-900/50 pt-8">
           <TeamRow name="Dev Sarkar" role="President" phone="+917028455752" />
           <TeamRow
@@ -84,15 +84,15 @@ const SpookyContactPoster = () => {
           {/* MAP IMAGE PLACEHOLDER */}
           <div className="w-full h-64 md:h-80 rounded-sm overflow-hidden relative">
 
-    <iframe
-      src="https://www.google.com/maps?q=19.7060402,72.7835079&z=16&output=embed"
-      className="w-full h-full border-0 object-cover opacity-100 "
-      loading="lazy"
-      allowFullScreen
-      referrerPolicy="no-referrer-when-downgrade"
-    ></iframe>
+            <iframe
+              src="https://www.google.com/maps?q=19.7060402,72.7835079&z=16&output=embed"
+              className="w-full h-full border-0 object-cover opacity-100 "
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
 
-  </div>
+          </div>
 
           {/* ADDRESS TEXT (On the parchment texture) */}
           <div className="p-4 bg-[#6c4831] text-[#ffd6b0] text-sm md:text-base leading-relaxed font-medium mt-1">

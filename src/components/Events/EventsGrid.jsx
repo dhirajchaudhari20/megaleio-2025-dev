@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { eventsGridData } from "../../data/eventsGridData";
 import { useReveal } from "../../hook/reveal";
-import bg from "../../assets/display/bg2.png";
+import bg from "../../assets/display/bg2.webp";
 import stormVideo from "../../assets/hero-bg-storm.mp4";
 import fogVideo from "../../assets/hero-bg-fog.mp4";
 

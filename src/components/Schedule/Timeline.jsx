@@ -12,8 +12,8 @@ import logo from "../../assets/images/logo.png";
 import titleImg from "../../assets/img1.png";
 import darkForest from "../../assets/Dark forest with subtle red fog.jpg";
 import emptyStreet from "../../assets/empty-street-at-night-with-red-lights.jpg";
-import bg2 from "../../assets/display/bg2.png";
-import vecna from "../../assets/vecna_tsp.png";
+import bg2 from "../../assets/display/bg2.webp";
+import vecna from "../../assets/vecna_tsp.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -978,8 +978,8 @@ const Timeline = () => {
                             ? "linear-gradient(145deg, rgba(220,38,38,0.08) 0%, rgba(40,0,20,0.14) 50%, rgba(5,0,5,0.4) 100%)"
                             : "linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(20,5,15,0.06) 50%, rgba(5,0,5,0.3) 100%)",
                           border: `1px solid ${isPriority
-                              ? "rgba(220,38,38,0.28)"
-                              : "rgba(255,255,255,0.05)"
+                            ? "rgba(220,38,38,0.28)"
+                            : "rgba(255,255,255,0.05)"
                             }`,
                           borderRadius: 16,
                           padding: "1.3rem 1.4rem",

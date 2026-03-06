@@ -1,9 +1,9 @@
-import img1 from "../assets/team/dev.jpeg";
-import img2 from "../assets/team/gracy.jpeg";
-import img3 from "../assets/team/meghana.PNG";
-import img4 from "../assets/team/sharvil.jpeg";
-import img5 from "../assets/team/devank.jpeg";
-import img6 from "../assets/team/harshita.PNG";
+import img1 from "../assets/team/dev.webp";
+import img2 from "../assets/team/gracy.webp";
+import img3 from "../assets/team/meghana.webp";
+import img4 from "../assets/team/sharvil.webp";
+import img5 from "../assets/team/devank.webp";
+import img6 from "../assets/team/harshita.webp";
 
 const teamData = [
   {

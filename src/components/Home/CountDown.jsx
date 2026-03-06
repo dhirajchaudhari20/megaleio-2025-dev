@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useScrollReveal } from "../../hook/useScrollReveal";
-import bgImage from "../../assets/display/bg1.png";
+import bgImage from "../../assets/display/bg1.webp";
 import countdownVideo from "../../assets/countdown-bg.mp4";
 
 const Countdown = () => {

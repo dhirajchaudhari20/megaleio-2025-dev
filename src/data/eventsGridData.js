@@ -1,18 +1,18 @@
-import ai from "../assets/events/aibased.PNG";
-import arm from "../assets/events/arm.PNG";
-import bgmi from "../assets/events/bgmi.PNG";
-import blindC from "../assets/events/blind_c.PNG";
-import bridge from "../assets/events/bridge.PNG";
-import drone from "../assets/events/drone.PNG";
-import efootball from "../assets/events/efootball.PNG";
-import idea2Impact from "../assets/events/i2m.PNG";
-import junkyard from "../assets/events/junkyard.PNG";
-import line from "../assets/events/line.PNG";
-import maze from "../assets/events/maze.PNG";
-import power from "../assets/events/power.PNG";
-import presentation from "../assets/events/presentation.PNG";
-import quiz from "../assets/events/quiz.PNG";
-import soccer from "../assets/events/socoor.PNG";
+import ai from "../assets/events/aibased.webp";
+import arm from "../assets/events/arm.webp";
+import bgmi from "../assets/events/bgmi.webp";
+import blindC from "../assets/events/blind_c.webp";
+import bridge from "../assets/events/bridge.webp";
+import drone from "../assets/events/drone.webp";
+import efootball from "../assets/events/efootball.webp";
+import idea2Impact from "../assets/events/i2m.webp";
+import junkyard from "../assets/events/junkyard.webp";
+import line from "../assets/events/line.webp";
+import maze from "../assets/events/maze.webp";
+import power from "../assets/events/power.webp";
+import presentation from "../assets/events/presentation.webp";
+import quiz from "../assets/events/quiz.webp";
+import soccer from "../assets/events/socoor.webp";
 
 export const eventsGridData = [
   {

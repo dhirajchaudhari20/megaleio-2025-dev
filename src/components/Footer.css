@@ -1,0 +1,149 @@
+/* Footer Container */
+.footer-container {
+  border-top: 1px solid #ff0000;
+  background-color: black;
+  color: #ffffff;
+  padding: 2rem 1rem;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+}
+
+/* Footer Content */
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+/* Footer Sections */
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  text-align: left;
+}
+
+/* Logo Section */
+.footer-logo {
+  width: 120px;
+  margin-bottom: 1rem;
+}
+
+.footer-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 0 0 6px #ff0000,
+               0 0 12px #990000;
+  color: #ff0000;
+  margin-top: 0.5rem;
+}
+
+.footer-subtext {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-top: 0.5rem;
+}
+
+/* Contact Section */
+.footer-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff0000;
+  margin-bottom: 0.8rem;
+}
+
+.footer-contact h4 {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.4rem;
+  color: #ff0000;
+}
+
+.footer-contact p {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  margin-bottom: 0.7rem;
+}
+
+.footer-contact p:hover {
+  color: #ffffff;
+}
+
+/* Social Media Section */
+.footer-social-icons {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-social-icon {
+  color: #ff0000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border: #ff0000 3px solid;
+  border-radius: 50%;
+  font-size: 3rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social-icon:hover {
+  color: #ffffff;
+}
+
+/* Form Section */
+.footer-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.footer-input,
+.footer-textarea {
+  width: 100%;
+  background-color: black;
+  border: 1px solid #ff0000;
+  color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.footer-input:focus,
+.footer-textarea:focus {
+  outline: none;
+  border-color: #ffffff;
+  box-shadow: 0 0 5px #ffffff;
+}
+
+.footer-button {
+  background-color: #ff0000;
+  color: black;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.footer-button:hover {
+  background-color: #ffffff;
+  color: black;
+}
+
+/* Footer Bottom Line */
+.footer-bottom {
+  margin-top: 1rem;
+  border-top: 1px solid #ff0000;
+  padding-top: 0.7rem;
+  font-size: 0.8rem;
+  color:#ffffff;
+}

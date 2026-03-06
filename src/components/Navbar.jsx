@@ -1,121 +1,348 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+﻿import React, { useEffect, useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
+import gsap from "gsap";
+import logo from "../assets/images/logo.png";
+import title from "../assets/img1.png";
+import { NavLink, useLocation } from "react-router-dom";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const navLeft = ["Home", "Event", "Schedule"];
+const navRight = ["MegaHack", "Team", "Contact Us"];
+
+const navRoutes = {
+  Home: "/",
+  Event: "/event",
+  Schedule: "/schedule",
+  MegaHack: "/megahack",
+  Team: "/team",
+  "Contact Us": "/contactUs",
+};
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+  const capsuleRef = useRef(null);
+  const chipRef = useRef(null);
+  const [open, setOpen] = useState(false);
 
-  const handleNavClick = () => {
-    setIsOpen(false);
-  };
+  /* â”€â”€ Logo / title scroll-in animation (unchanged logic) â”€â”€ */
+  useGSAP(() => {
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+    gsap.killTweensOf(["#logo", "#title"]);
+    gsap.set(["#logo", "#title"], { clearProps: "all" });
 
-  const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Events', href: '/events' },
-    { name: 'Schedule', href: '/schedule' },
-	{ name: 'Megahack', href: 'https://megahack.in', target: '_blank', rel: 'noopener noreferrer' },
-    { name: 'Team', href: '/team' },
-    { name: 'Contact Us', href: '#contactus' },
-  ];
+    if (!isHome) return;
+
+    const ctx = gsap.context(() => {
+      requestAnimationFrame(() => {
+        if (window.lenis) window.lenis.scrollTo(0, { immediate: true });
+        ScrollTrigger.refresh();
+      });
+
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 768px)", () => {
+        gsap.from("#logo", {
+          x: 0,
+          y: window.innerHeight * 0.45,
+          scale: window.innerWidth / 200,
+          scrollTrigger: {
+            trigger: "#logo",
+            start: "center 50%",
+            scrub: 2,
+            invalidateOnRefresh: true,
+          },
+        });
+        gsap.from("#title", {
+          y: window.innerHeight * 0.75,
+          scale: window.innerWidth / 500,
+          scrollTrigger: {
+            trigger: "#logo",
+            start: "center 50%",
+            scrub: 2,
+            invalidateOnRefresh: true,
+          },
+        });
+      });
+
+      mm.add("(max-width: 767px)", () => {
+        gsap.from("#logo", {
+          x: 0,
+          y: window.innerHeight * 0.4,
+          scale: window.innerWidth / 70,
+          scrollTrigger: {
+            trigger: "#logo",
+            start: "center 40%",
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+        gsap.from("#title", {
+          y: window.innerHeight * 0.7,
+          scale: window.innerWidth / 300,
+          scrollTrigger: {
+            trigger: "#logo",
+            start: "center 40%",
+            scrub: 2,
+            invalidateOnRefresh: true,
+          },
+        });
+      });
+    });
+
+    return () => ctx.revert();
+  }, [isHome]);
+
+  /* ── Capsule → Circle morph on scroll (GSAP) ── */
+  useEffect(() => {
+    if (!capsuleRef.current || !chipRef.current) return;
+
+    // ❗ Run only on mobile
+    if (window.innerWidth >= 768) return;
+    if (window.innerWidth < 768) return;
+
+    gsap.set(chipRef.current, {
+      xPercent: -50,
+      y: -120,
+      opacity: 0,
+      scale: 0.6,
+    });
+
+    let scrolled = false;
+
+    const onScroll = () => {
+      const shouldCollapse = window.scrollY > 30;
+      if (shouldCollapse === scrolled) return;
+      scrolled = shouldCollapse;
+
+      if (shouldCollapse) {
+        gsap.timeline().to(capsuleRef.current, {
+          scaleX: 0.12,
+          scaleY: 0.7,
+          opacity: 0,
+          duration: 0.38,
+          ease: "power2.in",
+        });
+
+        gsap.to(chipRef.current, {
+          xPercent: -50,
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.52,
+          ease: "back.out(1.6)",
+          delay: 0.18,
+        });
+      } else {
+        gsap.to(chipRef.current, {
+          xPercent: -50,
+          y: -120,
+          opacity: 0,
+          scale: 0.6,
+          duration: 0.34,
+          ease: "power2.in",
+        });
+
+        gsap
+          .timeline({ delay: 0.14 })
+          .set(capsuleRef.current, { scaleX: 0.12, scaleY: 0.7, opacity: 0 })
+          .to(capsuleRef.current, {
+            scaleX: 1,
+            scaleY: 1,
+            opacity: 1,
+            duration: 0.48,
+            ease: "back.out(1.3)",
+          });
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
+  const linkClass = ({ isActive }) =>
+    `relative tracking-[0.18em] uppercase transition-all duration-300
+     after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-px after:bg-red-700
+     after:transition-all after:duration-300
+     ${
+       isActive
+         ? "text-red-500 after:w-full"
+         : "text-[#c0a0a0] hover:text-red-400 after:w-0 hover:after:w-full"
+     }`;
 
   return (
-    <nav className="fixed top-0 w-full bg-black/40 backdrop-blur-sm z-50">
-      <div className="container mx-auto px-4 py-3">
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center justify-between">
-          {/* Logo with Link */}
-          <Link to="/" className="flex items-center">
-            <img src="/megaleio-logo.webp" alt="Megaleio" className="h-14 w-auto" />
-          </Link>
-
-          {/* Navigation Links */}
-          <div className="flex items-center space-x-12">
-            {navItems.map((item) => (
-              item.href.startsWith('/') ? (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={handleNavClick}
-                  className="text-white hover:text-[#5FFF00] font-[Minecraft] text-base uppercase tracking-wider transition-colors"
-                >
-                  {item.name}
-                </Link>
-              ) : (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={handleNavClick}
-				  target={item.target}
-				  rel={item.rel}
-                  className="text-white hover:text-[#5FFF00] font-[Minecraft] text-base uppercase tracking-wider transition-colors"
-                >
-                  {item.name}
-                </a>
-              )
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div className="md:hidden flex items-center justify-between">
-          <Link to="/" className="flex items-center">
-            <img src="/megaleio-logo.webp" alt="Megaleio" className="h-12 w-auto" />
-          </Link>
-          <button 
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-white p-2"
-          >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-              />
-            </svg>
-          </button>
-        </div>
-
-        {/* Full-Screen Mobile Menu */}
-        {isOpen && (
-          <div className="fixed top-0 left-0 w-full h-screen bg-black/90 backdrop-blur-lg flex flex-col items-center justify-center z-50 transition-transform duration-300">
-            {/* Close Button */}
-            <button 
-              onClick={() => setIsOpen(false)}
-              className="absolute top-5 right-5 text-white text-3xl"
-            >
-              ✖
-            </button>
-
-            {/* Menu Items */}
-            <div className="flex flex-col space-y-6 items-center">
-              {navItems.map((item) => (
-                item.href.startsWith('/') ? (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    onClick={handleNavClick}
-                    className="text-white hover:text-[#5FFF00] font-[Minecraft] text-lg uppercase tracking-wider transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                ) : (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={handleNavClick}
-					target={item.target}
-				  	rel={item.rel}
-                    className="text-white hover:text-[#5FFF00] font-[Minecraft] text-lg uppercase tracking-wider transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                )
-              ))}
-            </div>
-          </div>
-        )}
+    <>
+      {/* ░░ SCROLLED LOGO CIRCLE — morphs from collapsed capsule ░░ */}
+      <div
+        ref={chipRef}
+        className="hidden"
+        style={{
+          position: "fixed",
+          top: "10px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 51,
+          width: "80px",
+          height: "80px",
+          borderRadius: "50%",
+          background: "rgba(5,5,5,0.9)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          boxShadow:
+            "0 0 0 1px rgba(220,20,60,0.35), 0 8px 32px rgba(0,0,0,0.7), 0 0 20px rgba(180,0,20,0.18)",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "2px",
+          cursor: "pointer",
+          fontFamily: "'Cinzel Decorative', 'Cinzel', serif",
+        }}
+      >
+        <img src={logo} alt="logo" style={{ height: "32px", width: "auto" }} />
+        <img
+          src={title}
+          alt="Megalio 2026"
+          style={{ height: "14px", width: "auto", opacity: 0.85 }}
+        />
       </div>
-    </nav>
+
+      <div
+        className="fixed top-0 left-0 right-0 z-50 flex justify-center"
+        style={{
+          paddingTop: "12px",
+          fontFamily: "'Cinzel Decorative', 'Cinzel', serif",
+          fontSize: "0.84rem",
+        }}
+      >
+        {/* â–‘â–‘ FLOATING CAPSULE â–‘â–‘ */}
+        <div
+          ref={capsuleRef}
+          className="relative w-[84%] max-w-5xl rounded-full"
+          style={{
+            background: "rgba(5,5,5,0.52)",
+            backdropFilter: "blur(18px)",
+            WebkitBackdropFilter: "blur(18px)",
+            boxShadow:
+              "0 4px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(220,20,60,0.18), inset 0 1px 0 rgba(255,255,255,0.04)",
+            transformOrigin: "center center",
+          }}
+        >
+          {/* â”€â”€ subtle inner top-edge highlight â”€â”€ */}
+          <div
+            className="absolute top-0 left-8 right-8 h-px rounded-full pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, transparent, rgba(220,20,60,0.4), transparent)",
+            }}
+          />
+
+          {/* â”€â”€ DESKTOP LAYOUT â”€â”€ */}
+          <div className="hidden md:grid grid-cols-[1fr_auto_1fr] items-center px-5 py-1">
+            {/* LEFT LINKS */}
+            <ul className="flex items-center gap-6 justify-start">
+              {navLeft.map((nav, i) => (
+                <li key={i}>
+                  <NavLink to={navRoutes[nav]} className={linkClass}>
+                    {nav}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+
+            {/* CENTER â€” Logo + Title (GSAP targets: #logo, #title) */}
+            <div className="flex flex-col items-center px-5 py-0.5 gap-0.5">
+              <div id="logo">
+                <img src={logo} alt="logo" className="h-10 md:h-12 w-auto" />
+              </div>
+              <div id="title" className="flex items-center justify-center">
+                <img
+                  src={title}
+                  alt="Megalio 2026"
+                  className="h-8 md:h-10 w-auto"
+                />
+              </div>
+            </div>
+
+            {/* RIGHT LINKS */}
+            <ul className="flex items-center gap-6 justify-end">
+              {navRight.map((nav, i) => (
+                <li key={i}>
+                  <NavLink to={navRoutes[nav]} className={linkClass}>
+                    {nav}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* â”€â”€ MOBILE LAYOUT â”€â”€ */}
+          <div className="relative flex md:hidden items-center justify-center px-4 py-1.5">
+            {/* Logo + title — absolutely centered */}
+            <div className="flex items-center gap-2.5">
+              <div id="logo">
+                <img src={logo} alt="logo" className="h-9 w-auto" />
+              </div>
+              <div id="title">
+                <img src={title} alt="Megalio 2026" className="h-7 w-auto" />
+              </div>
+            </div>
+
+            {/* Hamburger — pinned to right */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="absolute right-4 flex flex-col gap-1.5 p-2 group"
+              aria-label="Toggle menu"
+            >
+              <span
+                className={`block h-0.5 w-6 bg-gray-300 transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`}
+              />
+              <span
+                className={`block h-0.5 w-6 bg-gray-300 transition-all duration-300 ${open ? "opacity-0" : ""}`}
+              />
+              <span
+                className={`block h-0.5 w-6 bg-gray-300 transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}
+              />
+            </button>
+          </div>
+
+          {/* â”€â”€ MOBILE DROPDOWN â”€â”€ */}
+          <div
+            className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${open ? "max-h-96 pb-5" : "max-h-0"}`}
+          >
+            <ul className="flex flex-col items-center gap-5 pt-2">
+              {[...navLeft, ...navRight].map((nav, i) => (
+                <li key={i}>
+                  <NavLink
+                    to={navRoutes[nav]}
+                    className={linkClass}
+                    onClick={() => setOpen(false)}
+                  >
+                    {nav}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* â”€â”€ subtle inner bottom-edge shadow â”€â”€ */}
+          <div
+            className="absolute bottom-0 left-8 right-8 h-px rounded-full pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, transparent, rgba(0,0,0,0.6), transparent)",
+            }}
+          />
+        </div>
+      </div>
+    </>
   );
 };
 

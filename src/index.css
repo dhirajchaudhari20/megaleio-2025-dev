@@ -1,99 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
 @import "tailwindcss";
+/* @import "~@fortawesome/fontawesome-free/css/all.min.css"; */
 
-:root {
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color:rgb(0, 0, 0);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+  font-family: "Cinzel";
 }
-
- /* * {
-	outline: 1px solid red;
-  }  */
-  
-
-/* Add smooth scrolling behavior */
-html {
-	scroll-behavior: smooth;
-  }
-  
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-	width: 0;  /* Hide scrollbar */
-  }
-  
-  /* Firefox */
-  * {
-	scrollbar-width: none;  /* Hide scrollbar */
-	scrollbar-color: transparent transparent;  /* Transparent scrollbar */
-  }
-  
-  /* Section padding for smooth scrolling */
-  .section {
-	padding-top: 80px; /* Adjust this value as needed */
-	scroll-margin-top: 80px; /* Adjust this value as needed */
-  }
-
-body {
+body{
   margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+.sticky-cards {
+  perspective: 850px;
+}
+
+.sticky-cards .card {
+  position: absolute;
+  top: 57%;
+  left: 50%;
+  width: 65%;
+  height: 60%;
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+.card .col {
+  flex: 1;
+  height: 100%;
+}
+
+.card .col:nth-child(1) {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+.card .col:nth-child(2) {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
 
+@media (max-width: 1000px) {
+  .sticky-cards .card {
+    width: calc(100% - 4rem);
+    height: 75%;
+    flex-direction: column;
+  }
 
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  .card .col {
+    width: 100%;
   }
 }
 
-
-@font-face {
-	font-family: 'Minecraft';
-	src: url('./assets/font/minecraft-title.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-  }
-
-@font-face {
-	font-family: 'Minecraft-light';
-	src: url('./assets/font/MinecraftRegular-Bmg3.otf') format('opentype');
-	font-weight: normal;
-	font-style: normal;
-  }
-
-@font-face {
-	font-family: 'Minecraft-bold';
-	src: url('./assets/font/MinecraftBold-nMK1.otf') format('opentype');
-	font-weight: normal;
-	font-style: normal;
-  }
-
-  .edge-bottom-white{z-index:10}[class*=edge-bottom]
-  .edge-bottom-white:before{background-size:1268px 130px;height:130px;transform:none}
-
-.perspective-1000 {
-  perspective: 1000px;
+.stranger-title {
+  font-family: 'Cinzel', serif;
+  text-shadow: 0 0 10px #ff0000,
+               0 0 20px #990000,
+               0 0 40px #660000;
+  letter-spacing: 4px;
 }
 
-.transform-style-preserve-3d {
-  transform-style: preserve-3d;
+.stranger-heading {
+  text-shadow: 0 0 6px #ff0000,
+               0 0 12px #990000;
 }
 
-.backface-hidden {
-  backface-visibility: hidden;
+.stranger-title {
+  letter-spacing: 4px;
+  text-shadow: 
+    0 0 10px #ff0000,
+    0 0 20px #990000,
+    0 0 40px #660000;
 }
 
-.rotate-y-180 {
-  transform: rotateY(180deg);
+.stranger-heading {
+  text-shadow: 
+    0 0 6px #ff0000,
+    0 0 12px #990000;
 }
+
+.stranger-social {
+  background: #0a0a0a;
+  color: #ff0000;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #660000;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px #330000;
+}
+
+.stranger-social:hover {
+  color: #ffffff;
+  background: #140000;
+  box-shadow: 
+    0 0 8px #ff0000,
+    0 0 20px #990000,
+    0 0 40px #660000;
+  transform: scale(1.1);
+  animation: flicker 0.8s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+
+.contact-us-logo {
+  margin-left: 32px; 
+  width: 100px;
+  margin-bottom: 1rem;
+}
+

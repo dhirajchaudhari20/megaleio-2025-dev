@@ -10,6 +10,7 @@ import { useMagnetic } from "../../hook/useMagnetic";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function EventsGallery() {
+  const sectionRef = useRef(null);
   const colsRef = useRef([]);
   const btnRef = useRef(null);
   const navigate = useNavigate();

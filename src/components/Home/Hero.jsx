@@ -49,7 +49,7 @@ const Hero = () => {
   const btnRef = useRef(null);
   const vecnaRef = useRef(null);
   const particlesRef = useRef([]);
-  const [showVideo, setShowVideo] = useState(false);
+  const [showVideo, setShowVideo] = useState(true);
 
   useEffect(() => {
     // Defer heavy videos so main thread doesn't choke on load

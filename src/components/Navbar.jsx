@@ -25,6 +25,7 @@ const Navbar = () => {
   const isHome = location.pathname === "/";
   const capsuleRef = useRef(null);
   const chipRef = useRef(null);
+  const [showVideo, setShowVideo] = useState(true);
   const [open, setOpen] = useState(false);
 
   /* â”€â”€ Logo / title scroll-in animation (unchanged logic) â”€â”€ */
@@ -35,65 +36,61 @@ const Navbar = () => {
 
     if (!isHome) return;
 
-    const ctx = gsap.context(() => {
-      requestAnimationFrame(() => {
-        if (window.lenis) window.lenis.scrollTo(0, { immediate: true });
-        ScrollTrigger.refresh();
+    requestAnimationFrame(() => {
+      if (window.lenis) window.lenis.scrollTo(0, { immediate: true });
+      ScrollTrigger.refresh();
+    });
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      gsap.from(".nav-logo", {
+        x: 0,
+        y: window.innerHeight * 0.45,
+        scale: window.innerWidth / 200,
+        scrollTrigger: {
+          trigger: ".nav-logo",
+          start: "center 50%",
+          scrub: 2,
+          invalidateOnRefresh: true,
+        },
       });
-
-      const mm = gsap.matchMedia();
-
-      mm.add("(min-width: 768px)", () => {
-        gsap.from(".nav-logo", {
-          x: 0,
-          y: window.innerHeight * 0.45,
-          scale: window.innerWidth / 200,
-          scrollTrigger: {
-            trigger: ".nav-logo",
-            start: "center 50%",
-            scrub: 2,
-            invalidateOnRefresh: true,
-          },
-        });
-        gsap.from(".nav-title", {
-          y: window.innerHeight * 0.75,
-          scale: window.innerWidth / 500,
-          scrollTrigger: {
-            trigger: ".nav-logo",
-            start: "center 50%",
-            scrub: 2,
-            invalidateOnRefresh: true,
-          },
-        });
-      });
-
-      mm.add("(max-width: 767px)", () => {
-        gsap.from(".nav-logo", {
-          x: 0,
-          y: window.innerHeight * 0.4,
-          scale: window.innerWidth / 70,
-          scrollTrigger: {
-            trigger: ".nav-logo",
-            start: "center 40%",
-            scrub: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-        gsap.from(".nav-title", {
-          y: window.innerHeight * 0.7,
-          scale: window.innerWidth / 300,
-          scrollTrigger: {
-            trigger: ".nav-logo",
-            start: "center 40%",
-            scrub: 2,
-            invalidateOnRefresh: true,
-          },
-        });
+      gsap.from(".nav-title", {
+        y: window.innerHeight * 0.75,
+        scale: window.innerWidth / 500,
+        scrollTrigger: {
+          trigger: ".nav-logo",
+          start: "center 50%",
+          scrub: 2,
+          invalidateOnRefresh: true,
+        },
       });
     });
 
-    return () => ctx.revert();
-  }, [isHome]);
+    mm.add("(max-width: 767px)", () => {
+      gsap.from(".nav-logo", {
+        x: 0,
+        y: window.innerHeight * 0.4,
+        scale: window.innerWidth / 70,
+        scrollTrigger: {
+          trigger: ".nav-logo",
+          start: "center 40%",
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+      gsap.from(".nav-title", {
+        y: window.innerHeight * 0.7,
+        scale: window.innerWidth / 300,
+        scrollTrigger: {
+          trigger: ".nav-logo",
+          start: "center 40%",
+          scrub: 2,
+          invalidateOnRefresh: true,
+        },
+      });
+    });
+  }, { scope: capsuleRef.current, dependencies: [isHome] });
 
   /* ── Capsule → Circle morph on scroll (GSAP) ── */
   useEffect(() => {

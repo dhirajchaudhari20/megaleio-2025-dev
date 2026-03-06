@@ -116,7 +116,7 @@ const ImageCarousel = () => {
       },
     });
 
-  }, { scope: sectionRef });
+  }, { scope: sectionRef.current });
 
   return (
     <section ref={sectionRef} className="st-section">

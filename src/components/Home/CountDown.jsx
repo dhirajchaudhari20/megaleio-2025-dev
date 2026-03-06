@@ -70,7 +70,7 @@ const Countdown = () => {
         start: "top 80%",
       }
     });
-  }, { scope: sectionRef });
+  }, { scope: sectionRef.current });
 
   useScrollReveal(boxesRef.current, { stagger: 0.1, y: 30 });
 
@@ -80,16 +80,7 @@ const Countdown = () => {
       className="relative py-28 md:py-40 text-center bg-cover bg-center overflow-hidden min-h-[70vh] flex items-center justify-center"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      {/* 🎬 YouTube Background Video */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <iframe
-          className="absolute top-1/2 left-1/2 w-[115%] h-[115%] -translate-x-1/2 -translate-y-1/2"
-          src="https://www.youtube.com/embed/iCsKdoouatE?autoplay=1&mute=1&loop=1&playlist=iCsKdoouatE&start=41&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1"
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          title="Stranger Things BG"
-        ></iframe>
-      </div>
+
 
       {/* 🎭 Cinematic Overlays */}
       <div className="absolute inset-0 bg-black/60 z-1" />

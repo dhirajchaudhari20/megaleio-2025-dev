@@ -56,7 +56,7 @@ export default function EventsGallery() {
           0
         );
       });
-    }, { scope: sectionRef });
+    }, { scope: sectionRef.current });
   }, []);
 
   const columns = 4;

@@ -43,7 +43,9 @@ export const useSmoothScroll = () => {
     });
 
     ScrollTrigger.addEventListener("refresh", () => lenis.resize());
-    ScrollTrigger.refresh();
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
 
     return () => {
       lenis.destroy();

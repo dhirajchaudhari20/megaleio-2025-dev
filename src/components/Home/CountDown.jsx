@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useScrollReveal } from "../../hook/useScrollReveal";
 import bgImage from "../../assets/display/bg1.png";
+import countdownVideo from "../../assets/countdown-bg.mp4";
 
 const Countdown = () => {
   const targetDate = new Date("March 13, 2026 00:00:00").getTime();
@@ -80,17 +81,18 @@ const Countdown = () => {
       className="relative py-28 md:py-40 text-center bg-cover bg-center overflow-hidden min-h-[70vh] flex items-center justify-center"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-
-
-      {/* 🎭 Cinematic Overlays */}
-      <div className="absolute inset-0 bg-black/60 z-1" />
-      <div
-        className="absolute inset-0 z-1"
-        style={{
-          background: "radial-gradient(circle at center, transparent 0%, rgba(5,0,0,0.85) 100%)",
-          boxShadow: "inset 0 0 150px rgba(180,0,0,0.15)"
-        }}
-      />
+      {/* 🎬 Cinematic Background Video (Optimized) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 opacity-70"
+        >
+          <source src={countdownVideo} type="video/mp4" />
+        </video>
+      </div>
 
       {/* 🌫️ Bottom & Top Fades */}
       <div className="absolute bottom-0 left-0 right-0 h-32 z-2 pointer-events-none"

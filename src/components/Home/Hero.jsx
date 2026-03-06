@@ -2,8 +2,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import fogVideo from "../../assets/vecteezy_dark-forest-and-castle-in-misty-foggy-day_1627233.mov";
-import stormVideo from "../../assets/vecteezy_storm-during-night-in-the-forest_1625786.mov";
+import fogVideo from "../../assets/hero-bg-fog.mp4";
+import stormVideo from "../../assets/hero-bg-storm.mp4";
 import vecna from "../../assets/vecna_tsp.png";
 
 gsap.registerPlugin(ScrollTrigger);

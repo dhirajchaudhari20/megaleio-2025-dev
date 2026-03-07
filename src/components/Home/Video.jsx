@@ -1,8 +1,10 @@
 import React from "react";
+import cloudsVideo from "../../assets/stranger-things-clouds.mp4";
+
 const Video = () => {
   return (
-    <div>
-      <div className="bg-zinc-800 w-full h-screen  sticky overflow-hidden">
+    <div className="relative">
+      <div className="bg-black w-full h-[60svh] md:h-screen sticky top-0 overflow-hidden">
         <video
           autoPlay
           muted
@@ -10,11 +12,10 @@ const Video = () => {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source
-            src="https://res.cloudinary.com/dor2qddak/video/upload/v1771482653/bg_r9ig9w.mp4"
-            type="video/mp4"
-          />
+          <source src={cloudsVideo} type="video/mp4" />
         </video>
+        {/* Cinematic Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#050505]" />
       </div>
     </div>
   );

@@ -168,13 +168,13 @@ const StickyCards = () => {
         }
       `}</style>
 
-      <section className="relative min-h-[72svh] md:min-h-[86svh] flex items-center justify-center overflow-hidden bg-black">
+      <section className="relative min-h-[72svh] md:min-h-[86svh] flex items-center justify-center overflow-hidden bg-transparent">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-35"
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
         >
           <source src={fogVideo} type="video/mp4" />
         </video>
@@ -201,8 +201,9 @@ const StickyCards = () => {
 
       <section
         ref={sectionRef}
-        className="hidden md:block sticky-cards relative w-full h-[100svh] bg-black overflow-hidden perspective-[850px]"
+        className="hidden md:block sticky-cards relative w-full h-[100svh] bg-transparent overflow-hidden perspective-[850px]"
       >
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] pointer-events-none" />
         <div className="absolute top-1/2 -translate-y-1/2 right-10 z-[60] w-24">
           <p className="text-red-300 text-xs tracking-[0.22em] uppercase text-right mb-3">
             {String(activeDesktopIndex + 1).padStart(2, "0")} / {String(teamData.length).padStart(2, "0")}
@@ -275,7 +276,8 @@ const StickyCards = () => {
         ))}
       </section>
 
-      <section className="md:hidden relative bg-black py-12 overflow-hidden">
+      <section className="md:hidden relative bg-transparent py-12 overflow-hidden">
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] -z-1" />
         <div className="max-w-xl mx-auto px-5">
           <div className="flex items-center justify-between mb-5">
             <p className="text-red-300 text-[0.62rem] tracking-[0.28em] uppercase">
@@ -360,8 +362,8 @@ const StickyCards = () => {
                   key={index}
                   onClick={() => setMobileIndex(index)}
                   className={`h-1.5 transition-all ${index === mobileIndex
-                      ? "w-7 bg-red-400"
-                      : "w-3 bg-red-900/70"
+                    ? "w-7 bg-red-400"
+                    : "w-3 bg-red-900/70"
                     }`}
                   aria-label={`Go to member ${index + 1}`}
                 />

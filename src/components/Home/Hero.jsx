@@ -2,8 +2,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import fogVideo from "../../assets/hero-bg-fog.mp4";
-import stormVideo from "../../assets/hero-bg-storm.mp4";
+import bgVideo from "../../assets/stranger-things-clouds.mp4";
 import vecna from "../../assets/vecna_tsp.webp";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,7 +12,31 @@ const splitText = (text) =>
   text.split("").map((char, i) => (
     <span
       key={`${char}-${i}`}
-      className="letter inline-block will-change-transform"
+      className="letter inline-block will-change-transform cursor-default"
+      onMouseEnter={(e) => {
+        gsap.to(e.target, {
+          y: -10,
+          scale: 1.2,
+          rotateX: 20,
+          rotateY: 20,
+          color: "#e11d48", // red-600
+          textShadow: "0 0 15px rgba(225, 29, 72, 0.8)",
+          duration: 0.2,
+          ease: "power2.out"
+        });
+      }}
+      onMouseLeave={(e) => {
+        gsap.to(e.target, {
+          y: 0,
+          scale: 1,
+          rotateX: 0,
+          rotateY: 0,
+          color: "inherit",
+          textShadow: "none",
+          duration: 0.5,
+          ease: "elastic.out(1, 0.3)"
+        });
+      }}
     >
       {char === " " ? "\u00A0" : char}
     </span>
@@ -113,13 +136,23 @@ const Hero = () => {
       delay: 1.5,
     });
 
-    /* ── 4b. Vecna rises from below — cinematic entrance ── */
+    /* ── 4b. Vecna rises and glows — cinematic entrance ── */
     gsap.from(vecnaRef.current, {
       y: 200,
       opacity: 0,
+      filter: "drop-shadow(0 0 0px rgba(225, 29, 72, 0)) brightness(0.5)",
       duration: 2.6,
       ease: "power3.out",
       delay: 0.2,
+    });
+
+    // Intense pulsating glow like Wallpaper Engine
+    gsap.to(vecnaRef.current, {
+      filter: "drop-shadow(0 0 15px rgba(225, 20, 20, 0.9)) drop-shadow(0 0 35px rgba(225, 20, 20, 0.4)) brightness(1.3)",
+      duration: 1.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
     });
 
     /* ── 5. Heading glow breathe (very subtle) ── */
@@ -274,22 +307,25 @@ const Hero = () => {
         .tentacle-svg { animation: tentacleGlow 3s ease-in-out infinite; }
 
         @keyframes vecnaFloat {
-          0%,100% { transform: translateY(0px); }
-          50%      { transform: translateY(-10px); }
+          0%,100% { transform: translateY(0px) rotate(0deg); }
+          50%      { transform: translateY(-15px) rotate(1deg); }
         }
-        .vecna-img { animation: vecnaFloat 8s ease-in-out infinite; }
+        .vecna-img { animation: vecnaFloat 6s ease-in-out infinite; }
 
-        @keyframes accentPulse {
-          0%,100% { opacity: 0.45; }
-          50%      { opacity: 0.85; }
+        @keyframes godRayScale {
+          0%, 100% { transform: scale(1) rotate(-15deg); opacity: 0.15; }
+          50% { transform: scale(1.1) rotate(-12deg); opacity: 0.25; }
         }
-        .accent-bar { animation: accentPulse 4s ease-in-out infinite; }
+        .god-ray {
+          animation: godRayScale 12s ease-in-out infinite;
+          background: linear-gradient(170deg, rgba(220,20,60,0.15) 0%, transparent 60%);
+        }
       `}</style>
 
       <section
         ref={sectionRef}
-        className="relative w-full overflow-hidden flex items-center"
-        style={{ minHeight: "100svh", background: "#050505" }}
+        className="relative w-full overflow-hidden flex items-center bg-transparent"
+        style={{ minHeight: "100svh" }}
       >
         {/* ░ L1 · Dark forest fog VIDEO — main background ░ */}
         <div
@@ -307,18 +343,18 @@ const Hero = () => {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                filter: "brightness(0.75) contrast(1.1) saturate(0.9)",
+                filter: "brightness(0.6) contrast(1.2) saturate(0.8)",
               }}
             >
-              <source src={fogVideo} type="video/mp4" />
+              <source src={bgVideo} type="video/mp4" />
             </video>
           )}
         </div>
 
-        {/* ░ L1b · Storm night forest VIDEO — blended overlay (hidden on mobile) ░ */}
+        {/* ░ L1b · Storm overlay (Blending) ░ */}
         <div
           className="absolute inset-0 pointer-events-none hidden md:block"
-          style={{ mixBlendMode: "overlay", opacity: 0.22, zIndex: 1 }}
+          style={{ mixBlendMode: "overlay", opacity: 0.15, zIndex: 1 }}
         >
           {showVideo && (
             <video
@@ -331,10 +367,10 @@ const Hero = () => {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                filter: "brightness(0.5) contrast(1.2)",
+                filter: "brightness(0.4) contrast(1.4)",
               }}
             >
-              <source src={stormVideo} type="video/mp4" />
+              <source src={bgVideo} type="video/mp4" />
             </video>
           )}
         </div>
@@ -455,6 +491,14 @@ const Hero = () => {
             mixBlendMode: "screen",
           }}
         />
+
+        {/* ░ L8.5 · Cinematic God Rays ░ */}
+        <div
+          className="absolute inset-0 pointer-events-none z-[4]"
+          style={{ overflow: 'hidden' }}
+        >
+          <div className="god-ray absolute -top-[50%] -left-[20%] w-[150%] h-[200%] rotate-[-15deg]" />
+        </div>
 
         {/* ░ L9 · Scanline ░ */}
         <div
@@ -588,7 +632,7 @@ const Hero = () => {
         >
           {/* ── text block — top on mobile, centered-left on desktop ── */}
           <div className="flex-1 md:absolute md:inset-0 md:flex md:items-center">
-            <div className="w-full max-w-7xl mx-auto px-6 md:px-20 pt-28 pb-6 md:py-0">
+            <div className="w-full max-w-7xl mx-auto px-6 md:px-20 pt-28 pb-6 md:pt-48 md:pb-0">
               <div className="md:max-w-[52%]">
                 {/* scene label */}
                 <div
@@ -625,10 +669,10 @@ const Hero = () => {
                   className="leading-none select-none"
                   style={{
                     fontFamily: "'Cinzel', serif",
-                    fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
+                    fontSize: "clamp(2.4rem, 8vw, 5.5rem)",
                     fontWeight: 700,
-                    letterSpacing: "5px",
-                    marginBottom: "36px",
+                    letterSpacing: "3px",
+                    marginBottom: "24px",
                   }}
                 >
                   <span
@@ -706,7 +750,7 @@ const Hero = () => {
                       color: "rgba(160,60,60,0.5)",
                     }}
                   >
-                    March&nbsp;13–15,&nbsp;2026
+                    March&nbsp;13–14,&nbsp;2026
                   </span>
                 </div>
               </div>
@@ -714,30 +758,24 @@ const Hero = () => {
           </div>
           {/* end text block */}
 
-          {/* ── Vecna — mobile in-flow bottom block ── */}
+          {/* ── Vecna — mobile floating ── */}
           <div
-            className="block md:hidden w-full pointer-events-none"
-            style={{
-              height: "60svh",
-              position: "relative",
-              flexShrink: 0,
-              marginLeft: "-1.5rem",
-              marginRight: "-1.5rem",
-              width: "calc(100% + 3rem)",
-            }}
+            className="block md:hidden absolute bottom-0 left-0 w-full h-[50svh] pointer-events-none overflow-hidden"
+            style={{ zIndex: 5 }}
           >
             <img
               src={vecna}
               alt=""
+              className="vecna-img"
               style={{
                 position: "absolute",
-                bottom: 0,
-                left: "50%",
-                transform: "translateX(-50%)",
+                bottom: "-5%",
+                left: "10%",
                 height: "100%",
-                width: "132%",
+                width: "auto",
                 objectFit: "contain",
                 objectPosition: "center bottom",
+                filter: "drop-shadow(0 0 15px rgba(225, 20, 20, 0.7)) brightness(1.1)",
               }}
             />
           </div>

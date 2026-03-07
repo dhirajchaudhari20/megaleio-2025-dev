@@ -1,4 +1,5 @@
 ﻿import React, { useEffect, useRef, useState } from "react";
+import { motion, useSpring, useTransform } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
@@ -56,8 +57,9 @@ const Navbar = () => {
         },
       });
       gsap.from(".nav-title", {
-        y: window.innerHeight * 0.75,
-        scale: window.innerWidth / 500,
+        y: window.innerHeight * 0.7,
+        scale: window.innerWidth / 400,
+        opacity: 0,
         scrollTrigger: {
           trigger: ".nav-logo",
           start: "center 50%",
@@ -80,8 +82,9 @@ const Navbar = () => {
         },
       });
       gsap.from(".nav-title", {
-        y: window.innerHeight * 0.7,
-        scale: window.innerWidth / 300,
+        y: window.innerHeight * 0.65,
+        scale: window.innerWidth / 250,
+        opacity: 0,
         scrollTrigger: {
           trigger: ".nav-logo",
           start: "center 40%",
@@ -98,7 +101,6 @@ const Navbar = () => {
 
     // ❗ Run only on mobile
     if (window.innerWidth >= 768) return;
-    if (window.innerWidth < 768) return;
 
     gsap.set(chipRef.current, {
       xPercent: -50,
@@ -174,6 +176,36 @@ const Navbar = () => {
       : "text-[#c0a0a0] hover:text-red-400 after:w-0 hover:after:w-full"
     }`;
 
+  const MagneticLink = ({ children, to }) => {
+    const x = useSpring(0, { stiffness: 150, damping: 15 });
+    const y = useSpring(0, { stiffness: 150, damping: 15 });
+
+    const handleMouseMove = (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      x.set((e.clientX - centerX) * 0.5);
+      y.set((e.clientY - centerY) * 0.5);
+    };
+
+    const handleMouseLeave = () => {
+      x.set(0);
+      y.set(0);
+    };
+
+    return (
+      <motion.div
+        style={{ x, y }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <NavLink to={to} className={linkClass}>
+          {children}
+        </NavLink>
+      </motion.div>
+    );
+  };
+
   return (
     <>
       {/* ░░ SCROLLED LOGO CIRCLE — morphs from collapsed capsule ░░ */}
@@ -246,15 +278,17 @@ const Navbar = () => {
             <ul className="flex items-center gap-6 justify-start">
               {navLeft.map((nav, i) => (
                 <li key={i}>
-                  <NavLink to={navRoutes[nav]} className={linkClass}>
+                  <MagneticLink to={navRoutes[nav]}>
                     {nav}
-                  </NavLink>
+                  </MagneticLink>
                 </li>
               ))}
             </ul>
 
-            {/* CENTER â€” Logo + Title (GSAP targets: #logo, #title) */}
-            <div className="flex flex-col items-center px-5 py-0.5 gap-0.5">
+            {/* CENTER — Logo + Title (GSAP targets: #logo, #title) */}
+            <div
+              className="flex flex-col items-center px-5 py-0.5 gap-0.5"
+            >
               <div className="nav-logo">
                 <img src={logo} alt="logo" className="h-10 md:h-12 w-auto" />
               </div>
@@ -271,9 +305,9 @@ const Navbar = () => {
             <ul className="flex items-center gap-6 justify-end">
               {navRight.map((nav, i) => (
                 <li key={i}>
-                  <NavLink to={navRoutes[nav]} className={linkClass}>
+                  <MagneticLink to={navRoutes[nav]}>
                     {nav}
-                  </NavLink>
+                  </MagneticLink>
                 </li>
               ))}
             </ul>
@@ -298,13 +332,13 @@ const Navbar = () => {
               aria-label="Toggle menu"
             >
               <span
-                className={`block h-0.5 w-6 bg-gray-300 transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`}
+                className={`block h-0.5 w-6 bg-red-600 shadow-[0_0_8px_rgba(220,20,60,0.8)] transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`}
               />
               <span
-                className={`block h-0.5 w-6 bg-gray-300 transition-all duration-300 ${open ? "opacity-0" : ""}`}
+                className={`block h-0.5 w-6 bg-red-600 shadow-[0_0_8px_rgba(220,20,60,0.8)] transition-all duration-300 ${open ? "opacity-0" : ""}`}
               />
               <span
-                className={`block h-0.5 w-6 bg-gray-300 transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}
+                className={`block h-0.5 w-6 bg-red-600 shadow-[0_0_8px_rgba(220,20,60,0.8)] transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}
               />
             </button>
           </div>

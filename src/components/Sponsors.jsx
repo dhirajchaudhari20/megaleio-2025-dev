@@ -94,20 +94,20 @@ const SponsorTier = ({ sponsors, boxSize = "w-72 h-60" }) => (
           href={sponsor.link}
           data-aos="fade-up"
           className={`${boxSize} group relative 
-                      border-4 border-[#39ff14] 
-                      bg-black/70 backdrop-blur-sm
+                      border-4 border-[#dc143c]/60 
+                      bg-black/60 backdrop-blur-md
                       transition-all duration-300
-                      hover:scale-105 hover:shadow-[0_0_15px_#39ff14]
+                      hover:scale-105 hover:shadow-[0_0_25px_rgba(220,20,60,0.4)]
                       flex items-center justify-center
                       p-8 md:p-12
                       after:content-[''] after:absolute after:inset-0
-                      after:border-4 after:border-[#39ff14]/30 after:-m-2
-                      hover:after:border-[#39ff14]/50
+                      after:border-4 after:border-[#dc143c]/20 after:-m-2
+                      hover:after:border-[#dc143c]/40
                       before:content-[''] before:absolute before:inset-0
-                      before:border-2 before:border-[#39ff14]/20 before:-m-1`}
+                      before:border-2 before:border-[#dc143c]/10 before:-m-1`}
         >
-          {/* Background GIF for each sponsor */}
-          <div className="absolute inset-0 z-[-1] bg-[url('https://i.pinimg.com/originals/ec/d6/72/ecd67255b08380eb534d3f8ee397bc85.gif')] bg-cover opacity-50"></div>
+          {/* Background overlay for each sponsor */}
+          <div className="absolute inset-0 z-[-1] bg-black/40 opacity-50"></div>
           <div className="w-full h-full flex items-center justify-center">
             <img
               src={sponsor.img}
@@ -126,18 +126,18 @@ const SponsorTier = ({ sponsors, boxSize = "w-72 h-60" }) => (
 
 const Sponsors = () => {
   return (
-    <div className="w-screen min-h-screen bg-[#262423] bg-opacity-95 
-                    flex justify-center py-24">
+    <div className="w-screen min-h-screen bg-transparent 
+                    flex justify-center py-24 perspective-section">
       <div className="w-[90%] max-w-7xl">
         <div className="flex justify-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-[Minecraft] text-[#39ff14]
-                         px-12 py-6 border-4 border-[#39ff14] 
-                         bg-black/70 backdrop-blur-sm
-                         shadow-[0_0_20px_#39ff14]
+          <h2 className="text-4xl md:text-5xl font-['Cinzel'] text-[#dc143c]
+                         px-12 py-6 border-4 border-[#dc143c]/80 
+                         bg-black/80 backdrop-blur-md
+                         shadow-[0_0_30px_rgba(220,20,60,0.3)]
                          relative flex items-center justify-center min-h-[80px]
                          after:content-[''] after:absolute after:inset-0
-                         after:border-4 after:border-[#39ff14]/30 after:-m-2">
-            <span className="block text-center">Title Sponsor</span>
+                         after:border-4 after:border-[#dc143c]/30 after:-m-2">
+            <span className="block text-center tracking-widest">Title Sponsor</span>
           </h2>
         </div>
 
@@ -146,14 +146,14 @@ const Sponsors = () => {
           boxSize="w-[500px] h-[300px] md:w-[600px] md:h-[400px]"
         />
         <div className="flex justify-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-[Minecraft] text-[#39ff14]
-                         px-12 py-6 border-4 border-[#39ff14] 
-                         bg-black/70 backdrop-blur-sm
-                         shadow-[0_0_20px_#39ff14]
+          <h2 className="text-4xl md:text-5xl font-['Cinzel'] text-[#dc143c]
+                         px-12 py-6 border-4 border-[#dc143c]/80 
+                         bg-black/80 backdrop-blur-md
+                         shadow-[0_0_30px_rgba(220,20,60,0.3)]
                          relative flex items-center justify-center min-h-[80px]
                          after:content-[''] after:absolute after:inset-0
-                         after:border-4 after:border-[#39ff14]/30 after:-m-2">
-            <span className="block text-center">Powered By</span>
+                         after:border-4 after:border-[#dc143c]/30 after:-m-2">
+            <span className="block text-center tracking-widest">Powered By</span>
           </h2>
         </div>
         <SponsorTier
@@ -162,14 +162,14 @@ const Sponsors = () => {
         />
 
         <div className="flex justify-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-[Minecraft] text-[#39ff14]
-                         px-12 py-6 border-4 border-[#39ff14] 
-                         bg-black/70 backdrop-blur-sm
-                         shadow-[0_0_20px_#39ff14]
+          <h2 className="text-4xl md:text-5xl font-['Cinzel'] text-[#dc143c]
+                         px-12 py-6 border-4 border-[#dc143c]/80 
+                         bg-black/80 backdrop-blur-md
+                         shadow-[0_0_30px_rgba(220,20,60,0.3)]
                          relative flex items-center justify-center min-h-[80px]
                          after:content-[''] after:absolute after:inset-0
-                         after:border-4 after:border-[#39ff14]/30 after:-m-2">
-            <span className="block text-center">Sponsors</span>
+                         after:border-4 after:border-[#dc143c]/30 after:-m-2">
+            <span className="block text-center tracking-widest">Sponsors</span>
           </h2>
         </div>
         <SponsorTier

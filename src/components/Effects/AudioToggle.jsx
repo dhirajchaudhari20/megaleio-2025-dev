@@ -3,18 +3,56 @@ import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
 const AudioToggle = () => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const audioRef = useRef(null);
+    const playerRef = useRef(null);
+    const [isApiReady, setIsApiReady] = useState(false);
 
-    // Stranger Things Theme (Publicly available ambient loop)
-    const audioSrc = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"; // Placeholder
-    // Better version: A hosted snippet or we can ask the user for a path.
-    // For now, I'll use a reliable low-fi atmospheric link or stay silent until they click.
+    useEffect(() => {
+        // Load YouTube IFrame API
+        if (!window.YT) {
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            window.onYouTubeIframeAPIReady = () => {
+                createPlayer();
+            };
+        } else {
+            createPlayer();
+        }
+
+        function createPlayer() {
+            playerRef.current = new window.YT.Player('youtube-audio-player', {
+                height: '0',
+                width: '0',
+                videoId: '-RcPZdihrp4',
+                playerVars: {
+                    autoplay: 0,
+                    controls: 0,
+                    start: 6,
+                    loop: 1,
+                    playlist: '-RcPZdihrp4'
+                },
+                events: {
+                    onReady: () => setIsApiReady(true),
+                }
+            });
+        }
+
+        return () => {
+            if (playerRef.current) {
+                playerRef.current.destroy();
+            }
+        };
+    }, []);
 
     const toggleAudio = () => {
+        if (!isApiReady) return;
+
         if (isPlaying) {
-            audioRef.current.pause();
+            playerRef.current.pauseVideo();
         } else {
-            audioRef.current.play().catch(e => console.log("Audio play blocked", e));
+            playerRef.current.playVideo();
         }
         setIsPlaying(!isPlaying);
     };
@@ -35,11 +73,7 @@ const AudioToggle = () => {
                     {isPlaying ? "Mute Atmosphere" : "Unmute Atmosphere"}
                 </span>
             </button>
-            <audio
-                ref={audioRef}
-                src="https://res.cloudinary.com/dgy8v9vpx/video/upload/v1741270274/stranger-things-theme_u2o3v0.mp3" // I'll search for a better link or use a placeholder
-                loop
-            />
+            <div id="youtube-audio-player" className="hidden" />
         </div>
     );
 };

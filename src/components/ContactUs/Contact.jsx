@@ -3,17 +3,10 @@ import contactBg from "../../assets/display/contactus.webp";
 
 const SpookyContactPoster = () => {
   return (
-    <div className="mt-15 md:mt-25 relative min-h-screen w-full bg-black text-[#ff4a22] font-serif overflow-hidden flex flex-col items-center py-12 px-4 selection:bg-red-900 selection:text-white">
-      {/* BACKGROUND PLACEHOLDER */}
-      {/* Replace this div's background with your actual spooky background image URL */}
+    <div className="mt-15 md:mt-25 relative min-h-screen w-full bg-transparent text-[#ff4a22] font-serif overflow-hidden flex flex-col items-center py-12 px-4 selection:bg-red-900 selection:text-white perspective-section">
+      {/* BACKGROUND OVERLAY */}
       <div
-        className="absolute inset-0 z-0 opacity-60 bg-gradient-to-b from-[#3a0000] via-[#0a0000] to-black"
-        style={{
-          backgroundImage: `url(${contactBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
+        className="absolute inset-0 z-0 opacity-40 bg-gradient-to-b from-black/60 via-black/40 to-black/80 backdrop-blur-[1px]"
       />
 
       {/* MAIN CONTENT CONTAINER */}

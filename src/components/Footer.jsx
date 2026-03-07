@@ -1,11 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaInstagram, FaYoutube, FaFacebookF } from "react-icons/fa";
 import logo from "../assets/images/logo.webp"; // Import the logo
 import "./Footer.css"; // Import the CSS file for styling
 
 const Footer = () => {
+  const [formData, setFormData] = useState({ name: "", phone: "", query: "" });
+  const [status, setStatus] = useState("idle"); // idle, submitting, success, error
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.phone || !formData.query) {
+      alert("Please fill in all fields.");
+      return;
+    }
+    setStatus("submitting");
+
+    // Simulate data collection as requested
+    console.log("Form Data Captured:", formData);
+
+    // Mock interaction feedback
+    setTimeout(() => {
+      setStatus("success");
+      setFormData({ name: "", phone: "", query: "" });
+      setTimeout(() => setStatus("idle"), 3000);
+    }, 1500);
+  };
+
   return (
-    <footer id="contact" className="footer-container">
+    <footer id="contact" className="footer-container perspective-section">
       <div className="footer-content">
         {/* Logo and Subtext */}
         <div className="footer-section">
@@ -45,13 +72,16 @@ const Footer = () => {
               <FaFacebookF size={30} />
             </a>
           </div>
-          <form className="footer-form">
+          <form className="footer-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>
             <input
               type="text"
               id="name"
               placeholder="Your Name"
               className="footer-input"
+              value={formData.name}
+              onChange={handleChange}
+              required
             />
             <label htmlFor="phone">Phone Number</label>
             <input
@@ -60,6 +90,9 @@ const Footer = () => {
               id="phone"
               placeholder="Phone Number"
               className="footer-input"
+              value={formData.phone}
+              onChange={handleChange}
+              required
             />
             <label htmlFor="query">Your Query</label>
             <textarea
@@ -67,9 +100,16 @@ const Footer = () => {
               rows="3"
               placeholder="Your Query..."
               className="footer-textarea"
+              value={formData.query}
+              onChange={handleChange}
+              required
             ></textarea>
-            <button type="submit" className="footer-button">
-              SUBMIT
+            <button
+              type="submit"
+              className={`footer-button ${status === 'submitting' ? 'opacity-50 cursor-not-allowed' : ''}`}
+              disabled={status === 'submitting'}
+            >
+              {status === 'submitting' ? 'SUBMITTING...' : status === 'success' ? 'SENT SUCCESSFULLY!' : 'SUBMIT'}
             </button>
           </form>
         </div>

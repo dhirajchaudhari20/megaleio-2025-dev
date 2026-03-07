@@ -1,7 +1,7 @@
 /* Footer Container */
 .footer-container {
   border-top: 1px solid #ff0000;
-  background-color: black;
+  background-color: transparent !important;
   color: #ffffff;
   padding: 2rem 1rem;
   font-family: "Arial", sans-serif;
@@ -36,7 +36,7 @@
   font-size: 1.8rem;
   font-weight: bold;
   text-shadow: 0 0 6px #ff0000,
-               0 0 12px #990000;
+    0 0 12px #990000;
   color: #ff0000;
   margin-top: 0.5rem;
 }
@@ -145,5 +145,5 @@
   border-top: 1px solid #ff0000;
   padding-top: 0.7rem;
   font-size: 0.8rem;
-  color:#ffffff;
+  color: #ffffff;
 }

@@ -78,20 +78,11 @@ const Countdown = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-28 md:py-40 text-center bg-cover bg-center overflow-hidden min-h-[70vh] flex items-center justify-center"
-      style={{ backgroundImage: `url(${bgImage})` }}
+      className="relative py-28 md:py-40 text-center bg-transparent overflow-hidden min-h-[70vh] flex items-center justify-center perspective-section"
     >
-      {/* 🎬 Cinematic Background Video (Optimized) */}
+      {/* 🎬 Cinematic Background Overlay — ensuring clouds bleed through 🎬 */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 opacity-70"
-        >
-          <source src={countdownVideo} type="video/mp4" />
-        </video>
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
       </div>
 
       {/* 🌫️ Bottom & Top Fades */}
@@ -125,14 +116,14 @@ const Countdown = () => {
               ref={el => boxesRef.current[index] = el}
               style={{
                 position: "relative",
-                background: "rgba(10,2,2,0.85)",
-                backdropFilter: "blur(15px)",
-                WebkitBackdropFilter: "blur(15px)",
+                background: "rgba(10,2,2,0.6)",
+                backdropFilter: "blur(10px)",
+                WebkitBackdropFilter: "blur(10px)",
                 border: "1px solid rgba(220,20,60,0.2)",
                 borderTop: "1px solid rgba(220,20,60,0.5)",
-                padding: "24px 32px 20px",
-                minWidth: "110px",
-                boxShadow: "0 15px 35px rgba(0,0,0,0.6)",
+                padding: "16px 20px 12px",
+                minWidth: "85px",
+                boxShadow: "0 10px 25px rgba(0,0,0,0.5)",
               }}
             >
               {/* top accent line */}

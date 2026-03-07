@@ -6,13 +6,13 @@ const scheduleData = {
   day1: [
     {
       time: "10:00 - 10:30",
-      date: "2025-03-07",
+      date: "2026-03-13",
       room: "Auditorium",
       title: "INAUGURATION"
     },
     {
       time: "10:30 - 23:59",
-      date: "2025-03-07",
+      date: "2026-03-13",
       room: "4th Floor Labs",
       title: "MEGAHACK 5.0"
     },
@@ -68,7 +68,7 @@ const scheduleData = {
   day2: [
     {
       time: "00:00 - 12:00",
-      date: "2025-03-08",
+      date: "2026-03-14",
       room: "4th Floor Labs",
       title: "MEGAHACK 5.0"
     },
@@ -164,17 +164,17 @@ const isEventUpcoming = (event) => {
 
 const EventCard = ({ event }) => (
   <motion.div
-    className="w-full md:w-3/4 bg-gray-900 border-green-400 border-4 p-10 rounded-lg mb-8 
-    shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out
-    hover:bg-green-700 hover:text-black mx-auto flex flex-col justify-center items-center"
+    className="w-full md:w-3/4 bg-black/60 border-[#dc143c]/60 border-4 p-8 md:p-10 rounded-lg mb-8 
+    shadow-[0_0_20px_rgba(220,20,60,0.2)] hover:scale-[1.02] transition-all duration-300 ease-in-out
+    hover:bg-[#dc143c]/20 hover:border-[#dc143c] mx-auto flex flex-col justify-center items-center backdrop-blur-md"
     data-aos="zoom-in-up"
     initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 25 }}
+    whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, ease: "easeOut" }}
   >
-    <div className="text-sm md:text-lg text-yellow-400 font-bold text-center mb-2">{event.time}</div>
-    <div className="text-sm text-gray-300 text-center mb-4">Venue: {event.room}</div>
-    <div className="text-2xl md:text-4xl mt-2 font-bold text-center text-green-400">{event.title}</div>
+    <div className="text-sm md:text-lg text-red-500 font-bold text-center mb-2 tracking-widest font-['Courier_New']">{event.time}</div>
+    <div className="text-xs md:text-sm text-gray-400 text-center mb-4 uppercase tracking-[0.2em] font-['Courier_New']">Venue: {event.room}</div>
+    <div className="text-2xl md:text-4xl mt-2 font-bold text-center text-[#e8e8e8] font-['Cinzel'] tracking-wider shadow-sm">{event.title}</div>
   </motion.div>
 );
 
@@ -195,12 +195,12 @@ export default function Schedule() {
   }, []);
 
   return (
-    <section className="min-h-screen w-screen px-6 md:px-48 pt-24 text-green-300 font-['Press_Start_2P'] bg-[image:url('/back-1.gif')] bg-cover bg-center flex flex-col justify-center items-center relative overflow-hidden">
+    <section className="min-h-screen w-screen px-4 md:px-24 pt-32 text-[#dc143c] bg-transparent flex flex-col justify-center items-center relative overflow-hidden perspective-section">
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
 
       <div className="container max-w-screen-xl mx-auto text-center relative z-10">
-        <h1 className="text-4xl md:text-6xl mb-12 tracking-widest animate-pulse pb-4 text-center">
+        <h1 className="text-5xl md:text-7xl mb-16 tracking-[0.4em] font-['Cinzel'] font-bold text-[#dc143c] text-glow-red text-center">
           SCHEDULE
         </h1>
 
@@ -208,7 +208,7 @@ export default function Schedule() {
           {/* Ongoing Events Section */}
           {ongoingEvents.length > 0 && (
             <div className="w-full">
-              <h2 className="text-3xl bg-green-700 p-4 rounded-md shadow-md inline-block text-center w-full">
+              <h2 className="text-2xl md:text-3xl bg-[#dc143c]/80 text-white p-4 rounded-md shadow-lg inline-block text-center w-full font-['Cinzel'] tracking-[0.2em] mb-8">
                 ONGOING EVENTS
               </h2>
               {ongoingEvents.map((event, index) => (
@@ -220,7 +220,7 @@ export default function Schedule() {
           {/* Upcoming Events Section */}
           {upcomingEvents.length > 0 && (
             <div className="w-full">
-              <h2 className="text-3xl bg-green-700 p-4 rounded-md shadow-md inline-block text-center w-full">
+              <h2 className="text-2xl md:text-3xl bg-[#dc143c]/80 text-white p-4 rounded-md shadow-lg inline-block text-center w-full font-['Cinzel'] tracking-[0.2em] mb-8">
                 UPCOMING EVENTS
               </h2>
               {upcomingEvents.map((event, index) => (
@@ -232,8 +232,8 @@ export default function Schedule() {
           {/* Day 1 and Day 2 sections */}
           {["day1", "day2"].map((category) => (
             <div key={category} className="w-full">
-              <h2 className="text-3xl bg-green-700 p-4 rounded-md shadow-md inline-block text-center w-full">
-                {category.toUpperCase()} EVENTS
+              <h2 className="text-2xl md:text-3xl bg-[#dc143c]/80 text-white p-4 rounded-md shadow-lg inline-block text-center w-full font-['Cinzel'] tracking-[0.2em] mb-8">
+                {category === "day1" ? "MARCH 13" : "MARCH 14"} EVENTS
               </h2>
               {scheduleData[category].map((event, index) => (
                 <EventCard key={index} event={event} />

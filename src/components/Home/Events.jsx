@@ -80,9 +80,9 @@ export default function EventsGallery() {
   useReveal(".reveal");
 
   return (
-    <section ref={sectionRef} className="py-40 bg-black relative">
+    <section ref={sectionRef} className="py-20 bg-transparent relative perspective-section">
       <div className="reveal max-w-[1400px] mx-auto px-6">
-        <div className="frame relative h-[650px] overflow-hidden rounded-[2.5rem] bg-[#050505] p-6 isolate border border-white/5">
+        <div className="frame relative h-[650px] overflow-hidden rounded-[2.5rem] bg-black/40 p-6 isolate border border-white/5 backdrop-blur-sm">
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 h-full">
             {splitImages.map((col, i) => (

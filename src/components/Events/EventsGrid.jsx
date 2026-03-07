@@ -113,7 +113,7 @@ const EventsGrid = () => {
   ];
 
   return (
-    <section className="relative bg-black overflow-hidden">
+    <section className="relative bg-black overflow-hidden perspective-section">
       <style>{`
         @keyframes gridPulse {
           0%,100% { box-shadow: 0 0 0 rgba(220,20,60,0); }

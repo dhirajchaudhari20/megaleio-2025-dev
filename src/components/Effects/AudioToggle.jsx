@@ -36,11 +36,31 @@ const AudioToggle = () => {
                 events: {
                     onReady: (event) => {
                         setIsApiReady(true);
-                        // Attempt to play if isPlaying is true on ready
-                        // Note: Browsers may block this until first user gesture
-                        if (isPlaying) {
-                            event.target.playVideo();
-                        }
+                        // Interaction listener to bypass browser autoplay blocks
+                        const startAudio = () => {
+                            if (isPlaying && playerRef.current && typeof playerRef.current.playVideo === 'function') {
+                                playerRef.current.playVideo();
+                                // Fade in volume
+                                playerRef.current.setVolume(0);
+                                let vol = 0;
+                                const fadeInterval = setInterval(() => {
+                                    vol += 10;
+                                    if (vol >= 100) {
+                                        playerRef.current.setVolume(100);
+                                        clearInterval(fadeInterval);
+                                    } else {
+                                        playerRef.current.setVolume(vol);
+                                    }
+                                }, 150);
+                            }
+                            window.removeEventListener('click', startAudio);
+                            window.removeEventListener('touchstart', startAudio);
+                            window.removeEventListener('scroll', startAudio);
+                        };
+
+                        window.addEventListener('click', startAudio);
+                        window.addEventListener('touchstart', startAudio);
+                        window.addEventListener('scroll', startAudio);
                     },
                 }
             });
@@ -51,7 +71,7 @@ const AudioToggle = () => {
                 playerRef.current.destroy();
             }
         };
-    }, []);
+    }, [isPlaying]);
 
     const toggleAudio = () => {
         if (!isApiReady) return;
@@ -60,6 +80,7 @@ const AudioToggle = () => {
             playerRef.current.pauseVideo();
         } else {
             playerRef.current.playVideo();
+            playerRef.current.setVolume(100);
         }
         setIsPlaying(!isPlaying);
     };

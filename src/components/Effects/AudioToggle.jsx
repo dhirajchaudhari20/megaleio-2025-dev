@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
 const AudioToggle = () => {
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
     const playerRef = useRef(null);
     const [isApiReady, setIsApiReady] = useState(false);
 
@@ -34,7 +34,14 @@ const AudioToggle = () => {
                     playlist: '-RcPZdihrp4'
                 },
                 events: {
-                    onReady: () => setIsApiReady(true),
+                    onReady: (event) => {
+                        setIsApiReady(true);
+                        // Attempt to play if isPlaying is true on ready
+                        // Note: Browsers may block this until first user gesture
+                        if (isPlaying) {
+                            event.target.playVideo();
+                        }
+                    },
                 }
             });
         }

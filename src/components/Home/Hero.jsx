@@ -669,7 +669,7 @@ const Hero = () => {
                   className="leading-none select-none"
                   style={{
                     fontFamily: "'Cinzel', serif",
-                    fontSize: "clamp(2.4rem, 8vw, 5.5rem)",
+                    fontSize: "clamp(2rem, 8vw, 5.5rem)",
                     fontWeight: 700,
                     letterSpacing: "3px",
                     marginBottom: "24px",

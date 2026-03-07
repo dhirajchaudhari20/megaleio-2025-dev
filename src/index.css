@@ -4,10 +4,11 @@
 /* @import "~@fortawesome/fontawesome-free/css/all.min.css"; */
 
 
-*{
+* {
   font-family: "Cinzel";
 }
-body{
+
+body {
   margin: 0;
   padding: 0;
   background-color: black;
@@ -58,26 +59,26 @@ body{
 .stranger-title {
   font-family: 'Cinzel', serif;
   text-shadow: 0 0 10px #ff0000,
-               0 0 20px #990000,
-               0 0 40px #660000;
+    0 0 20px #990000,
+    0 0 40px #660000;
   letter-spacing: 4px;
 }
 
 .stranger-heading {
   text-shadow: 0 0 6px #ff0000,
-               0 0 12px #990000;
+    0 0 12px #990000;
 }
 
 .stranger-title {
   letter-spacing: 4px;
-  text-shadow: 
+  text-shadow:
     0 0 10px #ff0000,
     0 0 20px #990000,
     0 0 40px #660000;
 }
 
 .stranger-heading {
-  text-shadow: 
+  text-shadow:
     0 0 6px #ff0000,
     0 0 12px #990000;
 }
@@ -95,7 +96,7 @@ body{
 .stranger-social:hover {
   color: #ffffff;
   background: #140000;
-  box-shadow: 
+  box-shadow:
     0 0 8px #ff0000,
     0 0 20px #990000,
     0 0 40px #660000;
@@ -104,9 +105,17 @@ body{
 }
 
 @keyframes flicker {
-  0% { opacity: 1; }
-  50% { opacity: 0.6; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 
@@ -130,8 +139,8 @@ body{
 /* 🔴 Cinematic Typography */
 .text-glow-red {
   color: #DC143C;
-  text-shadow: 0 0 15px rgba(220, 20, 60, 0.6), 
-               0 0 30px rgba(180, 0, 0, 0.3);
+  text-shadow: 0 0 15px rgba(220, 20, 60, 0.6),
+    0 0 30px rgba(180, 0, 0, 0.3);
   letter-spacing: 0.15em;
   font-family: 'Cinzel', serif;
 }
@@ -139,7 +148,7 @@ body{
 .text-glow-white {
   color: #f0f0f0;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.2),
-               0 2px 20px rgba(0,0,0,0.8);
+    0 2px 20px rgba(0, 0, 0, 0.8);
 }
 
 /* 🧲 Magnetic Button Base */
@@ -157,8 +166,15 @@ body{
 
 /* ✨ Animations */
 @keyframes reveal {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .reveal-on-scroll {
@@ -166,8 +182,34 @@ body{
 }
 
 .contact-us-logo {
-  margin-left: 32px; 
+  margin-left: 32px;
   width: 100px;
   margin-bottom: 1rem;
 }
 
+.flickering-event-text {
+  animation: flicker-event 2s infinite alternate;
+}
+
+@keyframes flicker-event {
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 15px rgba(220, 20, 60, 1), 0 0 30px rgba(220, 20, 60, 0.6);
+  }
+
+  20%,
+  22%,
+  24%,
+  55% {
+    opacity: 0.5;
+    text-shadow: none;
+  }
+}

@@ -69,6 +69,31 @@ const Navbar = () => {
       });
     });
 
+    mm.add("(max-width: 767px)", () => {
+      gsap.from(".nav-logo", {
+        x: 0,
+        y: window.innerHeight * 0.35, // Push it down towards the vertical center
+        scale: window.innerWidth / 150, // Make it significantly larger initially
+        scrollTrigger: {
+          trigger: ".nav-logo",
+          start: "center 40%",
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+      gsap.from(".nav-title", {
+        y: window.innerHeight * 0.45, // Keep it proportionally below the logo
+        scale: window.innerWidth / 250,
+        opacity: 0,
+        scrollTrigger: {
+          trigger: ".nav-logo",
+          start: "center 40%",
+          scrub: 2,
+          invalidateOnRefresh: true,
+        },
+      });
+    });
+
   }, { scope: capsuleRef.current, dependencies: [isHome] });
 
   /* ── Capsule → Circle morph on scroll (GSAP) ── */

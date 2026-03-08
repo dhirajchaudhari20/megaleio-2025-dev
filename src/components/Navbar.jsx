@@ -70,23 +70,23 @@ const Navbar = () => {
     });
 
     mm.add("(max-width: 767px)", () => {
-      gsap.from(".nav-logo", {
+      gsap.from(".mobile-nav-logo", { // Exclusively target mobile element
         x: 0,
         y: window.innerHeight * 0.35, // Push it down towards the vertical center
         scale: window.innerWidth / 150, // Make it significantly larger initially
         scrollTrigger: {
-          trigger: ".nav-logo",
+          trigger: ".mobile-nav-logo",
           start: "center 40%",
           scrub: 1,
           invalidateOnRefresh: true,
         },
       });
-      gsap.from(".nav-title", {
+      gsap.from(".mobile-nav-title", { // Exclusively target mobile element
         y: window.innerHeight * 0.45, // Keep it proportionally below the logo
         scale: window.innerWidth / 250,
         opacity: 0,
         scrollTrigger: {
-          trigger: ".nav-logo",
+          trigger: ".mobile-nav-logo",
           start: "center 40%",
           scrub: 2,
           invalidateOnRefresh: true,
@@ -320,10 +320,10 @@ const Navbar = () => {
           <div className="relative flex md:hidden items-center justify-center px-4 py-1.5">
             {/* Logo + title — vertical stack for better centering */}
             <div className="flex flex-col items-center gap-0.5 pointer-events-none">
-              <div className="nav-logo">
+              <div className="mobile-nav-logo">
                 <img src={logo} alt="logo" className="h-10 w-auto" />
               </div>
-              <div className="nav-title">
+              <div className="mobile-nav-title">
                 <img src={title} alt="Megalio 2026" className="h-8 w-auto md:h-10" />
               </div>
             </div>

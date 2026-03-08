@@ -11,6 +11,7 @@ const Home = () => {
   return (
     <div className='relative'>
 
+      <Video />
       <Hero />
       <Countdown />
       <EventsGallery />

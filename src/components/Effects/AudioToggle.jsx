@@ -31,23 +31,16 @@ const AudioToggle = () => {
                     controls: 0,
                     start: 6,
                     loop: 1,
-                    playlist: '-RcPZdihrp4',
-                    mute: 0
+                    playlist: '-RcPZdihrp4'
                 },
                 events: {
                     onReady: (event) => {
                         setIsApiReady(true);
-                        // Setup global interaction listener to bypass browser blocks
-                        const startAudio = () => {
-                            if (isPlaying && event.target) {
-                                event.target.playVideo();
-                                event.target.setVolume(70);
-                            }
-                            window.removeEventListener('click', startAudio);
-                            window.removeEventListener('touchstart', startAudio);
-                        };
-                        window.addEventListener('click', startAudio);
-                        window.addEventListener('touchstart', startAudio);
+                        // Attempt to play if isPlaying is true on ready
+                        // Note: Browsers may block this until first user gesture
+                        if (isPlaying) {
+                            event.target.playVideo();
+                        }
                     },
                 }
             });
@@ -58,7 +51,7 @@ const AudioToggle = () => {
                 playerRef.current.destroy();
             }
         };
-    }, [isPlaying]); // Re-run if isPlaying default changes
+    }, []);
 
     const toggleAudio = () => {
         if (!isApiReady) return;

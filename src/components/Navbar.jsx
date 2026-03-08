@@ -50,10 +50,10 @@ const Navbar = () => {
         y: window.innerHeight * 0.45,
         scale: window.innerWidth / 200,
         scrollTrigger: {
-          trigger: ".nav-logo",
-          start: "center 50%",
+          trigger: "body",
+          start: "top top",
+          end: "500px top",
           scrub: 2,
-          invalidateOnRefresh: true,
         },
       });
       gsap.from(".nav-title", {
@@ -61,35 +61,23 @@ const Navbar = () => {
         scale: window.innerWidth / 400,
         opacity: 0,
         scrollTrigger: {
-          trigger: ".nav-logo",
-          start: "center 50%",
+          trigger: "body",
+          start: "top top",
+          end: "500px top",
           scrub: 2,
-          invalidateOnRefresh: true,
         },
       });
     });
 
     mm.add("(max-width: 767px)", () => {
-      gsap.from(".nav-logo", {
-        x: 0,
+      gsap.from(".nav-logo-group", {
         y: window.innerHeight * 0.35,
         scale: window.innerWidth / 120,
         scrollTrigger: {
-          trigger: ".nav-logo",
-          start: "center 40%",
-          scrub: 1,
-          invalidateOnRefresh: true,
-        },
-      });
-      gsap.from(".nav-title", {
-        y: window.innerHeight * 0.65,
-        scale: window.innerWidth / 250,
-        opacity: 0,
-        scrollTrigger: {
-          trigger: ".nav-logo",
-          start: "center 40%",
-          scrub: 2,
-          invalidateOnRefresh: true,
+          trigger: "body",
+          start: "top top",
+          end: "300px top",
+          scrub: 1.5,
         },
       });
     });
@@ -126,6 +114,7 @@ const Navbar = () => {
         });
 
         gsap.to(chipRef.current, {
+          display: "flex",
           xPercent: -50,
           y: 0,
           opacity: 1,
@@ -136,6 +125,7 @@ const Navbar = () => {
         });
       } else {
         gsap.to(chipRef.current, {
+          display: "none",
           xPercent: -50,
           y: -120,
           opacity: 0,
@@ -211,7 +201,6 @@ const Navbar = () => {
       {/* ░░ SCROLLED LOGO CIRCLE — morphs from collapsed capsule ░░ */}
       <div
         ref={chipRef}
-        className="hidden"
         style={{
           position: "fixed",
           top: "10px",
@@ -221,6 +210,7 @@ const Navbar = () => {
           width: "80px",
           height: "80px",
           borderRadius: "50%",
+          display: "none", // Initial state
           background: "rgba(5,5,5,0.9)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
@@ -316,7 +306,7 @@ const Navbar = () => {
           {/* â”€â”€ MOBILE LAYOUT â”€â”€ */}
           <div className="relative flex md:hidden items-center justify-center px-4 py-1.5">
             {/* Logo + title — absolutely centered */}
-            <div className="flex items-center gap-2.5">
+            <div className="nav-logo-group flex items-center gap-2.5">
               <div className="nav-logo">
                 <img src={logo} alt="logo" className="h-10 w-auto" />
               </div>

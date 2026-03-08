@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import Video from '../components/Home/Video'
 import Hero from '../components/Home/Hero'
 import Countdown from '../components/Home/CountDown'
 import EventsGallery from '../components/Home/Events'

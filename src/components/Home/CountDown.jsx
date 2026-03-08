@@ -97,49 +97,52 @@ const Countdown = () => {
 
         <h1
           ref={titleRef}
-          className="text-glow-red mb-6 uppercase select-none leading-tight"
+          className="stranger-title mb-8 uppercase select-none leading-tight"
           style={{
-            fontSize: "clamp(1.8rem, 6vw, 4.2rem)",
+            fontSize: "clamp(2rem, 6.5vw, 4.8rem)",
+            color: "#ff1111"
           }}
         >
-          Countdown to Megaleio 2026
+          Countdown to Megaleio
         </h1>
 
-        <p className="mb-12 tracking-[0.3em] uppercase" style={{ fontSize: "0.68rem", color: "rgba(200,140,140,0.55)", fontFamily: "'Courier New', monospace" }}>
+        <p className="mb-14 tracking-[0.4em] uppercase" style={{ fontSize: "0.75rem", color: "rgba(220,100,100,0.75)", fontFamily: "'Courier New', monospace" }}>
           Get ready for the ultimate tech fest
         </p>
 
-        <div className="flex justify-center gap-4 md:gap-8 flex-wrap">
+        <div className="flex justify-center gap-5 md:gap-10 flex-wrap perspective-[1000px]">
           {["days", "hours", "minutes", "seconds"].map((unit, index) => (
             <div
               key={index}
               ref={el => boxesRef.current[index] = el}
               style={{
                 position: "relative",
-                background: "rgba(10,2,2,0.6)",
-                backdropFilter: "blur(10px)",
-                WebkitBackdropFilter: "blur(10px)",
-                border: "1px solid rgba(220,20,60,0.2)",
-                borderTop: "1px solid rgba(220,20,60,0.5)",
-                padding: "16px 20px 12px",
-                minWidth: "85px",
-                boxShadow: "0 10px 25px rgba(0,0,0,0.5)",
+                background: "linear-gradient(145deg, rgba(25,2,2,0.92), rgba(5,0,0,0.98))",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(220,20,60,0.35)",
+                borderBottom: "6px solid rgba(110,0,0,0.9)", // Thick 3D extrusion base
+                borderRadius: "10px",
+                padding: "24px 28px 18px",
+                minWidth: "115px",
+                boxShadow: "0 25px 50px rgba(0,0,0,0.95), inset 0 2px 20px rgba(220,20,60,0.18), inset 0 -4px 10px rgba(0,0,0,0.8)",
+                transformStyle: "preserve-3d", // For scroll reveal depth
               }}
             >
-              {/* top accent line */}
+              {/* top accent line glowing */}
               <div style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: "2px",
-                background: "linear-gradient(to right, transparent, rgba(200,20,30,0.6), transparent)",
+                background: "linear-gradient(to right, transparent, rgba(255,40,40,0.8), transparent)",
+                boxShadow: "0 2px 10px rgba(255,0,0,0.6)"
               }} />
               <div
                 style={{
                   fontFamily: "'Cinzel', serif",
-                  fontSize: "clamp(1.8rem, 5vw, 2.8rem)",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  color: "#e8e8e8",
+                  fontSize: "clamp(2.5rem, 6vw, 3.8rem)",
+                  fontWeight: 800,
+                  letterSpacing: "0.05em",
+                  color: "#fffafa",
                   lineHeight: 1,
-                  textShadow: "0 0 18px rgba(220,20,40,0.25)",
+                  textShadow: "0 0 10px #ff0000, 0 0 25px #cc0000, 0 0 45px #880000", // Intense neon glow
                 }}
               >
                 {String(timeLeft[unit]).padStart(2, "0")}

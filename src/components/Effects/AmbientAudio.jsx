@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-// Placeholder audio for atmospheric drone
-const DRONE_AUDIO_URL = "https://cdn.pixabay.com/download/audio/2022/10/25/audio_2d8636babe.mp3?filename=dark-ambient-drone-25441.mp3"; // Or any other suitable dark drone
+// Using a reliable non-expiring public URL for testing drone ambient audio
+const DRONE_AUDIO_URL = "https://raw.githubusercontent.com/rafaelreis-hotmart/Audio-Sample-files/master/sample.mp3"; // generic sample to bypass 403
 
 const AmbientAudio = () => {
     const audioRef = useRef(null);

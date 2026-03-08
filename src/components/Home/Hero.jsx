@@ -2,7 +2,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import bgVideo from "../../assets/stranger-things-clouds.mp4";
 import vecna from "../../assets/vecna_tsp.webp";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -167,6 +166,7 @@ const Hero = () => {
 
     /* ── 6. Random lightning flicker ── */
     const doLightning = () => {
+      if (!lightningRef.current) return;
       const tl = gsap.timeline({
         onComplete: () =>
           gsap.delayedCall(Math.random() * 12 + 6, doLightning),
@@ -180,6 +180,7 @@ const Hero = () => {
 
     /* ── 7. Shadow silhouette — psychological tension ── */
     const doShadow = () => {
+      if (!shadowRef.current) return;
       gsap
         .timeline({
           onComplete: () =>
@@ -339,6 +340,7 @@ const Hero = () => {
               muted
               loop
               playsInline
+              preload="auto"
               style={{
                 width: "100%",
                 height: "100%",
@@ -346,7 +348,8 @@ const Hero = () => {
                 filter: "brightness(0.6) contrast(1.2) saturate(0.8)",
               }}
             >
-              <source src={bgVideo} type="video/mp4" />
+              <source src="/video/stranger-things-clouds-opt.webm" type="video/webm" />
+              <source src="/video/stranger-things-clouds-opt.mp4" type="video/mp4" />
             </video>
           )}
         </div>
@@ -363,6 +366,7 @@ const Hero = () => {
               muted
               loop
               playsInline
+              preload="auto"
               style={{
                 width: "100%",
                 height: "100%",
@@ -370,7 +374,8 @@ const Hero = () => {
                 filter: "brightness(0.4) contrast(1.4)",
               }}
             >
-              <source src={bgVideo} type="video/mp4" />
+              <source src="/video/stranger-things-clouds-opt.webm" type="video/webm" />
+              <source src="/video/stranger-things-clouds-opt.mp4" type="video/mp4" />
             </video>
           )}
         </div>

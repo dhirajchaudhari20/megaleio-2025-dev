@@ -31,7 +31,8 @@ const AudioToggle = () => {
                     controls: 0,
                     start: 6,
                     loop: 1,
-                    playlist: '-RcPZdihrp4'
+                    playlist: '-RcPZdihrp4',
+                    origin: window.location.origin
                 },
                 events: {
                     onReady: (event) => {

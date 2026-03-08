@@ -1,5 +1,4 @@
 import React from "react";
-import cloudsVideo from "../../assets/stranger-things-clouds.mp4";
 
 const Video = () => {
   return (
@@ -10,9 +9,11 @@ const Video = () => {
           muted
           loop
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src={cloudsVideo} type="video/mp4" />
+          <source src="/video/stranger-things-clouds-opt.webm" type="video/webm" />
+          <source src="/video/stranger-things-clouds-opt.mp4" type="video/mp4" />
         </video>
       </div>
     </div>

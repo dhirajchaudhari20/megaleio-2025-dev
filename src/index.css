@@ -153,7 +153,11 @@ body {
 
 /* 🧲 Magnetic Button Base */
 .btn-premium {
-  @apply relative overflow-hidden transition-all duration-300;
+  position: relative;
+  overflow: hidden;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
   background: linear-gradient(135deg, #8B0000 0%, #300000 100%);
   border: 1px solid rgba(220, 20, 60, 0.3);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);

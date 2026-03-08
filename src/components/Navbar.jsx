@@ -315,13 +315,13 @@ const Navbar = () => {
 
           {/* â”€â”€ MOBILE LAYOUT â”€â”€ */}
           <div className="relative flex md:hidden items-center justify-center px-4 py-1.5">
-            {/* Logo + title — absolutely centered */}
-            <div className="flex items-center gap-2.5">
+            {/* Logo + title — vertical stack for better centering */}
+            <div className="flex flex-col items-center gap-0.5">
               <div className="nav-logo">
-                <img src={logo} alt="logo" className="h-9 w-auto" />
+                <img src={logo} alt="logo" className="h-10 w-auto" />
               </div>
               <div className="nav-title">
-                <img src={title} alt="Megalio 2026" className="h-7 w-auto" />
+                <img src={title} alt="Megalio 2026" className="h-8 w-auto" />
               </div>
             </div>
 

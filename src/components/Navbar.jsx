@@ -72,8 +72,8 @@ const Navbar = () => {
     mm.add("(max-width: 767px)", () => {
       gsap.from(".nav-logo", {
         x: 0,
-        y: window.innerHeight * 0.4,
-        scale: window.innerWidth / 70,
+        y: window.innerHeight * 0.15, // Reduced from 0.4 to keep it within view
+        scale: window.innerWidth / 120, // Adjusted scale
         scrollTrigger: {
           trigger: ".nav-logo",
           start: "center 40%",
@@ -117,6 +117,7 @@ const Navbar = () => {
       scrolled = shouldCollapse;
 
       if (shouldCollapse) {
+        gsap.set(chipRef.current, { display: "flex" }); // Ensure visible
         gsap.timeline().to(capsuleRef.current, {
           scaleX: 0.12,
           scaleY: 0.7,
@@ -142,6 +143,7 @@ const Navbar = () => {
           scale: 0.6,
           duration: 0.34,
           ease: "power2.in",
+          onComplete: () => gsap.set(chipRef.current, { display: "none" }), // Hide after animation
         });
 
         gsap
@@ -211,8 +213,8 @@ const Navbar = () => {
       {/* ░░ SCROLLED LOGO CIRCLE — morphs from collapsed capsule ░░ */}
       <div
         ref={chipRef}
-        className="hidden"
         style={{
+          display: "none", // Managed by GSAP for robustness
           position: "fixed",
           top: "10px",
           left: "50%",
@@ -316,12 +318,12 @@ const Navbar = () => {
           {/* â”€â”€ MOBILE LAYOUT â”€â”€ */}
           <div className="relative flex md:hidden items-center justify-center px-4 py-1.5">
             {/* Logo + title — vertical stack for better centering */}
-            <div className="flex flex-col items-center gap-0.5">
-              <div className="mobile-nav-logo">
+            <div className="flex flex-col items-center gap-0.5 pointer-events-none">
+              <div className="nav-logo">
                 <img src={logo} alt="logo" className="h-10 w-auto" />
               </div>
-              <div className="mobile-nav-title">
-                <img src={title} alt="Megalio 2026" className="h-8 w-auto" />
+              <div className="nav-title">
+                <img src={title} alt="Megalio 2026" className="h-8 w-auto md:h-10" />
               </div>
             </div>
 

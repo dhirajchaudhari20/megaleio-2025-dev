@@ -71,6 +71,47 @@ const Countdown = () => {
         start: "top 80%",
       }
     });
+
+    // 3. 3D Telekinesis Hover Effect for the Countdown Boxes
+    // This gives proper interactive 3D depth to the individual elements without tilting the whole screen
+    boxesRef.current.forEach((box) => {
+      if (!box) return;
+
+      const onMouseMove = (e) => {
+        const rect = box.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        gsap.to(box, {
+          rotateY: x * 0.15,
+          rotateX: -y * 0.15,
+          transformPerspective: 1000,
+          boxShadow: `${-x * 0.5}px ${-y * 0.5 + 25}px 60px rgba(0,0,0,0.95), inset 0 2px 20px rgba(220,20,60,0.3), inset 0 -4px 10px rgba(0,0,0,0.8)`,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      };
+
+      const onMouseLeave = () => {
+        gsap.to(box, {
+          rotateY: 0,
+          rotateX: 0,
+          transformPerspective: 1000,
+          boxShadow: `0 25px 50px rgba(0,0,0,0.95), inset 0 2px 20px rgba(220,20,60,0.18), inset 0 -4px 10px rgba(0,0,0,0.8)`,
+          duration: 0.7,
+          ease: "elastic.out(1, 0.3)",
+        });
+      };
+
+      box.addEventListener("mousemove", onMouseMove);
+      box.addEventListener("mouseleave", onMouseLeave);
+
+      // Cleanup
+      return () => {
+        box.removeEventListener("mousemove", onMouseMove);
+        box.removeEventListener("mouseleave", onMouseLeave);
+      };
+    });
   }, { scope: sectionRef.current });
 
   useScrollReveal(boxesRef.current, { stagger: 0.1, y: 30 });
@@ -78,7 +119,7 @@ const Countdown = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-28 md:py-40 text-center bg-transparent overflow-hidden min-h-[70vh] flex items-center justify-center perspective-section"
+      className="relative py-28 md:py-40 text-center bg-transparent overflow-hidden min-h-[70vh] flex items-center justify-center"
     >
       {/* 🎬 Cinematic Background Overlay — ensuring clouds bleed through 🎬 */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">

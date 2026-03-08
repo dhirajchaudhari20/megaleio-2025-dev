@@ -11,6 +11,9 @@ gsap.registerPlugin(ScrollTrigger);
  */
 export const usePerspectiveScroll = (selector, options = {}) => {
     useEffect(() => {
+        // Disable heavy 3D section tilt on mobile viewports to prevent UI distortion
+        if (window.innerWidth < 768) return;
+
         const elements = document.querySelectorAll(selector);
 
         elements.forEach((el) => {

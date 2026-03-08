@@ -8,6 +8,7 @@ import ContactUs from "./pages/ContactUs";
 import Event from "./pages/Event";
 import { useSmoothScroll } from "./hook/useSmoothScroll";
 import ScrollToTop from "./hook/ScrollToTop";
+import CustomCursor from "./components/Effects/CustomCursor";
 
 const App = () => {
 
@@ -23,16 +24,17 @@ const App = () => {
 
   return (
     <>
-    <ScrollToTop />
-    <Routes>
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/Event" element={<Event />} />
-        <Route path="/Schedule" element={<Schedule />} />
-        <Route path="/Team" element={<Team />} />
-        <Route path="/ContactUs" element={<ContactUs />} />
-      </Route>
-    </Routes>
+      <CustomCursor />
+      <ScrollToTop />
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/Event" element={<Event />} />
+          <Route path="/Schedule" element={<Schedule />} />
+          <Route path="/Team" element={<Team />} />
+          <Route path="/ContactUs" element={<ContactUs />} />
+        </Route>
+      </Routes>
     </>
   );
 };

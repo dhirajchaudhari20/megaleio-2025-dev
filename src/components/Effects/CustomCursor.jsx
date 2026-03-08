@@ -32,21 +32,6 @@ const CustomCursor = () => {
 
     return (
         <>
-            {/* 🌑 Dark Overlay blocker (Global) */}
-            <div
-                className="fixed inset-0 pointer-events-none z-[9997] bg-black/15"
-                style={{ mixBlendMode: 'multiply' }}
-            />
-
-            {/* 🔦 Flashlight Effect */}
-            <div
-                ref={flashlightRef}
-                className="fixed top-0 left-0 w-[100vmax] h-[100vmax] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[9998]"
-                style={{
-                    background: "radial-gradient(circle, transparent 0%, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.95) 100%)",
-                }}
-            />
-
             {/* 🔴 Small Red Glow Cursor */}
             <div
                 ref={cursorRef}

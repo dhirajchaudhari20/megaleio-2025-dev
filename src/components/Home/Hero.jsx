@@ -701,10 +701,9 @@ const Hero = () => {
                 {/* ── cinematic description ── */}
                 <div
                   ref={cardRef}
-                  className="glass-card shadow-2xl p-6 md:p-8 rounded-3xl"
-                  style={{ position: "relative" }}
+                  className="glass-card shadow-2xl p-6 md:p-8 rounded-3xl flex flex-col items-start gap-6"
+                  style={{ position: "relative", pointerEvents: "auto" }}
                 >
-
 
                   <p
                     className="leading-loose"
@@ -722,6 +721,27 @@ const Hero = () => {
                     dimensions, and uncover secrets that blur the line between
                     science and the supernatural.
                   </p>
+
+                  {/* Psychological Hook: Strong Magnetic CTA */}
+                  <button
+                    onClick={() => {
+                      window.location.href = '/event';
+                    }}
+                    className="btn-pulse group relative px-8 py-4 rounded-xl overflow-hidden transition-all duration-300"
+                    style={{
+                      background: "linear-gradient(45deg, rgba(180,0,20,0.8), rgba(220,20,60,0.9))",
+                      border: "1px solid rgba(255,100,100,0.4)"
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-red-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ mixBlendMode: 'overlay' }} />
+                    <span
+                      className="relative z-10 font-bold tracking-[0.2em] flex items-center gap-3 drop-shadow-md"
+                      style={{ fontFamily: "'Courier New', monospace", color: "#fff" }}
+                    >
+                      ENTER THE GATE
+                      <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+                    </span>
+                  </button>
                 </div>
 
                 {/* ── date ── */}

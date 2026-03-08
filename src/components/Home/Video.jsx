@@ -14,8 +14,6 @@ const Video = () => {
         >
           <source src={cloudsVideo} type="video/mp4" />
         </video>
-        {/* Cinematic Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#050505]" />
       </div>
     </div>
   );

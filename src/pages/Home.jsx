@@ -6,11 +6,12 @@ import Countdown from '../components/Home/CountDown'
 import EventsGallery from '../components/Home/Events'
 import ImageCarousel from '../components/Home/highlights'
 import Footer from '../components/Footer'
+import AmbientAudio from '../components/Effects/AmbientAudio'
 
 const Home = () => {
   return (
     <div className='relative'>
-
+      <AmbientAudio />
       <Video />
       <Hero />
       <Countdown />

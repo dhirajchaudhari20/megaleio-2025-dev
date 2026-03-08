@@ -110,7 +110,7 @@ const Countdown = () => {
           Get ready for the ultimate tech fest
         </p>
 
-        <div className="flex justify-center gap-5 md:gap-10 flex-wrap perspective-[1000px]">
+        <div className="flex justify-center gap-5 md:gap-10 flex-wrap">
           {["days", "hours", "minutes", "seconds"].map((unit, index) => (
             <div
               key={index}
@@ -125,7 +125,6 @@ const Countdown = () => {
                 padding: "24px 28px 18px",
                 minWidth: "115px",
                 boxShadow: "0 25px 50px rgba(0,0,0,0.95), inset 0 2px 20px rgba(220,20,60,0.18), inset 0 -4px 10px rgba(0,0,0,0.8)",
-                transformStyle: "preserve-3d", // For scroll reveal depth
               }}
             >
               {/* top accent line glowing */}

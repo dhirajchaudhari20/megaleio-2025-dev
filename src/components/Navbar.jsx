@@ -221,9 +221,9 @@ const Navbar = () => {
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 51,
-          width: "80px",
-          height: "80px",
-          borderRadius: "50%",
+          width: "140px",
+          height: "60px",
+          borderRadius: "30px", // Pill shape
           background: "rgba(5,5,5,0.9)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
@@ -237,11 +237,11 @@ const Navbar = () => {
           fontFamily: "'Cinzel Decorative', 'Cinzel', serif",
         }}
       >
-        <img src={logo} alt="logo" style={{ height: "32px", width: "auto" }} />
+        <img src={logo} alt="logo" style={{ height: "26px", width: "auto" }} />
         <img
           src={title}
           alt="Megalio 2026"
-          style={{ height: "14px", width: "auto", opacity: 0.85 }}
+          style={{ height: "12px", width: "auto", opacity: 0.85 }}
         />
       </div>
 

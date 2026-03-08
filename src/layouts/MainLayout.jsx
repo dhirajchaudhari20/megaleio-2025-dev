@@ -5,11 +5,9 @@ import AudioToggle from "../components/Effects/AudioToggle";
 import FloatingEventTiles from "../components/Effects/FloatingEventTiles";
 import Custom3DCursor from "../components/Effects/Custom3DCursor";
 import Preloader from "../components/Effects/Preloader";
-import { usePerspectiveScroll } from "../hooks/usePerspectiveScroll";
 import bgVideo from "../assets/stranger-things-clouds.mp4";
 
 const MainLayout = () => {
-  usePerspectiveScroll(".perspective-section");
 
   return (
     <>

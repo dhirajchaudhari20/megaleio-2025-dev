@@ -36,42 +36,39 @@ const AudioToggle = () => {
                 events: {
                     onReady: (event) => {
                         setIsApiReady(true);
-                        // Interaction listener to bypass browser autoplay blocks
-                        const startAudio = () => {
-                            if (isPlaying && playerRef.current && typeof playerRef.current.playVideo === 'function') {
-                                playerRef.current.playVideo();
-                                // Fade in volume
-                                playerRef.current.setVolume(0);
-                                let vol = 0;
-                                const fadeInterval = setInterval(() => {
-                                    vol += 10;
-                                    if (vol >= 100) {
-                                        playerRef.current.setVolume(100);
-                                        clearInterval(fadeInterval);
-                                    } else {
-                                        playerRef.current.setVolume(vol);
-                                    }
-                                }, 150);
-                            }
-                            window.removeEventListener('click', startAudio);
-                            window.removeEventListener('touchstart', startAudio);
-                            window.removeEventListener('scroll', startAudio);
-                        };
-
-                        window.addEventListener('click', startAudio);
-                        window.addEventListener('touchstart', startAudio);
-                        window.addEventListener('scroll', startAudio);
+                        // Attempt to play if isPlaying is true on ready
+                        // Note: Browsers may block this until first user gesture
+                        if (isPlaying) {
+                            event.target.playVideo();
+                        }
                     },
                 }
             });
         }
 
+        // Global interaction listener to bypass autoplay restrictions
+        const handleFirstInteraction = () => {
+            if (playerRef.current && isApiReady && isPlaying) {
+                playerRef.current.playVideo();
+                cleanupListeners();
+            }
+        };
+
+        const cleanupListeners = () => {
+            window.removeEventListener('click', handleFirstInteraction);
+            window.removeEventListener('touchstart', handleFirstInteraction);
+        };
+
+        window.addEventListener('click', handleFirstInteraction);
+        window.addEventListener('touchstart', handleFirstInteraction);
+
         return () => {
+            cleanupListeners();
             if (playerRef.current) {
                 playerRef.current.destroy();
             }
         };
-    }, [isPlaying]);
+    }, []);
 
     const toggleAudio = () => {
         if (!isApiReady) return;
@@ -80,7 +77,6 @@ const AudioToggle = () => {
             playerRef.current.pauseVideo();
         } else {
             playerRef.current.playVideo();
-            playerRef.current.setVolume(100);
         }
         setIsPlaying(!isPlaying);
     };

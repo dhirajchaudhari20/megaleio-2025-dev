@@ -72,8 +72,8 @@ const Navbar = () => {
     mm.add("(max-width: 767px)", () => {
       gsap.from(".nav-logo", {
         x: 0,
-        y: window.innerHeight * 0.4,
-        scale: window.innerWidth / 70,
+        y: window.innerHeight * 0.35,
+        scale: window.innerWidth / 120,
         scrollTrigger: {
           trigger: ".nav-logo",
           start: "center 40%",
@@ -318,7 +318,7 @@ const Navbar = () => {
             {/* Logo + title — absolutely centered */}
             <div className="flex items-center gap-2.5">
               <div className="nav-logo">
-                <img src={logo} alt="logo" className="h-9 w-auto" />
+                <img src={logo} alt="logo" className="h-10 w-auto" />
               </div>
               <div className="nav-title">
                 <img src={title} alt="Megalio 2026" className="h-7 w-auto" />

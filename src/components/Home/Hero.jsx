@@ -632,7 +632,7 @@ const Hero = () => {
         >
           {/* ── text block — top on mobile, centered-left on desktop ── */}
           <div className="flex-1 md:absolute md:inset-0 md:flex md:items-center">
-            <div className="w-full max-w-7xl mx-auto px-6 md:px-20 pt-28 pb-6 md:pt-48 md:pb-0">
+            <div className="w-full max-w-7xl mx-auto px-6 md:px-20 pt-16 pb-6 md:pt-48 md:pb-0">
               <div className="md:max-w-[52%]">
                 {/* scene label */}
                 <div

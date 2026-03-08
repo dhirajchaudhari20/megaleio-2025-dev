@@ -317,10 +317,10 @@ const Navbar = () => {
           <div className="relative flex md:hidden items-center justify-center px-4 py-1.5">
             {/* Logo + title — vertical stack for better centering */}
             <div className="flex flex-col items-center gap-0.5">
-              <div className="nav-logo">
+              <div className="mobile-nav-logo">
                 <img src={logo} alt="logo" className="h-10 w-auto" />
               </div>
-              <div className="nav-title">
+              <div className="mobile-nav-title">
                 <img src={title} alt="Megalio 2026" className="h-8 w-auto" />
               </div>
             </div>

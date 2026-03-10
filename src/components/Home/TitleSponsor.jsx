@@ -137,15 +137,17 @@ const TitleSponsor = () => {
                         {/* Sweep Light Effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] group-hover:animate-[sweep_1s_ease-in-out]"></div>
 
-                        {/* The Logo Itself */}
-                        <motion.img
-                            src={titleImg}
-                            alt="Title Sponsor Template"
-                            className="w-full h-auto object-contain relative z-10 filter"
-                            style={{
-                                filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 35px rgba(220, 20, 60, 0.9)) brightness(1.3) contrast(1.1)'
-                            }}
-                        />
+                        {/* The Logo Itself with Link */}
+                        <a href="https://www.trinitystudyabroad.com/" target="_blank" rel="noopener noreferrer" className="relative z-10 block cursor-pointer">
+                            <motion.img
+                                src={titleImg}
+                                alt="Trinity Study Abroad - Title Sponsor"
+                                className="w-full h-auto object-contain filter hover:scale-105 transition-transform duration-300"
+                                style={{
+                                    filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 35px rgba(220, 20, 60, 0.9)) brightness(1.3) contrast(1.1)'
+                                }}
+                            />
+                        </a>
                     </div>
                 </motion.div>
             </motion.div>

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import titleImg from '../../assets/title/Title.png';
+import titleImg from '../../assets/title/trinity_new_logo.jpg';
 
 const TitleSponsor = () => {
     const containerRef = useRef(null);

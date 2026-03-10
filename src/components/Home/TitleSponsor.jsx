@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import titleImg from '../../assets/title/trinity_new_logo.jpg';
+import nexacraftImg from '../../assets/title/nexacraft.png'; // Make sure the actual image is placed here later
 
 const TitleSponsor = () => {
     const containerRef = useRef(null);
@@ -89,67 +90,90 @@ const TitleSponsor = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1.2, ease: "easeOut" }}
-                className="relative z-10 flex flex-col items-center gap-10 w-full max-w-5xl px-4"
+                className="relative z-10 flex flex-col items-center gap-10 w-full max-w-7xl px-4"
             >
                 {/* Cinematic Heading */}
                 <div className="flex items-center gap-4 md:gap-8 w-full justify-center">
                     <div className="h-[2px] flex-1 max-w-[100px] md:max-w-[200px] bg-gradient-to-r from-transparent to-red-600/90 rounded-full shadow-[0_0_15px_rgba(220,20,60,0.9)]"></div>
                     <h2
-                        className="text-red-500 tracking-[0.5em] font-cinzel text-xl md:text-3xl lg:text-4xl uppercase font-extrabold text-center drop-shadow-[0_0_15px_rgba(255,0,0,0.8)]"
+                        className="text-red-500 tracking-[0.3em] md:tracking-[0.5em] font-cinzel text-xl md:text-3xl lg:text-4xl uppercase font-extrabold text-center drop-shadow-[0_0_15px_rgba(255,0,0,0.8)] whitespace-nowrap"
                         style={{
                             textShadow: '0 0 15px rgba(220, 20, 60, 0.9), 0 0 30px rgba(220, 20, 60, 0.6), 0 0 45px rgba(139, 0, 0, 0.8)'
                         }}
                     >
-                        Title Sponsor
+                        Our Sponsors
                     </h2>
                     <div className="h-[2px] flex-1 max-w-[100px] md:max-w-[200px] bg-gradient-to-l from-transparent to-red-600/90 rounded-full shadow-[0_0_15px_rgba(220,20,60,0.9)]"></div>
                 </div>
 
-                {/* Sponsor Logo Container */}
-                <motion.div
-                    animate={{
-                        y: [-10, 10, -10],
-                    }}
-                    transition={{
-                        duration: 5,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                    whileHover={{
-                        scale: 1.05,
-                        rotateZ: [0, -1, 1, 0],
-                        transition: { duration: 0.4, ease: "easeOut" }
-                    }}
-                    className="relative group w-full max-w-[320px] md:max-w-[450px]"
-                >
-                    {/* Intense Outer Glow Behind Logo Container */}
-                    <div className="absolute inset-[-30px] bg-red-600/30 blur-[50px] rounded-full group-hover:bg-red-500/60 group-hover:blur-[60px] transition-all duration-500 opacity-80 animate-pulse"></div>
+                {/* Sponsors Container (Flex Row on Desktop, Column on Mobile) */}
+                <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16 lg:gap-24 w-full mt-6">
 
-                    {/* Main Logo Card */}
-                    <div className="relative bg-black/60 p-10 md:p-14 rounded-3xl border-2 border-red-900/60 backdrop-blur-xl shadow-[0_0_40px_rgba(180,0,0,0.4)_inset,0_0_30px_rgba(0,0,0,0.9)] overflow-hidden group-hover:border-red-500/80 group-hover:shadow-[0_0_60px_rgba(220,20,60,0.4)_inset,0_0_40px_rgba(0,0,0,0.9)] transition-all duration-500">
+                    {/* Title Sponsor - Trinity */}
+                    <div className="flex flex-col items-center gap-4 w-full md:w-1/2 max-w-[400px]">
+                        <h3 className="text-red-400 font-cinzel text-lg md:text-xl tracking-widest uppercase text-center font-bold drop-shadow-[0_0_10px_rgba(220,20,60,0.8)] mb-2">Title Sponsor</h3>
+                        <motion.div
+                            animate={{ y: [-10, 10, -10] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                            whileHover={{ scale: 1.05, rotateZ: [0, -1, 1, 0], transition: { duration: 0.4, ease: "easeOut" } }}
+                            className="relative group w-full"
+                        >
+                            <div className="absolute inset-[-20px] md:inset-[-30px] bg-red-600/30 blur-[40px] md:blur-[50px] rounded-full group-hover:bg-red-500/60 group-hover:blur-[60px] transition-all duration-500 opacity-80 animate-pulse"></div>
 
-                        {/* Sci-Fi/Horror Corner Accents */}
-                        <div className="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-red-600/80 rounded-tl group-hover:border-red-400 group-hover:shadow-[0_0_10px_rgba(255,100,100,0.8)] transition-all"></div>
-                        <div className="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-red-600/80 rounded-tr group-hover:border-red-400 group-hover:shadow-[0_0_10px_rgba(255,100,100,0.8)] transition-all"></div>
-                        <div className="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-red-600/80 rounded-bl group-hover:border-red-400 group-hover:shadow-[0_0_10px_rgba(255,100,100,0.8)] transition-all"></div>
-                        <div className="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-red-600/80 rounded-br group-hover:border-red-400 group-hover:shadow-[0_0_10px_rgba(255,100,100,0.8)] transition-all"></div>
+                            <div className="relative bg-black/60 p-8 md:p-12 rounded-3xl border-2 border-red-900/60 backdrop-blur-xl shadow-[0_0_40px_rgba(180,0,0,0.4)_inset,0_0_30px_rgba(0,0,0,0.9)] overflow-hidden group-hover:border-red-500/80 group-hover:shadow-[0_0_60px_rgba(220,20,60,0.4)_inset,0_0_40px_rgba(0,0,0,0.9)] transition-all duration-500 flex items-center justify-center min-h-[200px]">
+                                <div className="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-red-600/80 rounded-tl group-hover:border-red-400 group-hover:shadow-[0_0_10px_rgba(255,100,100,0.8)] transition-all"></div>
+                                <div className="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-red-600/80 rounded-tr group-hover:border-red-400 group-hover:shadow-[0_0_10px_rgba(255,100,100,0.8)] transition-all"></div>
+                                <div className="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-red-600/80 rounded-bl group-hover:border-red-400 group-hover:shadow-[0_0_10px_rgba(255,100,100,0.8)] transition-all"></div>
+                                <div className="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-red-600/80 rounded-br group-hover:border-red-400 group-hover:shadow-[0_0_10px_rgba(255,100,100,0.8)] transition-all"></div>
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] group-hover:animate-[sweep_1s_ease-in-out]"></div>
 
-                        {/* Sweep Light Effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] group-hover:animate-[sweep_1s_ease-in-out]"></div>
-
-                        {/* The Logo Itself with Link */}
-                        <a href="https://www.trinitystudyabroad.com/" target="_blank" rel="noopener noreferrer" className="relative z-10 block cursor-pointer">
-                            <motion.img
-                                src={titleImg}
-                                alt="Trinity Study Abroad - Title Sponsor"
-                                className="w-full h-auto object-contain filter hover:scale-105 transition-transform duration-300"
-                                style={{
-                                    filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 35px rgba(220, 20, 60, 0.9)) brightness(1.3) contrast(1.1)'
-                                }}
-                            />
-                        </a>
+                                <a href="https://www.trinitystudyabroad.com/" target="_blank" rel="noopener noreferrer" className="relative z-10 block cursor-pointer w-full">
+                                    <motion.img
+                                        src={titleImg}
+                                        alt="Trinity Study Abroad - Title Sponsor"
+                                        className="w-full h-auto object-contain filter hover:scale-105 transition-transform duration-300 max-h-[120px]"
+                                        style={{
+                                            filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 35px rgba(220, 20, 60, 0.9)) brightness(1.3) contrast(1.1)'
+                                        }}
+                                    />
+                                </a>
+                            </div>
+                        </motion.div>
                     </div>
-                </motion.div>
+
+                    {/* Co Sponsor - Nexacraft */}
+                    <div className="flex flex-col items-center gap-4 w-full md:w-1/2 max-w-[400px]">
+                        <h3 className="text-red-400 font-cinzel text-lg md:text-xl tracking-widest uppercase text-center font-bold drop-shadow-[0_0_10px_rgba(220,20,60,0.8)] mb-2">Co-Sponsor</h3>
+                        <motion.div
+                            animate={{ y: [-10, 10, -10] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                            whileHover={{ scale: 1.05, rotateZ: [0, -1, 1, 0], transition: { duration: 0.4, ease: "easeOut" } }}
+                            className="relative group w-full"
+                        >
+                            <div className="absolute inset-[-20px] md:inset-[-30px] bg-red-600/30 blur-[40px] md:blur-[50px] rounded-full group-hover:bg-red-500/60 group-hover:blur-[60px] transition-all duration-500 opacity-80 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+
+                            <div className="relative bg-black/60 p-8 md:p-12 rounded-3xl border-2 border-red-900/60 backdrop-blur-xl shadow-[0_0_40px_rgba(180,0,0,0.4)_inset,0_0_30px_rgba(0,0,0,0.9)] overflow-hidden group-hover:border-red-500/80 group-hover:shadow-[0_0_60px_rgba(220,20,60,0.4)_inset,0_0_40px_rgba(0,0,0,0.9)] transition-all duration-500 flex items-center justify-center min-h-[200px]">
+                                <div className="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-red-600/80 rounded-tl group-hover:border-red-400 group-hover:shadow-[0_0_10px_rgba(255,100,100,0.8)] transition-all"></div>
+                                <div className="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-red-600/80 rounded-tr group-hover:border-red-400 group-hover:shadow-[0_0_10px_rgba(255,100,100,0.8)] transition-all"></div>
+                                <div className="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-red-600/80 rounded-bl group-hover:border-red-400 group-hover:shadow-[0_0_10px_rgba(255,100,100,0.8)] transition-all"></div>
+                                <div className="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-red-600/80 rounded-br group-hover:border-red-400 group-hover:shadow-[0_0_10px_rgba(255,100,100,0.8)] transition-all"></div>
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] group-hover:animate-[sweep_1s_ease-in-out]"></div>
+
+                                <a href="https://nexacraft.com/" target="_blank" rel="noopener noreferrer" className="relative z-10 block cursor-pointer w-full">
+                                    <motion.img
+                                        src={nexacraftImg}
+                                        alt="Nexacraft - Co-Sponsor"
+                                        className="w-full h-auto object-contain filter hover:scale-105 transition-transform duration-300 max-h-[120px]"
+                                        style={{
+                                            filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 35px rgba(220, 20, 60, 0.7)) brightness(1.2)'
+                                        }}
+                                    />
+                                </a>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                </div>
             </motion.div>
 
             <style jsx>{`

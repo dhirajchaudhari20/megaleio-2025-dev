@@ -109,8 +109,13 @@ const Footer = () => {
               className={`footer-button ${status === 'submitting' ? 'opacity-50 cursor-not-allowed' : ''}`}
               disabled={status === 'submitting'}
             >
-              {status === 'submitting' ? 'SUBMITTING...' : status === 'success' ? 'SENT SUCCESSFULLY!' : 'SUBMIT'}
+              {status === 'submitting' ? 'SUBMITTING...' : 'SUBMIT'}
             </button>
+            {status === 'success' && (
+              <div className="mt-4 p-3 bg-green-500/20 border border-green-500 text-green-400 rounded-md text-center text-sm animate-pulse font-semibold shadow-[0_0_10px_rgba(34,197,94,0.3)]">
+                Form Submitted Successfully!
+              </div>
+            )}
           </form>
         </div>
       </div>

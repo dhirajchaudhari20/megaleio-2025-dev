@@ -8,7 +8,6 @@ import ContactUs from "./pages/ContactUs";
 import Event from "./pages/Event";
 import { useSmoothScroll } from "./hook/useSmoothScroll";
 import ScrollToTop from "./hook/ScrollToTop";
-import CustomCursor from "./components/Effects/CustomCursor";
 
 const App = () => {
 
@@ -24,7 +23,6 @@ const App = () => {
 
   return (
     <>
-      <CustomCursor />
       <ScrollToTop />
       <Routes>
         <Route element={<MainLayout />}>

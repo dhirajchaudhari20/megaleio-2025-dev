@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import titleImg from '../../assets/title/trinity_new_logo.jpg';
-import nexacraftImg from '../../assets/title/nexacraft.png'; // Make sure the actual image is placed here later
+import nexacraftImg from '../../assets/title/nexacraft.png';
 
 const TitleSponsor = () => {
     const containerRef = useRef(null);

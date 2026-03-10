@@ -3,7 +3,6 @@ import { Outlet } from "react-router-dom";
 import Particles from "../components/Effects/Particles";
 import AudioToggle from "../components/Effects/AudioToggle";
 import FloatingEventTiles from "../components/Effects/FloatingEventTiles";
-import Custom3DCursor from "../components/Effects/Custom3DCursor";
 import Preloader from "../components/Effects/Preloader";
 
 const MainLayout = () => {
@@ -25,7 +24,6 @@ const MainLayout = () => {
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black" />
       </div>
-      <Custom3DCursor />
       <Particles />
       <Navbar />
       <Outlet />

@@ -25,15 +25,13 @@ const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const capsuleRef = useRef(null);
-  const chipRef = useRef(null);
-  const [showVideo, setShowVideo] = useState(true);
   const [open, setOpen] = useState(false);
 
-  /* â”€â”€ Logo / title scroll-in animation (unchanged logic) â”€â”€ */
+  /* ── Logo / title scroll-in animation ── */
   useGSAP(() => {
     ScrollTrigger.getAll().forEach((t) => t.kill());
-    gsap.killTweensOf([".nav-logo", ".nav-title"]);
-    gsap.set([".nav-logo", ".nav-title"], { clearProps: "all" });
+    gsap.killTweensOf([".nav-logo", ".nav-title", ".mobile-nav-logo", ".mobile-nav-title", capsuleRef.current]);
+    gsap.set([".nav-logo", ".nav-title", ".mobile-nav-logo", ".mobile-nav-title", capsuleRef.current], { clearProps: "all" });
 
     if (!isHome) return;
 
@@ -70,10 +68,9 @@ const Navbar = () => {
     });
 
     mm.add("(max-width: 767px)", () => {
-      gsap.from(".mobile-nav-logo", { // Exclusively target mobile element
-        x: 0,
-        y: window.innerHeight * 0.35, // Push it down towards the vertical center
-        scale: window.innerWidth / 150, // Make it significantly larger initially
+      gsap.from(".mobile-nav-logo", {
+        y: window.innerHeight * 0.35,
+        scale: window.innerWidth / 150,
         scrollTrigger: {
           trigger: ".mobile-nav-logo",
           start: "center 40%",
@@ -81,8 +78,8 @@ const Navbar = () => {
           invalidateOnRefresh: true,
         },
       });
-      gsap.from(".mobile-nav-title", { // Exclusively target mobile element
-        y: window.innerHeight * 0.45, // Keep it proportionally below the logo
+      gsap.from(".mobile-nav-title", {
+        y: window.innerHeight * 0.45,
         scale: window.innerWidth / 250,
         opacity: 0,
         scrollTrigger: {
@@ -92,79 +89,32 @@ const Navbar = () => {
           invalidateOnRefresh: true,
         },
       });
+
+      // Animate Capsule Appearance to prevent empty pill effect at start of scroll
+      gsap.fromTo(capsuleRef.current,
+        {
+          backgroundColor: "rgba(5,5,5,0)",
+          boxShadow: "none",
+          border: "none",
+          backdropFilter: "blur(0px)",
+          webkitBackdropFilter: "blur(0px)"
+        },
+        {
+          backgroundColor: "rgba(5,5,5,0.72)",
+          boxShadow: "0 4px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(220,20,60,0.18), inset 0 1px 0 rgba(255,255,255,0.04)",
+          backdropFilter: "blur(18px)",
+          webkitBackdropFilter: "blur(18px)",
+          scrollTrigger: {
+            trigger: ".mobile-nav-logo",
+            start: "center 40%",
+            scrub: 1,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
     });
 
   }, { scope: capsuleRef.current, dependencies: [isHome] });
-
-  /* ── Capsule → Circle morph on scroll (GSAP) ── */
-  useEffect(() => {
-    if (!capsuleRef.current || !chipRef.current) return;
-
-    // ❗ Run only on mobile
-    if (window.innerWidth >= 768) return;
-
-    gsap.set(chipRef.current, {
-      xPercent: -50,
-      y: -120,
-      opacity: 0,
-      scale: 0.6,
-    });
-
-    let scrolled = false;
-
-    const onScroll = () => {
-      const shouldCollapse = window.scrollY > 30;
-      if (shouldCollapse === scrolled) return;
-      scrolled = shouldCollapse;
-
-      if (shouldCollapse) {
-        gsap.set(chipRef.current, { display: "flex" }); // Ensure visible
-        gsap.timeline().to(capsuleRef.current, {
-          scaleX: 0.12,
-          scaleY: 0.7,
-          opacity: 0,
-          duration: 0.38,
-          ease: "power2.in",
-        });
-
-        gsap.to(chipRef.current, {
-          xPercent: -50,
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.52,
-          ease: "back.out(1.6)",
-          delay: 0.18,
-        });
-      } else {
-        gsap.to(chipRef.current, {
-          xPercent: -50,
-          y: -120,
-          opacity: 0,
-          scale: 0.6,
-          duration: 0.34,
-          ease: "power2.in",
-          onComplete: () => gsap.set(chipRef.current, { display: "none" }), // Hide after animation
-        });
-
-        gsap
-          .timeline({ delay: 0.14 })
-          .set(capsuleRef.current, { scaleX: 0.12, scaleY: 0.7, opacity: 0 })
-          .to(capsuleRef.current, {
-            scaleX: 1,
-            scaleY: 1,
-            opacity: 1,
-            duration: 0.48,
-            ease: "back.out(1.3)",
-          });
-      }
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -211,40 +161,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* ░░ SCROLLED LOGO CIRCLE — morphs from collapsed capsule ░░ */}
-      <div
-        ref={chipRef}
-        style={{
-          display: "none", // Managed by GSAP for robustness
-          position: "fixed",
-          top: "10px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 51,
-          width: "140px",
-          height: "60px",
-          borderRadius: "30px", // Pill shape
-          background: "rgba(5,5,5,0.9)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          boxShadow:
-            "0 0 0 1px rgba(220,20,60,0.35), 0 8px 32px rgba(0,0,0,0.7), 0 0 20px rgba(180,0,20,0.18)",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "2px",
-          cursor: "pointer",
-          fontFamily: "'Cinzel Decorative', 'Cinzel', serif",
-        }}
-      >
-        <img src={logo} alt="logo" style={{ height: "26px", width: "auto" }} />
-        <img
-          src={title}
-          alt="Megalio 2026"
-          style={{ height: "12px", width: "auto", opacity: 0.85 }}
-        />
-      </div>
-
       <div
         className="fixed top-0 left-0 right-0 z-50 flex justify-center"
         style={{
@@ -253,12 +169,13 @@ const Navbar = () => {
           fontSize: "0.84rem",
         }}
       >
-        {/* â–‘â–‘ FLOATING CAPSULE â–‘â–‘ */}
+        {/* ░░ FLOATING CAPSULE ░░ */}
         <div
           ref={capsuleRef}
-          className="relative w-[84%] max-w-5xl rounded-full"
+          className={`relative w-[92%] md:w-[84%] max-w-5xl transition-all duration-500 ease-in-out ${open ? "rounded-3xl bg-[rgba(10,5,5,0.95)]" : "rounded-full"
+            }`}
           style={{
-            background: "rgba(5,5,5,0.52)",
+            background: "rgba(5,5,5,0.72)",
             backdropFilter: "blur(18px)",
             WebkitBackdropFilter: "blur(18px)",
             boxShadow:
@@ -266,16 +183,17 @@ const Navbar = () => {
             transformOrigin: "center center",
           }}
         >
-          {/* â”€â”€ subtle inner top-edge highlight â”€â”€ */}
+          {/* Subtle inner top-edge highlight */}
           <div
-            className="absolute top-0 left-8 right-8 h-px rounded-full pointer-events-none"
+            className="absolute top-0 left-8 right-8 h-px rounded-full pointer-events-none transition-all duration-500"
             style={{
-              background:
-                "linear-gradient(to right, transparent, rgba(220,20,60,0.4), transparent)",
+              background: open
+                ? "transparent"
+                : "linear-gradient(to right, transparent, rgba(220,20,60,0.4), transparent)",
             }}
           />
 
-          {/* â”€â”€ DESKTOP LAYOUT â”€â”€ */}
+          {/* ── DESKTOP LAYOUT ── */}
           <div className="hidden md:grid grid-cols-[1fr_auto_1fr] items-center px-5 py-1">
             {/* LEFT LINKS */}
             <ul className="flex items-center gap-6 justify-start">
@@ -288,10 +206,8 @@ const Navbar = () => {
               ))}
             </ul>
 
-            {/* CENTER — Logo + Title (GSAP targets: #logo, #title) */}
-            <div
-              className="flex flex-col items-center px-5 py-0.5 gap-0.5"
-            >
+            {/* CENTER — Logo + Title */}
+            <div className="flex flex-col items-center px-5 py-0.5 gap-0.5 pointer-events-none">
               <div className="nav-logo">
                 <img src={logo} alt="logo" className="h-10 md:h-12 w-auto" />
               </div>
@@ -316,46 +232,59 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* â”€â”€ MOBILE LAYOUT â”€â”€ */}
-          <div className="relative flex md:hidden items-center justify-center px-4 py-1.5">
+          {/* ── MOBILE LAYOUT ── */}
+          <div className="relative flex md:hidden items-center justify-center px-4 py-2 h-[68px]">
             {/* Logo + title — vertical stack for better centering */}
-            <div className="flex flex-col items-center gap-0.5 pointer-events-none">
+            <NavLink
+              to="/"
+              className="flex flex-col items-center gap-1 z-50 px-2"
+              onClick={() => setOpen(false)}
+            >
               <div className="mobile-nav-logo">
-                <img src={logo} alt="logo" className="h-10 w-auto" />
+                <img src={logo} alt="logo" className="h-9 w-auto drop-shadow-lg" />
               </div>
               <div className="mobile-nav-title">
-                <img src={title} alt="Megalio 2026" className="h-8 w-auto md:h-10" />
+                <img src={title} alt="Megalio 2026" className="h-5 w-auto drop-shadow-md" />
               </div>
-            </div>
+            </NavLink>
 
             {/* Hamburger — pinned to right */}
             <button
               onClick={() => setOpen(!open)}
-              className="absolute right-4 flex flex-col gap-1.5 p-2 group"
+              className="absolute right-4 flex flex-col gap-1.5 p-3 group rounded-full border border-red-900/40 bg-black/40 backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.5)] z-50 transition-colors hover:bg-black/60"
               aria-label="Toggle menu"
             >
               <span
-                className={`block h-0.5 w-6 bg-red-600 shadow-[0_0_8px_rgba(220,20,60,0.8)] transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`}
+                className={`block h-[2px] w-5 bg-red-500 shadow-[0_0_8px_rgba(220,20,60,0.8)] transition-all duration-300 ${open ? "rotate-45 translate-y-[8px]" : ""
+                  }`}
               />
               <span
-                className={`block h-0.5 w-6 bg-red-600 shadow-[0_0_8px_rgba(220,20,60,0.8)] transition-all duration-300 ${open ? "opacity-0" : ""}`}
+                className={`block h-[2px] w-5 bg-red-500 shadow-[0_0_8px_rgba(220,20,60,0.8)] transition-all duration-300 ${open ? "opacity-0" : ""
+                  }`}
               />
               <span
-                className={`block h-0.5 w-6 bg-red-600 shadow-[0_0_8px_rgba(220,20,60,0.8)] transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}
+                className={`block h-[2px] w-5 bg-red-500 shadow-[0_0_8px_rgba(220,20,60,0.8)] transition-all duration-300 ${open ? "-rotate-45 -translate-y-[8px]" : ""
+                  }`}
               />
             </button>
           </div>
 
-          {/* â”€â”€ MOBILE DROPDOWN â”€â”€ */}
+          {/* ── MOBILE DROPDOWN ── */}
           <div
-            className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${open ? "max-h-96 pb-5" : "max-h-0"}`}
+            className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${open ? "max-h-[500px] opacity-100 pb-7 pt-2" : "max-h-0 opacity-0 py-0"
+              }`}
           >
-            <ul className="flex flex-col items-center gap-5 pt-2">
+            <ul className="flex flex-col items-center justify-center gap-6 w-full mt-2">
               {[...navLeft, ...navRight].map((nav, i) => (
-                <li key={i}>
+                <li key={i} className="w-full text-center">
                   <NavLink
                     to={navRoutes[nav]}
-                    className={linkClass}
+                    className={({ isActive }) =>
+                      `block w-full text-[1.05rem] tracking-[0.2em] uppercase transition-all duration-300 py-1 ${isActive
+                        ? "text-red-500 drop-shadow-[0_0_8px_rgba(220,20,60,0.8)]"
+                        : "text-[#d0b0b0] hover:text-white"
+                      }`
+                    }
                     onClick={() => setOpen(false)}
                   >
                     {nav}
@@ -365,12 +294,13 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* â”€â”€ subtle inner bottom-edge shadow â”€â”€ */}
+          {/* Subtle inner bottom-edge shadow */}
           <div
-            className="absolute bottom-0 left-8 right-8 h-px rounded-full pointer-events-none"
+            className="absolute bottom-0 left-8 right-8 h-px rounded-full pointer-events-none transition-all duration-500"
             style={{
-              background:
-                "linear-gradient(to right, transparent, rgba(0,0,0,0.6), transparent)",
+              background: open
+                ? "transparent"
+                : "linear-gradient(to right, transparent, rgba(0,0,0,0.6), transparent)",
             }}
           />
         </div>

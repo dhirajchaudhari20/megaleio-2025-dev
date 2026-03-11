@@ -671,7 +671,7 @@ const Hero = () => {
 
                 {/* Heading */}
                 <h1
-                  className="leading-none select-none"
+                  className="leading-none select-none relative"
                   style={{
                     fontFamily: "'Cinzel', serif",
                     fontSize: "clamp(2rem, 8vw, 5.5rem)",

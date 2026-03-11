@@ -682,7 +682,7 @@ const Hero = () => {
                 >
                   <span
                     ref={line1Ref}
-                    className="text-glow-red block"
+                    className="text-glow-red block bpm-glow"
                     style={{
                       width: "100%",
                     }}
@@ -732,7 +732,7 @@ const Hero = () => {
                     onClick={() => {
                       window.location.href = '/event';
                     }}
-                    className="btn-pulse group relative px-8 py-4 rounded-xl overflow-hidden transition-all duration-300"
+                    className="group relative px-8 py-4 rounded-xl overflow-hidden transition-all duration-300 bpm-pulse"
                     style={{
                       background: "linear-gradient(45deg, rgba(180,0,20,0.8), rgba(220,20,60,0.9))",
                       border: "1px solid rgba(255,100,100,0.4)"
@@ -740,7 +740,8 @@ const Hero = () => {
                   >
                     <div className="absolute inset-0 bg-red-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ mixBlendMode: 'overlay' }} />
                     <span
-                      className="relative z-10 font-bold tracking-[0.2em] flex items-center gap-3 drop-shadow-md"
+                      className="relative z-10 font-bold tracking-[0.2em] flex items-center gap-3 drop-shadow-md glitch-text"
+                      data-text="ENTER THE GATE"
                       style={{ fontFamily: "'Courier New', monospace", color: "#fff" }}
                     >
                       ENTER THE GATE

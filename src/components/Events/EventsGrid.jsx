@@ -255,7 +255,7 @@ const EventsGrid = () => {
               <article
                 key={index}
                 onClick={() => openSpotlight(event)}
-                className="event-stagger magnetic-card event-card-hover group relative h-[365px] overflow-hidden border border-red-500/20 bg-black/60 cursor-pointer transition-all duration-400 hover:-translate-y-1 hover:border-red-400/45"
+                className="event-stagger magnetic-card event-card-hover liquid-hover group relative h-[365px] overflow-hidden border border-red-500/20 bg-black/60 cursor-pointer transition-all duration-400 hover:border-red-400/45"
               >
                 <div className="tilt-layer">
                   <img src={event.image} alt={event.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-95" />
@@ -299,7 +299,7 @@ const EventsGrid = () => {
               <div
                 key={index}
                 onClick={() => openSpotlight(event)}
-                className="reveal event-stagger magnetic-card event-card-hover relative group overflow-hidden border border-red-500/25 w-full max-w-[380px] mx-auto cursor-pointer transition-all duration-400 hover:-translate-y-1 hover:border-red-400/50 rounded-2xl"
+                className="reveal event-stagger magnetic-card event-card-hover liquid-hover relative group overflow-hidden border border-red-500/25 w-full max-w-[380px] mx-auto cursor-pointer transition-all duration-400 hover:border-red-400/50 rounded-2xl"
               >
                 <div className="relative h-[500px]">
                   <div className="tilt-layer">

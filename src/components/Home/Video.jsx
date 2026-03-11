@@ -6,6 +6,8 @@ import nexacraftImg from '../../assets/title/nexacraft.png';
 
 const Video = () => {
   const containerRef = useRef(null);
+  const bgRef = useRef(null);
+  const fgRef = useRef(null);
 
   useGSAP(() => {
     // Cinematic fade-in for the sponsors over the video
@@ -19,9 +21,36 @@ const Video = () => {
     });
   }, { scope: containerRef });
 
+  const handleMouseMove = (e) => {
+    if (window.innerWidth < 1024) return;
+
+    const { clientX, clientY } = e;
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+
+    const moveX = (clientX - cx) / cx; // Normalizes from -1 to 1
+    const moveY = (clientY - cy) / cy;
+
+    // Background moves slightly opposite constraint to mouse (creates pushing depth)
+    gsap.to(bgRef.current, {
+      x: moveX * -25,
+      y: moveY * -15,
+      duration: 1.5,
+      ease: "power2.out"
+    });
+
+    // Foreground floats with mouse providing immense 2.5D depth
+    gsap.to(fgRef.current, {
+      x: moveX * 45,
+      y: moveY * 25,
+      duration: 1.5,
+      ease: "power2.out"
+    });
+  };
+
   return (
-    <div className="relative" ref={containerRef}>
-      <div className="bg-black w-full h-[60svh] md:h-screen sticky top-0 overflow-hidden">
+    <div className="relative overflow-hidden" ref={containerRef} onMouseMove={handleMouseMove}>
+      <div className="bg-black w-full h-[60svh] md:h-screen sticky top-0 overflow-hidden transform scale-[1.05]" ref={bgRef}>
         <video
           autoPlay
           muted
@@ -35,7 +64,7 @@ const Video = () => {
         </video>
 
         {/* Sponsor Overlays (Floating near the top edges) */}
-        <div className="absolute top-24 md:top-32 left-0 w-full px-6 md:px-16 flex justify-between items-start pointer-events-none z-20">
+        <div className="absolute top-24 md:top-32 left-0 w-full px-6 md:px-16 flex justify-between items-start pointer-events-none z-20" ref={fgRef}>
 
           {/* Title Sponsor - Top Left */}
           <a href="https://www.trinitystudyabroad.com/" target="_blank" rel="noopener noreferrer" className="video-sponsor pointer-events-auto group flex flex-col items-start justify-center cursor-pointer">

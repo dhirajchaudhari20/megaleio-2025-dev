@@ -75,6 +75,19 @@
 
 <body>
   <div id="root"></div>
+
+  <!-- Global SVG Filter for WebGL-style Liquid Distortions -->
+  <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg"
+    version="1.1">
+    <defs>
+      <filter id="liquid-distortion">
+        <feTurbulence type="fractalNoise" baseFrequency="0.005 0.005" numOctaves="3" result="noise" id="turbulence" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"
+          id="displacementMap" />
+      </filter>
+    </defs>
+  </svg>
+
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

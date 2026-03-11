@@ -217,3 +217,176 @@ body {
     text-shadow: none;
   }
 }
+
+/* 🎹 Audio-Reactive BPM Sync */
+:root {
+  --bpm-beat: 0.714s;
+  /* 84 BPM */
+}
+
+.bpm-pulse {
+  animation: bpm-pulse var(--bpm-beat) ease-in-out infinite alternate !important;
+}
+
+@keyframes bpm-pulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(220, 20, 60, 0.4));
+  }
+
+  100% {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 25px rgba(220, 20, 60, 0.9));
+  }
+}
+
+.bpm-glow {
+  animation: bpm-text-glow var(--bpm-beat) ease-in-out infinite alternate !important;
+}
+
+@keyframes bpm-text-glow {
+  0% {
+    text-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+  }
+
+  100% {
+    text-shadow: 0 0 30px rgba(220, 20, 60, 0.9), 0 0 50px rgba(220, 20, 60, 0.4);
+  }
+}
+
+/* 📺 Glitch Typography */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.glitch-text::before {
+  color: #0ff;
+  z-index: -1;
+  animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  color: #f00;
+  z-index: -2;
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+.glitch-text:hover::before,
+.glitch-text:hover::after {
+  animation-duration: 0.2s;
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    clip-path: inset(20% 0 80% 0);
+    transform: translate(-2px, 1px);
+  }
+
+  20% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(2px, -1px);
+  }
+
+  40% {
+    clip-path: inset(40% 0 50% 0);
+    transform: translate(-2px, 2px);
+  }
+
+  60% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(2px, -2px);
+  }
+
+  80% {
+    clip-path: inset(10% 0 70% 0);
+    transform: translate(-2px, 1px);
+  }
+
+  100% {
+    clip-path: inset(30% 0 50% 0);
+    transform: translate(2px, -1px);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(2px, -1px);
+  }
+
+  20% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(-2px, 1px);
+  }
+
+  40% {
+    clip-path: inset(30% 0 20% 0);
+    transform: translate(2px, -2px);
+  }
+
+  60% {
+    clip-path: inset(50% 0 30% 0);
+    transform: translate(-2px, 2px);
+  }
+
+  80% {
+    clip-path: inset(5% 0 80% 0);
+    transform: translate(2px, -1px);
+  }
+
+  100% {
+    clip-path: inset(40% 0 40% 0);
+    transform: translate(-2px, 1px);
+  }
+}
+
+/* ☢️ Upside Down Mode (Konami Code Easter Egg) */
+body.upside-down-mode {
+  filter: hue-rotate(180deg) saturate(0.4) contrast(1.4);
+  transition: filter 3s ease-in-out;
+}
+
+body.upside-down-mode::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, transparent 40%, rgba(200, 0, 0, 0.4) 100%);
+  pointer-events: none;
+  z-index: 999999;
+  mix-blend-mode: multiply;
+  animation: portal-breathe 4s infinite alternate;
+}
+
+@keyframes portal-breathe {
+  0% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 🌀 Liquid Distortion Class for Images/Cards */
+.liquid-hover {
+  transition: transform 0.4s ease;
+}
+
+.liquid-hover:hover {
+  filter: url('#liquid-distortion') sepia(0.5) hue-rotate(-20deg) contrast(1.2);
+  transform: scale(1.02);
+}

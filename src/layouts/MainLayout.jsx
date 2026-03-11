@@ -4,11 +4,13 @@ import Particles from "../components/Effects/Particles";
 import AudioToggle from "../components/Effects/AudioToggle";
 import FloatingEventTiles from "../components/Effects/FloatingEventTiles";
 import Preloader from "../components/Effects/Preloader";
+import ScrollTentacle from "../components/Effects/ScrollTentacle";
 
 const MainLayout = () => {
 
   return (
     <>
+      <ScrollTentacle />
       <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-black">
         <video
           autoPlay
